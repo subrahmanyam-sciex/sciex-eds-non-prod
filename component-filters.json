@@ -15,7 +15,9 @@
       "hero",
       "cards",
       "columns",
-      "fragment"
+      "fragment",
+      "hello",
+      "sciex-footer"
     ]
   },
   {
@@ -37,6 +39,16 @@
       "image",
       "button",
       "title"
+    ]
+  },
+  {
+    "id": "sciex-footer",
+    "components": [
+      "title",
+      "text",
+      "image",
+      "icon",
+      "links"
     ]
   }
 ]

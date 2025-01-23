@@ -44,7 +44,9 @@
         "hero",
         "cards",
         "columns",
-        "fragment"
+        "fragment",
+        "hello",
+        "sciex-footer"
       ]
     }
   ]
