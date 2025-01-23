@@ -35,15 +35,6 @@
           "...": "../blocks/*/_*.json#/definitions"
         }
       ]
-    },
-    {
-      "title": "Hello",
-      "id": "hello",
-      "components": [
-        {
-          "...": "./_hello.json#/definitions"
-        }
-      ]
     }
   ]
 }
