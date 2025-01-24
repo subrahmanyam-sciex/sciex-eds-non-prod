@@ -1,22 +1,22 @@
-import { getMetadata } from '../../scripts/aem.js';
-import { loadFragment } from '../fragment/fragment.js';
+import { getMetadata } from "../../scripts/aem.js";
+import { loadFragment } from "../fragment/fragment.js";
 
 export default async function decorate(block) {
   // Load footer as fragment
-  const footerMeta = getMetadata('footer');
+  const footerMeta = getMetadata("footer");
   const footerPath = footerMeta
     ? new URL(footerMeta, window.location).pathname
-    : '/footer';
+    : "/footer";
   const fragment = await loadFragment(footerPath);
 
   // Decorate footer DOM
-  block.textContent = '';
-  const footer = document.createElement('div');
+  block.textContent = "";
+  const footer = document.createElement("div");
   while (fragment.firstElementChild) footer.append(fragment.firstElementChild);
   block.append(footer);
 
   // Add navigation menu
-  const nav = document.createElement('nav');
+  const nav = document.createElement("nav");
   nav.innerHTML = `
     <div class='desktop-menu'>
       <div class='menu-title'>Products</div>
@@ -45,7 +45,7 @@ export default async function decorate(block) {
 
   // Add toggle function for mobile menu
   window.toggleMenu = function () {
-    const menu = document.getElementById('mobile-menu-list');
-    menu.style.maxHeight = menu.style.maxHeight ? null : '250px';
+    const menu = document.getElementById("mobile-menu-list");
+    menu.style.maxHeight = menu.style.maxHeight ? null : "250px";
   };
 }
