@@ -42,10 +42,4 @@ export default async function decorate(block) {
   `;
 
   footer.prepend(nav);
-
-  // Add toggle function for mobile menu
-  window.toggleMenu = function () {
-    const menu = document.getElementById('mobile-menu-list');
-    menu.style.maxHeight = menu.style.maxHeight ? null : '250px';
-  };
 }
