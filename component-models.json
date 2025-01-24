@@ -160,6 +160,25 @@
     ]
   },
   {
+    "id": "sciex-footer-new",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Text",
+        "valueType": "string"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      }
+    ]
+  },
+  {
     "id": "footer-top-banner",
     "fields": [
       {
