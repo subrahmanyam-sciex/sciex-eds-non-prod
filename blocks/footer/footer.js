@@ -15,6 +15,12 @@ export default async function decorate(block) {
   block.textContent = '';
   const footer = document.createElement('div');
   while (fragment.firstElementChild) footer.append(fragment.firstElementChild);
-
+  // Append the footer to the block
   block.append(footer);
+
+  // Find the h2 element and increase its font size
+  const h2 = footer.querySelector('h2');
+  if (h2) {
+    h2.style.fontSize = '145px';
+  }
 }
