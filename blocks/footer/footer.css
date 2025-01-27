@@ -9,10 +9,6 @@ footer .footer > div {
     padding: 40px 24px 24px;
 }
 
-footer .footer p {
-    margin: 0;
-}
-
 @media (width >= 900px) {
     footer .footer > div {
         padding: 40px 32px 24px;
@@ -20,102 +16,75 @@ footer .footer p {
 }
 
 .footer-wrapper {
-    background-color: black; /* Dark background */
-    color: #ddd; /* Light gray text */
-    padding: 40px 60px; /* Adjust padding */
+    background-color: black;
+    color: #ddd;
+    padding: 40px;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
 }
-  
-.footer block {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-  
+
+
 .footer .default-content-wrapper {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 20px;
 }
-  
-.footer .column {
+
+.footer-list ul,
+.black-section ul {
     display: flex;
     flex-direction: column;
-    gap: 8px; /* Space between title and list */
-}
-  
-.footer .column p {
-    font-weight: bold;
-    color: #fff; /* White for section headings */
-    margin: 0;
-}
-
-/* Apply the styles only to the first <ul> element */
-footer ul {
-    display: flex;
-    flex-direction: column; /* Stack items */
     gap: 8px;
     padding: 0;
     margin: 0;
     list-style: none;
 }
 
-.footer ul li {
-    margin: 0;
-    transition-duration:2s;
-    color: #8a8a8a;
-    
+.black-section ul {
+    flex-direction: row;
+    gap: 20px;
 }
 
-.footer ul li a {
+.footer-list ul li,
+.black-section ul li {
+    margin: 0;
+    transition-duration: 2s;
+    color: #8a8a8a;
+}
+
+.footer-list ul li a,
+.black-section ul li a {
     text-decoration: none;
-    color: #bbb; /* Light gray links */
+    color: #bbb;
     font-size: 14px;
     transition: color 0.3s;
 }
 
-.footer ul li a:hover {
-    color: #fff; /* White on hover */
+.footer-list ul li a:hover,
+.black-section ul li a:hover {
+    color: #fff;
 }
 
-p {
+.default-content-wrapper picture img {
+    width: 100px;
+    height: 50px;
+    object-fit: contain;
+}
+
+.wrapper-2 p {
     text-align: justify;
+    color: #ccccccd1;
 }
 
-.clients-footer {
-    background-color: #333;
-    padding: 20px 0;
-  }
-  
-  .clients-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 100%;
-  }
-  
-  .client-link {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 16px;
-    width: 50%;
-    height: 156px;
-    text-decoration: none;
-  }
-  
-  .client-link:hover {
-    background-color: black;
-  }
-  
-  .client-links {
-    width: 96px;
-  }
-  
-  .client-image {
-    width: 96px;
-  }
-  
+.footer-divider {
+    width: 120%;
+    border: none;
+    border-top: 0.1px solid #ccccccd1;
+    margin: 20px 0;
+}
+
+.wrapper-3 {
+    padding-top: 10px;
+}
