@@ -39,7 +39,11 @@
   /* nav height */
   --nav-height: 64px;
 }
+@tailwind base; 
 
+@tailwind components; 
+
+@tailwind utilities; 
 /* fallback fonts */
 @font-face {
   font-family: roboto-condensed-fallback;
