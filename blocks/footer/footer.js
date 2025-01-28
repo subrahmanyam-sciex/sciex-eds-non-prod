@@ -13,15 +13,18 @@ export default async function decorate(block) {
   block.textContent = '';
 
   let iteration = 0;
-  let firstSection = true;
+  let firstSectionContent = document.createElement('div');
+  firstSectionContent.classList.add('footer-banner');
 
   while (fragment.firstElementChild) {
-    iteration += 1; // Fix: Using += 1 instead of ++
+    iteration += 1;
     const wrapperDiv = document.createElement('div');
     wrapperDiv.classList.add(`wrapper-${iteration}`);
 
-    // Add 'footer-list' class to the first section
-    if (firstSection) {
+    if (iteration === 1) {
+      firstSectionContent.append(fragment.firstElementChild);
+      continue;
+    } else if (iteration === 2) {
       wrapperDiv.classList.add('footer-list');
     } else {
       wrapperDiv.classList.add('black-section');
@@ -30,16 +33,16 @@ export default async function decorate(block) {
     wrapperDiv.append(fragment.firstElementChild);
     block.append(wrapperDiv);
 
-    if (iteration === 2) {
+    if (iteration === 3) {
       const hr = document.createElement('hr');
       hr.classList.add('footer-divider');
       block.insertBefore(hr, wrapperDiv);
     }
-
-    firstSection = false;
   }
 
-  const h2 = block.querySelector('.wrapper-1 h2');
+  block.prepend(firstSectionContent);
+
+  const h2 = block.querySelector('.wrapper-2 h2');
   if (h2) {
     h2.style.fontSize = '145px';
   }
