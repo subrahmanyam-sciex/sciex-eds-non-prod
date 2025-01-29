@@ -163,24 +163,48 @@
     "id": "headerItem",
     "fields": [
       {
-        "component": "reference",
-        "valueType": "string",
-        "name": "icon",
-        "label": "Icon",
-        "multi": false
+        "component": "select",
+        "name": "classes",
+        "label": "Icons",
+        "options": [
+          {
+            "name": "Sciex logo",
+            "value": "sciex-logo"
+          },
+          {
+            "name": "Sciex Now Dashboard",
+            "value": "sciex-now-dashboard"
+          },
+          {
+            "name": "Resource library",
+            "value": "resource-library"
+          },
+          {
+            "name": "Shop",
+            "value": "shop"
+          },
+          {
+            "name": "Login",
+            "value": "login"
+          },
+          {
+            "name": "Button",
+            "value": "button"
+          }
+        ]
       },
       {
         "component": "text",
         "valueType": "string",
-        "name": "iconAlt",
-        "label": "Alt Text",
+        "name": "title",
+        "label": "Title",
         "value": ""
       },
       {
-        "component": "richtext",
-        "name": "text",
+        "component": "text",
+        "name": "linkurl",
         "value": "",
-        "label": "Text",
+        "label": "Link Url",
         "valueType": "string"
       }
     ]
