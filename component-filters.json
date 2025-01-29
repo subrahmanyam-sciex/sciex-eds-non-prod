@@ -42,6 +42,12 @@
     ]
   },
   {
+    "id": "header",
+    "components": [
+      "headerItem"
+    ]
+  },
+  {
     "id": "sciex-footer",
     "components": [
       "title",
