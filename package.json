@@ -11,8 +11,8 @@
     "build:json:models": "merge-json-cli -i \"models/_component-models.json\" -o \"component-models.json\"",
     "build:json:definitions": "merge-json-cli -i \"models/_component-definition.json\" -o \"component-definition.json\"",
     "build:json:filters": "merge-json-cli -i \"models/_component-filters.json\" -o \"component-filters.json\"",
-	"build:css": "tailwindcss -i ./styles/styles.css -o ./styles/tailwind.css --watch",
-	"lint:fix": "eslint --fix --ext .js,.jsx .",
+    "build:css": "tailwindcss -i ./styles/styles.css -o ./styles/tailwind.css --watch",
+    "lint:fix": "eslint --fix --ext .js,.jsx .",
     "prepare": "husky"
   },
   "repository": {
@@ -28,7 +28,7 @@
   "devDependencies": {
     "@babel/eslint-parser": "7.25.9",
     "autoprefixer": "^10.4.20",
-    "eslint": "8.57.1",
+    "eslint": "^8.57.1",
     "eslint-config-airbnb-base": "15.0.0",
     "eslint-plugin-import": "2.31.0",
     "eslint-plugin-json": "3.1.0",
