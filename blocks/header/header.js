@@ -37,7 +37,6 @@ export default async function decorate(block) {
     }
     ul.append(element);
   });
-  console.log(ul);
   border.append(ul);
 
   container.append(border);
