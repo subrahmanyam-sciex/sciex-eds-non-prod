@@ -48,8 +48,12 @@
         "hello",
         "sciex-footer",
         "header",
+<<<<<<< HEAD
         "footer-topBanner",
         "coveosearch"
+=======
+        "searchresult"
+>>>>>>> 992b643 (Conflict resolved.)
       ]
     }
   ]
