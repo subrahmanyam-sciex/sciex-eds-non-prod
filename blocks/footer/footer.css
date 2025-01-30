@@ -9,12 +9,233 @@ footer .footer > div {
     padding: 40px 24px 24px;
 }
 
-footer .footer p {
-    margin: 0;
-}
-
 @media (width >= 900px) {
     footer .footer > div {
         padding: 40px 32px 24px;
     }
 }
+
+.footer-wrapper {
+    background-color: black;
+    color: #ddd;
+    padding: 40px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.footer .default-content-wrapper {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.footer-list ul,
+.black-section ul {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.black-section ul {
+    flex-direction: row;
+    gap: 20px;
+}
+
+.footer-list ul li,
+.black-section ul li {
+    margin: 0;
+    transition-duration: 2s;
+    color: #8a8a8a;
+}
+
+.footer-list ul li a,
+.black-section ul li a {
+    text-decoration: none;
+    color: #bbb;
+    font-size: 14px;
+    transition: color 0.3s;
+}
+
+.footer-list ul li a:hover,
+.black-section ul li a:hover {
+    color: #fff;
+}
+
+.default-content-wrapper picture img {
+    width: 100px;
+    height: 50px;
+    object-fit: contain;
+}
+
+.wrapper-2 p {
+    text-align: justify;
+    color: #ccccccd1;
+}
+
+.footer-divider {
+    width: 120%;
+    border: none;
+    border-top: 0.1px solid #ccccccd1;
+    margin-top: 60px;
+}
+
+.wrapper-3 {
+    padding-top: 10px;
+}
+
+.footer-language-selector {
+    display: flex;
+    justify-content: flex-end; 
+    margin-right: 16px;
+    align-items: center;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-toggle {
+    background: rgb(16 2 2);
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.dropdown-arrow {
+    margin-left: auto;
+    font-size: 12px;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 6px rgb(0 0 0 / 0.1);
+    min-width: 150px;
+    top: 40px;
+    left: 0;
+    z-index: 1000;
+    border-radius: 5px;
+}
+
+button:hover,
+button:focus {
+    background-color: black;
+    cursor: pointer;
+}
+
+.dropdown-menu.show {
+    display: block;
+}
+
+.dropdown-item {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.dropdown-item:hover {
+    background: #f0f0f0;
+}
+
+/* New CSS for Footer Navigation */
+.footer-navigation {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    border-top: 1px solid #777;
+    padding-top: 20px;
+}
+
+.footer-section {
+    border-bottom: 1px solid #777;
+    max-width: 305px;
+    padding: 20px 0;
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .footer-section {
+        display: block;
+    }
+}
+
+.footer-section-title {
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: white;
+    font-size: 15px;
+}
+
+.footer-section ul {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-section ul li {
+    margin-bottom: 8px;
+}
+
+.footer-section ul li a {
+    color: #bbb;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s;
+}
+
+.footer-section ul li a:hover {
+    color: #fff;
+}
+
+/* Apply display flex to Nav and add gap */
+.footer-wrapper nav {
+    display: flex;
+    gap: 175px;
+}
+
+.footer-heading {
+    font-size: 140px;
+    margin-top: 85px;
+    line-height: 140px;
+
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity));
+    margin-bottom: 20px;
+}
+
+.footer-social-links nav {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+  }
+  .footer-social-links ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 35px;
+  }
+  .footer-social-links li {
+    margin-right: 16px;
+  }
+  .footer-social-links a {
+    color: white;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .footer-social-links a:hover {
+    opacity: 0.6;
+  }
+  .footer-social-links svg {
+    width: 16px;
+    height: 16px;
+    color: white;
+  }
