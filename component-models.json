@@ -160,6 +160,56 @@
     ]
   },
   {
+    "id": "headerItem",
+    "fields": [
+      {
+        "component": "select",
+        "name": "classes",
+        "label": "Icons",
+        "options": [
+          {
+            "name": "Sciex logo",
+            "value": "sciex-logo"
+          },
+          {
+            "name": "Sciex Now Dashboard",
+            "value": "sciex-now-dashboard"
+          },
+          {
+            "name": "Resource library",
+            "value": "resource-library"
+          },
+          {
+            "name": "Shop",
+            "value": "shop"
+          },
+          {
+            "name": "Login",
+            "value": "login"
+          },
+          {
+            "name": "Button",
+            "value": "button"
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "label": "Title",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "name": "linkurl",
+        "value": "",
+        "label": "Link Url",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
     "id": "sciex-footer-new",
     "fields": [
       {
