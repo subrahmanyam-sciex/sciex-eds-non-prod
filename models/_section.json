@@ -46,7 +46,8 @@
         "columns",
         "fragment",
         "hello",
-        "sciex-footer"
+        "sciex-footer",
+        "footer-banner"
       ]
     }
   ]
