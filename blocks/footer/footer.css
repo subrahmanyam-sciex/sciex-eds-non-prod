@@ -188,7 +188,7 @@ footer .footer > div {
   /* Logo section container using Grid */
 .logo-container {
     display: grid;
-    grid-template-columns: repeat(6, 1fr); /* 8 logos per row */
+    grid-template-columns: repeat(5, 1fr); /* 8 logos per row */
     gap: 30px; /* Space between logos */
     list-style: none;
     padding: 0;
