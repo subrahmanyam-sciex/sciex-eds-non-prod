@@ -9,12 +9,257 @@ footer .footer > div {
     padding: 40px 24px 24px;
 }
 
-footer .footer p {
-    margin: 0;
-}
-
 @media (width >= 900px) {
     footer .footer > div {
         padding: 40px 32px 24px;
     }
+}
+
+.footer-wrapper {
+    background-color: black;
+    color: #ddd;
+    padding: 40px 90px;
+    display: flex;
+    justify-content:flex-start;
+    flex-wrap: wrap;
+}
+
+.footer .default-content-wrapper {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.footer-list ul,
+.black-section ul {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.black-section ul {
+    flex-direction: row;
+    gap: 20px;
+}
+
+.footer-list ul li,
+.black-section ul li {
+    margin: 0;
+    transition-duration: 2s;
+    color: #8a8a8a;
+}
+
+.footer-list ul li a,
+.black-section ul li a {
+    text-decoration: none;
+    color: #bbb;
+    font-size: 14px;
+    transition: color 0.3s;
+}
+
+.footer-list ul li a:hover,
+.black-section ul li a:hover {
+    color: #fff;
+}
+
+.default-content-wrapper picture img {
+    width: 100px;
+    height: 50px;
+    object-fit: contain;
+}
+.footer-divider {
+    width: 120%;
+    border: none;
+    border-top: 0.1px solid #ccccccd1;
+    margin-top: 60px;
+}
+.footer-language-selector {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 16px;
+    align-items: center;
+}
+/* New CSS for Footer Navigation */
+.footer-navigation {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    border-top: 1px solid #777;
+    padding-top: 20px;
+}
+
+.footer-section {
+    border-bottom: 1px solid #777;
+    max-width: 305px;
+    padding: 20px 0;
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .footer-section {
+        display: block;
+    }
+}
+
+.footer-section-title {
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: white;
+    font-size: 15px;
+}
+
+.footer-section ul {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-section ul li {
+    margin-bottom: 8px;
+}
+
+.footer-section ul li a {
+    color: #bbb;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s;
+}
+
+.footer-section ul li a:hover {
+    color: #fff;
+}
+
+/* Apply display flex to Nav and add gap */
+.footer-wrapper nav {
+    display: flex;
+    gap: 175px;
+}
+
+.footer-heading {
+    font-size: 140px;
+    margin-top: 65px;
+    line-height: 140px;
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity));
+    margin-bottom: 20px;
+    width: 65%;
+}
+.footer-social-links{
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-social-links .dropdown {
+    background-color: black;
+}
+
+.footer-social-links nav {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+  }
+  .footer-social-links ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 35px;
+  }
+  .footer-social-links li {
+    margin-right: 16px;
+  }
+  .footer-social-links a {
+    color: white;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .footer-social-links a:hover {
+    opacity: 0.6;
+  }
+  .footer-social-links svg {
+    width: 16px;
+    height: 16px;
+    color: white;
+  }
+
+  /* Logo section container using Grid */
+.logo-container {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); /* 8 logos per row */
+    gap: 30px; /* Space between logos */
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Individual logo items */
+.logo-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Logo links */
+.logo-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+    width: 100%; /* Ensures logos fill their grid space */
+}
+
+/* Logo links hover effect */
+.logo-link:hover {
+    transform: scale(1.05);
+}
+
+/* Images inside the logo */
+.logo-item img {
+    max-width: 150px; /* Adjust as needed */
+    height: auto;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .logo-container {
+        grid-template-columns: repeat(6, 1fr); /* 6 per row on medium screens */
+    }
+}
+
+@media (max-width: 900px) {
+    .logo-container {
+        grid-template-columns: repeat(4, 1fr); /* 4 per row on smaller screens */
+    }
+}
+
+@media (max-width: 600px) {
+    .logo-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 per row on mobile */
+    }
+}
+
+.image-box {
+    position: absolute;
+    bottom: 75px;  /* Adjust this value as needed */
+    right: -100px;   /* Adjust this value as needed */
+    width: 65px;  /* Set a width for the image box */
+    height: auto;
+    background-color: rgba(0, 0, 0, 0.1); /* Light background for visibility */
+    padding: 5px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Ensure the parent container has relative positioning */
+.wrapper-2 {
+    position: relative;
+    padding-bottom: 50px; /* Ensure enough space for bottom content */
 }
