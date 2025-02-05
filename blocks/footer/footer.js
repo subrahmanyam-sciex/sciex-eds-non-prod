@@ -50,7 +50,11 @@ function handleMiddleSections(child, block, iteration) {
     } else {
       const paragraphWithImage = section.querySelector('p > picture');
       if (paragraphWithImage) {
-        newContainer.appendChild(paragraphWithImage.cloneNode(true));
+        const anchor = document.createElement("a");
+        anchor.href = "https://lifesciences.danaher.com";
+        anchor.target = "_blank";
+        anchor.appendChild(paragraphWithImage.cloneNode(true));
+        newContainer.appendChild(anchor);
       }
     }
   });

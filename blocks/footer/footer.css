@@ -2,19 +2,19 @@ footer {
     background-color: var(--light-color);
     font-size: var(--body-font-size-xs);
 }
-
+ 
 footer .footer > div {
     margin: auto;
     max-width: 1200px;
     padding: 40px 24px 24px;
 }
-
+ 
 @media (width >= 900px) {
     footer .footer > div {
         padding: 40px 32px 24px;
     }
 }
-
+ 
 .footer-wrapper {
     background-color: black;
     color: #ddd;
@@ -23,14 +23,14 @@ footer .footer > div {
     justify-content:flex-start;
     flex-wrap: wrap;
 }
-
+ 
 .footer .default-content-wrapper {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 20px;
 }
-
+ 
 .footer-list ul,
 .black-section ul {
     display: flex;
@@ -40,19 +40,19 @@ footer .footer > div {
     margin: 0;
     list-style: none;
 }
-
+ 
 .black-section ul {
     flex-direction: row;
     gap: 20px;
 }
-
+ 
 .footer-list ul li,
 .black-section ul li {
     margin: 0;
     transition-duration: 2s;
     color: #8a8a8a;
 }
-
+ 
 .footer-list ul li a,
 .black-section ul li a {
     text-decoration: none;
@@ -60,29 +60,29 @@ footer .footer > div {
     font-size: 14px;
     transition: color 0.3s;
 }
-
+ 
 .footer-list ul li a:hover,
 .black-section ul li a:hover {
     color: #fff;
 }
-
+ 
 .default-content-wrapper picture img {
     width: 100px;
     height: 50px;
     object-fit: contain;
-}
+} 
 .footer-divider {
     width: 120%;
     border: none;
     border-top: 0.1px solid #ccccccd1;
     margin-top: 60px;
-}
+} 
 .footer-language-selector {
     display: flex;
     justify-content: flex-end;
     margin-right: 16px;
     align-items: center;
-}
+} 
 /* New CSS for Footer Navigation */
 .footer-navigation {
     display: grid;
@@ -91,53 +91,53 @@ footer .footer > div {
     border-top: 1px solid #777;
     padding-top: 20px;
 }
-
+ 
 .footer-section {
     border-bottom: 1px solid #777;
     max-width: 305px;
     padding: 20px 0;
     display: none;
 }
-
+ 
 @media (min-width: 768px) {
     .footer-section {
         display: block;
     }
 }
-
+ 
 .footer-section-title {
     font-weight: bold;
     margin-bottom: 10px;
     color: white;
     font-size: 15px;
 }
-
+ 
 .footer-section ul {
     display: flex;
     flex-direction: column;
 }
-
+ 
 .footer-section ul li {
     margin-bottom: 8px;
 }
-
+ 
 .footer-section ul li a {
     color: #bbb;
     text-decoration: none;
     font-size: 14px;
     transition: color 0.3s;
 }
-
+ 
 .footer-section ul li a:hover {
     color: #fff;
 }
-
+ 
 /* Apply display flex to Nav and add gap */
 .footer-wrapper nav {
     display: flex;
     gap: 175px;
 }
-
+ 
 .footer-heading {
     font-size: 140px;
     margin-top: 65px;
@@ -188,7 +188,7 @@ footer .footer > div {
   /* Logo section container using Grid */
 .logo-container {
     display: grid;
-    grid-template-columns: repeat(5, 1fr); /* 8 logos per row */
+    grid-template-columns: repeat(6, 1fr); /* 8 logos per row */
     gap: 30px; /* Space between logos */
     list-style: none;
     padding: 0;
