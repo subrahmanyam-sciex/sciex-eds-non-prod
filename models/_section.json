@@ -48,7 +48,8 @@
         "hello",
         "sciex-footer",
         "header",
-        "footer-topBanner"
+        "footer-topBanner",
+        "searchresult"
       ]
     }
   ]
