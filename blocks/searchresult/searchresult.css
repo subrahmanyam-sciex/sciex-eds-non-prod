@@ -248,6 +248,7 @@
 .searchresult-wrapper {
   margin: 0 !important;
   max-width: fit-content !important;
+  margin-top: 100px !important;
 }
 
 /* Media Queries for Responsiveness */
