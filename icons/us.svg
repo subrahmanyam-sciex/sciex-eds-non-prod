@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 20 20">
+  <!-- Generator: Adobe Illustrator 29.2.1, SVG Export Plug-In . SVG Version: 2.1.0 Build 116)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill-rule: evenodd;
+      }
+
+      .st0, .st1 {
+        fill: #fff;
+      }
+
+      .st2 {
+        fill: #0052b4;
+      }
+
+      .st3 {
+        fill: #d80027;
+      }
+
+      .st4 {
+        clip-path: url(#clippath);
+      }
+    </style>
+    <clipPath id="clippath">
+      <circle class="st3" cx="10.01" cy="10.01" r="10"/>
+    </clipPath>
+  </defs>
+  <g>
+    <circle class="st3" cx="10.01" cy="10.01" r="10"/>
+    <g class="st4">
+      <rect class="st1" x="-7.9" y="-3.62" width="35.36" height="23.63"/>
+      <rect class="st2" x="-7.9" y="-3.62" width="17.91" height="12.73"/>
+      <rect class="st3" x="10.01" y="-3.62" width="17.46" height="1.83"/>
+      <rect class="st3" x="10.01" y=".01" width="17.46" height="1.83"/>
+      <rect class="st3" x="10.01" y="3.64" width="17.46" height="1.83"/>
+      <rect class="st3" x="10.01" y="7.28" width="17.46" height="1.83"/>
+      <rect class="st3" x="-7.9" y="10.91" width="35.36" height="1.83"/>
+      <rect class="st3" x="-7.9" y="14.54" width="35.36" height="1.83"/>
+      <rect class="st3" x="-7.9" y="18.18" width="35.36" height="1.83"/>
+    </g>
+  </g>
+  <g>
+    <g>
+      <polygon class="st0" points="4.47 2.85 4.7 3.57 5.46 3.57 4.85 4.01 5.08 4.73 4.47 4.28 3.86 4.73 4.1 4.01 3.49 3.57 4.24 3.57 4.47 2.85"/>
+      <polygon class="st0" points="4.47 6.44 4.7 7.15 5.46 7.15 4.85 7.6 5.08 8.31 4.47 7.87 3.86 8.31 4.1 7.6 3.49 7.15 4.24 7.15 4.47 6.44"/>
+    </g>
+    <polygon class="st0" points="8.71 6.44 8.94 7.15 9.7 7.15 9.09 7.6 9.32 8.31 8.71 7.87 8.1 8.31 8.34 7.6 7.73 7.15 8.48 7.15 8.71 6.44"/>
+    <polygon class="st0" points="6.59 1.04 6.83 1.76 7.58 1.76 6.97 2.2 7.2 2.92 6.59 2.47 5.99 2.92 6.22 2.2 5.61 1.76 6.36 1.76 6.59 1.04"/>
+    <polygon class="st0" points="6.59 4.7 6.83 5.41 7.58 5.41 6.97 5.85 7.2 6.57 6.59 6.13 5.99 6.57 6.22 5.85 5.61 5.41 6.36 5.41 6.59 4.7"/>
+    <polygon class="st0" points="2.26 4.7 2.49 5.41 3.24 5.41 2.63 5.85 2.87 6.57 2.26 6.13 1.65 6.57 1.88 5.85 1.27 5.41 2.03 5.41 2.26 4.7"/>
+    <g>
+      <polygon class="st0" points="4.47 2.85 4.7 3.57 5.46 3.57 4.85 4.01 5.08 4.73 4.47 4.28 3.86 4.73 4.1 4.01 3.49 3.57 4.24 3.57 4.47 2.85"/>
+      <polygon class="st0" points="8.71 2.85 8.95 3.57 9.7 3.57 9.09 4.01 9.32 4.73 8.71 4.28 8.11 4.73 8.34 4.01 7.73 3.57 8.48 3.57 8.71 2.85"/>
+    </g>
+  </g>
+</svg>
