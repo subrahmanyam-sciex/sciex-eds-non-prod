@@ -273,7 +273,7 @@
       {
         "component": "text",
         "valueType": "string",
-        "name": "login-code",
+        "name": "login-sso",
         "value": "",
         "label": "login"
       }

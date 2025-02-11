@@ -20,7 +20,8 @@
       "sciex-footer",
       "header",
       "footer-topBanner",
-      "searchresult"
+      "searchresult",
+      "login-sso"
     ]
   },
   {
