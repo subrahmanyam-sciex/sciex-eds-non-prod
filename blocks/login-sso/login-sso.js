@@ -1,29 +1,33 @@
-export default function decorate(block) {
-  function getCookie(name) {
-    const cookies = document.cookie.split('; ');
-    for (let i = 0; i < cookies.length; i += 1) {
-      const [cookieName, cookieValue] = cookies[i].split('=');
-      if (cookieName === name) {
-        return decodeURIComponent(cookieValue);
+export default async function decorate(block) {
+  async function getUserDetails() {
+    try {
+      const response = await fetch('/bin/sciex/currentuserdetails', {
+        method: 'GET',
+        credentials: 'include',
+        headers: {
+          Accept: 'application/json',
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
       }
+
+      return await response.json();
+    } catch (error) {
+      console.error('Error fetching user details:', error);
+      return null;
     }
-    return null;
   }
 
-  const userCookie = getCookie('SciexUser');
+  const userData = await getUserDetails();
 
-  if (userCookie) {
-    const userData = JSON.parse(userCookie);
-    console.log('User Data:', userData);
-    if (userData.loggedIn) {
-      document.getElementById('loginSection').style.display = 'none';
-      document.getElementById('logoutSection').style.display = 'block';
-    } else {
-      document.getElementById('loginSection').style.display = 'block';
-      document.getElementById('logoutSection').style.display = 'none';
-    }
+  if (userData && userData.loggedIn) {
+    console.log('User Logged In:', userData);
+    document.getElementById('loginSection').style.display = 'none';
+    document.getElementById('logoutSection').style.display = 'block';
   } else {
-    console.log('No user cookie found, assuming logged out.');
+    console.log('User Not Logged In');
     document.getElementById('loginSection').style.display = 'block';
     document.getElementById('logoutSection').style.display = 'none';
   }
