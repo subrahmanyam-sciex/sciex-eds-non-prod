@@ -84,11 +84,52 @@
                     "valueType": "number",
                     "name": "pageOrder",
                     "label": "Page Order"
-                  }                  
+                  },
+                  {
+                    "component": "text",
+                    "valueType": "string",
+                    "name": "metaTagContentSecurityPolicy",
+                    "label": "Meta Tag: Content Security Policy"
+                  },
+                  {
+                    "component": "text",
+                    "valueType": "string",
+                    "name": "hreflangTags",
+                    "label": "Hreflang Tags"
+                  },
+                  {
+                    "component": "text",
+                    "valueType": "string",
+                    "name": "metaRobots",
+                    "label": "Meta Tag: Robots"
+                  },
+                  {
+                    "component": "text",
+                    "valueType": "string",
+                    "name": "gtmSiteVerif",
+                    "label": "GTM: Google Site Verification"
+                  },
+                  {
+                    "component": "text",
+                    "valueType": "string",
+                    "name": "gtmTrackingScript",
+                    "label": "GTM: Tracking Script"
+                  },
+                  {
+                    "component": "text",
+                    "valueType": "string",
+                    "name": "fathomScript",
+                    "label": "Fathom Script"
+                  },
+                  {
+                    "component": "text",
+                    "valueType": "string",
+                    "name": "siteInterceptScript",
+                    "label": "Site Intercept Script"
+                  }
                 ]
               }
             ]
           }
     ]
   }
-  
