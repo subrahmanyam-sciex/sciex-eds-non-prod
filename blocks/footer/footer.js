@@ -21,15 +21,16 @@ function handleMiddleSections(child, block, iteration) {
     const sectionTitle = section.textContent.trim();
     const list = section.nextElementSibling;
     const chevronDown = span({ class: 'icon icon-chevron-down tw-text-mobBase md:tw-text-base tw-font-bold tw-tracking-wide stretch-text tw-pr-6' });
+    const chevronUp = span({ class: 'icon icon-chevron-up tw-text-mobBase md:tw-text-base tw-font-bold tw-tracking-wide stretch-text tw-pr-6' });
 
+    const sectionDiv = document.createElement('div');
+    sectionDiv.classList.add('footer-section');
     if (list && list.tagName === 'UL') {
-      const sectionDiv = document.createElement('div');
-      sectionDiv.classList.add('footer-section');
-
       const titleDiv = document.createElement('div');
       titleDiv.classList.add('footer-section-title');
       titleDiv.textContent = sectionTitle;
       titleDiv.appendChild(chevronDown);
+      titleDiv.appendChild(chevronUp);
 
       const ul = document.createElement('ul');
       ul.classList.add('footer-section-list');
@@ -60,6 +61,14 @@ function handleMiddleSections(child, block, iteration) {
         newContainer.appendChild(anchor);
       }
     }
+    sectionDiv.addEventListener('click', function () {
+      const ulElement = this.closest('div').querySelector('ul');
+      ulElement.style.display = (ulElement.style.display === 'block') ? 'none' : 'block';
+      const upArrow = this.closest('div').querySelector('.footer-section-title .icon-chevron-up');
+      const downArrow = this.closest('div').querySelector('.footer-section-title .icon-chevron-down');
+      upArrow.style.display = (upArrow.style.display === 'none') ? 'block' : 'none';
+      downArrow.style.display = (downArrow.style.display === 'block') ? 'none' : 'block';
+    });
   });
 
   wrapperDiv.appendChild(nav);
@@ -182,6 +191,7 @@ function processFragment(block, fragment) {
   });
 
   const chevronDown = span({ class: 'icon icon-chevron-down tw-text-mobBase md:tw-text-base tw-font-bold tw-tracking-wide stretch-text tw-pr-6' });
+  const chevronUp = span({ class: 'icon icon-chevron-up tw-text-mobBase md:tw-text-base tw-font-bold tw-tracking-wide stretch-text tw-pr-6' });
   const usflag = span({ class: 'icon icon-us tw-text-mobBase md:tw-text-base tw-font-bold tw-tracking-wide stretch-text tw-pr-6' });
   const esflag = span({ class: 'icon icon-es tw-text-mobBase md:tw-text-base tw-font-bold tw-tracking-wide stretch-text tw-pr-6' });
   const jpflag = span({ class: 'icon icon-jp tw-text-mobBase md:tw-text-base tw-font-bold tw-tracking-wide stretch-text tw-pr-6' });
@@ -214,6 +224,7 @@ function processFragment(block, fragment) {
   firstSectionContent.appendChild(modal);
 
   selectedLanguage.appendChild(chevronDown);
+  selectedLanguage.appendChild(chevronUp);
 
   // if (select.value == 'United states') {
   //   selectedLanguage.prepend(usflag);
@@ -227,6 +238,9 @@ function processFragment(block, fragment) {
   // else if (select.value == 'Spanish') {
   //   selectedLanguage.prepend(esflag);
   // }
+
+  // const mobileNav = document.querySelector('.footer-navigation');
+  // mobileNav.appendChild(selectedLanguage);
 
   closeCta.addEventListener('click', () => {
     modal.style.display = 'none';
@@ -258,18 +272,22 @@ function processFragment(block, fragment) {
     if (this.text === 'United states') {
       selectedLanguage.prepend(usflag);
       selectedLanguage.appendChild(chevronDown);
+      selectedLanguage.appendChild(chevronUp);
       this.prepend(usflag);
     } else if (this.text === 'Japanese') {
       selectedLanguage.prepend(jpflag);
       selectedLanguage.appendChild(chevronDown);
+      selectedLanguage.appendChild(chevronUp);
       this.prepend(jpflag);
     } else if (this.text === 'Korean') {
       selectedLanguage.prepend(krflag);
       selectedLanguage.appendChild(chevronDown);
+      selectedLanguage.appendChild(chevronUp);
       this.prepend(krflag);
     } else if (this.text === 'Spanish') {
       selectedLanguage.prepend(esflag);
       selectedLanguage.appendChild(chevronDown);
+      selectedLanguage.appendChild(chevronUp);
       this.prepend(esflag);
     }
   };

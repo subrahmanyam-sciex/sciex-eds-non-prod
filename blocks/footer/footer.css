@@ -18,10 +18,14 @@ footer .footer > div {
 .footer-wrapper {
     background-color: black;
     color: #ddd;
-    padding: 40px 90px;
+    padding: 40px 0;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    @media (min-width: 768px) {
+        padding: 40px 90px;
+    }
+
 }
  
 .footer .default-content-wrapper {
@@ -29,6 +33,10 @@ footer .footer > div {
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 20px;
+    @media (min-width: 768px) {
+        display: block;
+    }
+
 }
  
 .footer-list ul,
@@ -100,9 +108,10 @@ footer .footer > div {
  
 .footer-section {
     border-bottom: 1px solid #777;
-    max-width: 305px;
     padding: 20px 0;
-    /* display: none; */
+    @media (min-width: 768px) {
+        max-width: 305px;
+    }
 }
  
 @media (min-width: 768px) {
@@ -165,21 +174,31 @@ footer .footer > div {
 .footer-heading {
     font-size: 64px;
     line-height: 72px;
-
     --tw-text-opacity: 1;
     color: rgb(255 255 255 / var(--tw-text-opacity));
-    /* margin-bottom: 20px; */
     padding: 65px 0 48px;
     width: 100%;
 
-}
-@media (min-width: 768px) {
-    .footer-heading {
+    @media (min-width: 768px) {
+        font-size: 82px;
+        line-height: 82px;
+        width: 80%;
+    }
+    @media (min-width: 820px) {
+        font-size: 88px;
+        line-height: 88px;
+    }
+    @media (min-width: 820px) {
+        font-size: 88px;
+        line-height: 88px;
+    }
+    @media (min-width: 1024px) {
         font-size: 140px;
         line-height: 140px;
-        width: 65%;
     }
 }
+
+
 .footer-social-links{
     display: flex;
     justify-content: space-between;
@@ -224,9 +243,12 @@ footer .footer > div {
     display: flex;
   }
 
-  .icon-chevron-down img{
+  .icon-chevron-down img, .icon-chevron-up img {
     filter: invert(1);
     padding-top: 2px;
+  }
+  .icon-chevron-up{
+    display: none;
   }
   .icon-jp, .icon-es, .icon-kr, .icon-us{
     margin-right: 10px;
@@ -304,7 +326,7 @@ footer .footer > div {
     background-color: rgb(0 0 0 / 0.1); /* Light background for visibility */
     border-radius: 8px;
     box-shadow: 0 2px 5px rgb(0 0 0 / 0.2);
-    @media (min-width: 600px) {
+    @media (min-width: 768px) {
         position: absolute;
         right: 32px;
         bottom: 156px;
@@ -356,6 +378,9 @@ footer .footer > div {
         padding-bottom: 0;
     }
   }
+  .modal-content .icon img{
+    height: 24px;
+  }
 
   .modal-content a:hover, a.active{
     color: #0068fa;
@@ -365,6 +390,8 @@ footer .footer > div {
     display: block;
     @media (min-width: 768px) {
         display: flex;
+        justify-content: space-between;
+        gap: 0;
     }
   }
   
