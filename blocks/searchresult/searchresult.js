@@ -2,7 +2,11 @@ import {} from '../../scripts/aem.js';
 import { searchEngine } from '../../scripts/searchresult/engine.js';
 import renderSearchBox from '../../scripts/searchresult/components/renderSearchBox.js';
 import renderSearchResults from '../../scripts/searchresult/components/searchResult.js';
-import { renderSourceFacet, softwarecategories, techniquesfacetcategories, diagnosticsinstrumentscategories, trainingcategories, hplccategories, renderFiletypeFacet, renderTagsFacet} from '../../scripts/searchresult/components/categoryFacets.js';
+import {
+  renderSourceFacet, softwarecategories, techniquesfacetcategories,
+  diagnosticsinstrumentscategories, trainingcategories, hplccategories,
+  renderFiletypeFacet, renderTagsFacet,
+} from '../../scripts/searchresult/components/categoryFacets.js';
 import renderPagination from '../../scripts/searchresult/components/pagination.js';
 import renderQuerySummary from '../../scripts/searchresult/components/querySummary.js';
 import renderSorting from '../../scripts/searchresult/components/sorting.js';
@@ -42,12 +46,11 @@ export default async function decorate(block) {
   // Create training facet div
   const trainingFacetDiv = document.createElement('div');
   trainingFacetDiv.id = 'training-facet';
-  
+
   // Create hplc facet div
   const hplcFacetDiv = document.createElement('div');
   hplcFacetDiv.id = 'hplc-facet';
-   
-    
+
   // Create source input box
   const sourceInput = document.createElement('input');
   sourceInput.type = 'text';
