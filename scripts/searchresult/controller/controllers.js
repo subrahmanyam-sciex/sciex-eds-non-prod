@@ -44,9 +44,40 @@ export const tagsFacetController = buildFacet(searchEngine, {
 export const sourceFacetController = buildFacet(searchEngine, {
   options: { 
     numberOfValues: 5,
-    field: 'productcategories' 
+    field: 'massspectrometerscategories' 
   },
 });
+export const softwareFacetController = buildFacet(searchEngine, {
+  options: { 
+    numberOfValues: 5,
+    field: 'softwarecategories' 
+  },
+});
+export const techniquesFacetController = buildFacet(searchEngine, {
+  options: { 
+    numberOfValues: 5,
+    field: 'techniquescategories' 
+  },
+});
+export const diagnosticsFacetController = buildFacet(searchEngine, {
+  options: { 
+    numberOfValues: 5,
+    field: 'diagnosticsinstrumentscategories' 
+  },
+});
+export const trainingFacetController = buildFacet(searchEngine, {
+  options: { 
+    numberOfValues: 5,
+    field: 'trainingtopiccategories' 
+  },
+});
+export const hplcFacetController = buildFacet(searchEngine, {
+  options: { 
+    numberOfValues: 5,
+    field: 'hplcandceproductscategories' 
+  },
+});
+
 
 export const filetypeFacetController = buildFacet(searchEngine, {
   options: { 
