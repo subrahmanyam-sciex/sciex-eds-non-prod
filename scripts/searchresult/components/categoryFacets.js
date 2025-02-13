@@ -1,6 +1,11 @@
 /* eslint-disable */
 import {
   sourceFacetController,
+  softwareFacetController,
+  techniquesFacetController,
+  diagnosticsFacetController,
+  trainingFacetController,
+  hplcFacetController,
   filetypeFacetController,
   tagsFacetController,
 } from '../controller/controllers.js';
@@ -95,10 +100,17 @@ function renderFacet(facetElementId, facetController, headerText) {
   createToggleButtons(facetItemsContainer, facetController);
 }
 
+
 function createFacetRender(facetController, facetElementId, headerText) {
   renderFacet(facetElementId, facetController, headerText);
 }
 
-export const renderSourceFacet = () => createFacetRender(sourceFacetController, 'source-facet', 'Products');
+export const renderSourceFacet = () => createFacetRender(sourceFacetController, 'source-facet', 'Mass Spectrometers');
+export const softwarecategories = () => createFacetRender(softwareFacetController, 'software-facet', 'Software');
+export const techniquesfacetcategories = () => createFacetRender(techniquesFacetController, 'techniques-facet', 'Techniques');
+export const diagnosticsinstrumentscategories = () => createFacetRender(diagnosticsFacetController, 'diagnostics-facet', 'Diagnostics Instruments');
+export const trainingcategories = () => createFacetRender(trainingFacetController, 'training-facet', 'Training Topic');
+export const hplccategories = () => createFacetRender(hplcFacetController, 'hplc-facet', 'Training Topic');
 export const renderFiletypeFacet = () => createFacetRender(filetypeFacetController, 'filetype-facet', 'Filetype');
 export const renderTagsFacet = () => createFacetRender(tagsFacetController, 'tags-facet', 'Course Catalog');
+
