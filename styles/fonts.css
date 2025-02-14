@@ -1,9 +1,8 @@
-/* stylelint-disable max-line-length */
 @font-face {
   font-family: "Geogrotesque";
   src: 
-    url(../resources/fonts/Geogrotesque_Sharp_VF.woff2?541850604c91d932bab1d7666260f1c4) format("woff2"),
-    url(../resources/fonts/Geogrotesque-Lt.woff?ebc32d0e728dc70c01d91794640d0ab4) format("woff");
+    url(../fonts/Geogrotesque_Sharp_VF.woff2) format("woff2"),
+    url(../fonts/Geogrotesque-Lt.woff) format("woff");
   font-weight: 300;
   font-style: normal;
   font-display: swap;
@@ -11,8 +10,8 @@
 
 @font-face {
   font-family: "Geogrotesque";
-  src: url(../resources/fonts/Geogrotesque_Sharp_VF.woff2?541850604c91d932bab1d7666260f1c4) format("woff2"),
-    url(../resources/fonts/Geogrotesque_Sharp_VF.woff?f3e1ac3ead67ead133424d3edbe51924) format("woff");
+  src: url(../fonts/Geogrotesque_Sharp_VF.woff2) format("woff2"),
+    url(../fonts/Geogrotesque_Sharp_VF.woff) format("woff");
   font-weight: 450;
   font-style: normal;
   font-display: swap;
@@ -20,8 +19,8 @@
 
 @font-face {
   font-family: "Geogrotesque";
-  src: url(../resources/fonts/Geogrotesque_Sharp_VF.woff2?541850604c91d932bab1d7666260f1c4) format("woff2"),
-    url(../resources/fonts/Geogrotesque_Sharp_VF.woff?f3e1ac3ead67ead133424d3edbe51924) format("woff");
+  src: url(../fonts/Geogrotesque_Sharp_VF.woff2) format("woff2"),
+    url(../fonts/Geogrotesque_Sharp_VF.woff) format("woff");
   font-weight: 330;
   font-style: normal;
   font-display: swap;
@@ -29,8 +28,8 @@
 
 @font-face {
   font-family: "Geogrotesque";
-  src: url(../resources/fonts/Geogrotesque_Sharp_VF.woff2?541850604c91d932bab1d7666260f1c4) format("woff2"),
-    url(../resources/fonts/Geogrotesque_Sharp_VF.woff?f3e1ac3ead67ead133424d3edbe51924) format("woff");
+  src: url(../fonts/Geogrotesque_Sharp_VF.woff2) format("woff2"),
+    url(../fonts/Geogrotesque_Sharp_VF.woff) format("woff");
   font-weight: 270;
   font-style: normal;
   font-display: swap;
@@ -38,8 +37,8 @@
 
 @font-face {
   font-family: "Geogrotesque";
-  src: url(../resources/fonts/Geogrotesque-UltLt.woff2?27a8cf3d5d2a9626276b1d1e5c8038b6) format("woff2"),
-    url(../resources/fonts/Geogrotesque-UltLt.woff?ba258eee74dc464ebb97cbc8092ff4dc) format("woff");
+  src: url(../fonts/Geogrotesque-UltLt.woff2) format("woff2"),
+    url(../fonts/Geogrotesque-UltLt.woff) format("woff");
   font-weight: 200;
   font-style: normal;
   font-display: swap;

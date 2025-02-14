@@ -38,6 +38,22 @@ footer .footer > div {
     }
 
 }
+
+.default-content-wrapper .selected-language{
+    display: none;
+    @media (min-width: 768px) {
+        display: flex;
+    }
+}
+
+.footer-list .selected-language{
+    display: block;
+    text-align: left;
+    margin-top: 32px;
+    @media (min-width: 768px) {
+        display: none;
+    }
+}
  
 .footer-list ul,
 .black-section ul {
@@ -409,4 +425,3 @@ footer .footer > div {
     text-decoration: none;
     cursor: pointer;
   }
-  
