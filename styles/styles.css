@@ -10,7 +10,7 @@
  * governing permissions and limitations under the License.
  */
 
-:root {
+ :root {
   /* colors */
   --background-color: white;
   --light-color: #f8f8f8;
@@ -20,8 +20,8 @@
   --link-hover-color: #1d3ecf;
 
   /* fonts */
-  --body-font-family: roboto, roboto-fallback, sans-serif;
-  --heading-font-family: roboto-condensed, roboto-condensed-fallback, sans-serif;
+  /* --body-font-family: roboto, roboto-fallback, sans-serif; */
+  /* --heading-font-family: roboto-condensed, roboto-condensed-fallback, sans-serif; */
 
   /* body sizes */
   --body-font-size-m: 22px;
@@ -45,17 +45,17 @@
 
 @tailwind utilities; 
 /* fallback fonts */
-@font-face {
+/* @font-face {
   font-family: roboto-condensed-fallback;
   size-adjust: 88.82%;
   src: local('Arial');
-}
+} */
 
-@font-face {
+/* @font-face {
   font-family: roboto-fallback;
   size-adjust: 99.529%;
   src: local('Arial');
-}
+} */
 
 @media (width >= 900px) {
   :root {
@@ -81,7 +81,8 @@ body {
   color: var(--text-color);
   font-family: var(--body-font-family);
   font-size: var(--body-font-size-m);
-  line-height: 1.6;
+  font-variation-settings: "wdth" 550;
+  line-height: 24px;
 }
 
 body.appear {
@@ -218,6 +219,12 @@ main img {
   max-width: 100%;
   width: auto;
   height: auto;
+}
+
+.icon {
+  display: inline-block;
+  height: 24px;
+  width: 24px;
 }
 
 .icon img {

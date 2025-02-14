@@ -61,14 +61,20 @@ function handleMiddleSections(child, block, iteration) {
         newContainer.appendChild(anchor);
       }
     }
-    sectionDiv.addEventListener('click', function () {
-      const ulElement = this.closest('div').querySelector('ul');
-      ulElement.style.display = (ulElement.style.display === 'block') ? 'none' : 'block';
-      const upArrow = this.closest('div').querySelector('.footer-section-title .icon-chevron-up');
-      const downArrow = this.closest('div').querySelector('.footer-section-title .icon-chevron-down');
-      upArrow.style.display = (upArrow.style.display === 'none') ? 'block' : 'none';
-      downArrow.style.display = (downArrow.style.display === 'block') ? 'none' : 'block';
-    });
+    if (window.matchMedia('(min-width: 768px)').matches) {
+      // Remove the event listener for desktop view
+      sectionDiv.removeEventListener('click', () => {});
+    } else {
+      // Add the event listener for mobile view
+      sectionDiv.addEventListener('click', function () {
+        const ulElement = this.closest('div').querySelector('ul');
+        ulElement.style.display = (ulElement.style.display === 'block') ? 'none' : 'block';
+        const upArrow = this.closest('div').querySelector('.footer-section-title .icon-chevron-up');
+        const downArrow = this.closest('div').querySelector('.footer-section-title .icon-chevron-down');
+        upArrow.style.display = (upArrow.style.display === 'none') ? 'block' : 'none';
+        downArrow.style.display = (downArrow.style.display === 'block') ? 'none' : 'block';
+      });
+    }
   });
 
   wrapperDiv.appendChild(nav);
@@ -203,7 +209,20 @@ function processFragment(block, fragment) {
   selectedLanguage.classList.add('selected-language');
   const listItems = ul.getElementsByTagName('li');
   countrySelect.appendChild(selectedLanguage);
+
   selectedLanguage.textContent = listItems[0].textContent;
+
+  if (selectedLanguage.textContent === 'United states') {
+    console.log('Sachin 1', selectedLanguage, usflag);
+    selectedLanguage.prepend(usflag);
+  } else if (selectedLanguage.textContent === 'Japanese') {
+    console.log('Sachin2 ', selectedLanguage, jpflag);
+    selectedLanguage.prepend(jpflag);
+  } else if (selectedLanguage.textContent === 'Korean') {
+    selectedLanguage.prepend(krflag);
+  } else if (selectedLanguage.textContent === 'Spanish') {
+    selectedLanguage.prepend(esflag);
+  }
 
   // Modal code for language selection
   const modal = document.createElement('div');
@@ -226,21 +245,10 @@ function processFragment(block, fragment) {
   selectedLanguage.appendChild(chevronDown);
   selectedLanguage.appendChild(chevronUp);
 
-  // if (select.value == 'United states') {
-  //   selectedLanguage.prepend(usflag);
-  // }
-  // else if (select.value == 'Japanese') {
-  //   selectedLanguage.prepend(jpflag);
-  // }
-  // else if (select.value == 'Korean') {
-  //   selectedLanguage.prepend(krflag);
-  // }
-  // else if (select.value == 'Spanish') {
-  //   selectedLanguage.prepend(esflag);
-  // }
+  const mobileNav = document.querySelector('.footer-navigation');
+  const cloneSelectedlang = selectedLanguage.cloneNode(true);
 
-  // const mobileNav = document.querySelector('.footer-navigation');
-  // mobileNav.appendChild(selectedLanguage);
+  mobileNav.appendChild(cloneSelectedlang);
 
   closeCta.addEventListener('click', () => {
     modal.style.display = 'none';
@@ -257,10 +265,16 @@ function processFragment(block, fragment) {
     modal.style.display = 'block';
   });
 
+  cloneSelectedlang.addEventListener('click', (e) => {
+    e.preventDefault();
+    modal.style.display = 'block';
+  });
+
   const clickFn = function (e) {
     e.preventDefault();
 
     selectedLanguage.innerHTML = this.text;
+    cloneSelectedlang.innerHTML = this.text;
     const activeLink = document.querySelector('li .active');
 
     if (activeLink) {
@@ -270,21 +284,26 @@ function processFragment(block, fragment) {
     this.classList.add('active');
 
     if (this.text === 'United states') {
+      cloneSelectedlang.prepend(usflag);
       selectedLanguage.prepend(usflag);
       selectedLanguage.appendChild(chevronDown);
       selectedLanguage.appendChild(chevronUp);
+      console.log('#####', usflag, selectedLanguage);
       this.prepend(usflag);
     } else if (this.text === 'Japanese') {
+      cloneSelectedlang.prepend(jpflag);
       selectedLanguage.prepend(jpflag);
       selectedLanguage.appendChild(chevronDown);
       selectedLanguage.appendChild(chevronUp);
       this.prepend(jpflag);
     } else if (this.text === 'Korean') {
+      cloneSelectedlang.prepend(krflag);
       selectedLanguage.prepend(krflag);
       selectedLanguage.appendChild(chevronDown);
       selectedLanguage.appendChild(chevronUp);
       this.prepend(krflag);
     } else if (this.text === 'Spanish') {
+      cloneSelectedlang.prepend(esflag);
       selectedLanguage.prepend(esflag);
       selectedLanguage.appendChild(chevronDown);
       selectedLanguage.appendChild(chevronUp);
@@ -293,9 +312,8 @@ function processFragment(block, fragment) {
   };
 
   for (let i = 0; i < optionLinks.length; i += 1) {
-    optionLinks[i].addEventListener('click', clickFn, false);
-    optionLinks[i].classList.add('tw-mx-3', 'stretch-text', 'tw-font-bold', 'tw-tracking-wide');
-
+    optionLinks[i].addEventListener('click', clickFn);
+    optionLinks[i].classList.add('tw-mx-3', 'stretch-text', 'tw-font-bold', 'tw-tracking-wide', 'country-list');
     if (optionLinks[i].textContent === 'United states') {
       optionLinks[i].prepend(usflag);
     } else if (optionLinks[i].textContent === 'Japanese') {
@@ -306,8 +324,6 @@ function processFragment(block, fragment) {
       optionLinks[i].prepend(esflag);
     }
   }
-
-  /// // test end
 
   decorateIcons(firstSectionContent);
   block.prepend(firstSectionContent);
