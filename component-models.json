@@ -479,6 +479,13 @@
     "id": "searchresult",
     "fields": [
       {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Sciex Unified Search Text",
+        "valueType": "string"
+      },
+      {
         "component": "reference",
         "valueType": "string",
         "name": "image",
