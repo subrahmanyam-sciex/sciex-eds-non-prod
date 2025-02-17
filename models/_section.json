@@ -49,7 +49,7 @@
         "sciex-footer",
         "header",
         "footer-topBanner",
-        "search-result",
+        "searchresult",
         "login-sso"
       ]
     }

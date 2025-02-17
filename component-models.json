@@ -476,14 +476,35 @@
     ]
   },
   {
-    "id": "search-result",
+    "id": "searchresult",
     "fields": [
       {
-        "component": "text",
+        "component": "richtext",
         "valueType": "string",
-        "name": "search-result",
+        "name": "unified-search-text",
         "value": "",
-        "label": "login"
+        "label": "Sciex Unified Search text"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "No results Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "name": "text1",
+        "value": "",
+        "label": "No results text1",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "text2",
+        "value": "",
+        "label": "No results text2",
+        "valueType": "string"
       }
     ]
   }
