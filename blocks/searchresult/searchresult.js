@@ -148,6 +148,29 @@ export default async function decorate(block) {
   coveoResultsDiv.id = 'coveo-results';
   coveoResultsDiv.classList.add('result-section');
 
+  // Create results section div
+  const coveoNoResultsDiv = document.createElement('div');
+  coveoNoResultsDiv.id = 'coveo-no-results';
+
+  // Create life sciences div
+  const lifeSciencesDiv = document.createElement('div');
+  lifeSciencesDiv.id = 'coveo-life-sciences';
+  const resp = await fetch('/search-results-eds.plain.html');
+  if (resp.ok) {
+    const html = await resp.text();
+    const main = document.createElement('main');
+    main.innerHTML = html;
+    const sections = main.querySelector('.searchresult').children;
+    block.textContent = '';
+    Array.from(sections).forEach((section, index) => {
+      const iteration = index + 1;
+      if (iteration === 1) {
+        lifeSciencesDiv.appendChild(section.querySelector('div'));
+        block.append(lifeSciencesDiv);
+      }
+    });
+  }
+
   // Create pagination div
   const paginationDiv = document.createElement('div');
   paginationDiv.id = 'pagination';
