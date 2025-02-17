@@ -21,7 +21,8 @@
       "header",
       "footer-topBanner",
       "searchresult",
-      "login-sso"
+      "login-sso",
+      "breadcrumb"
     ]
   },
   {
