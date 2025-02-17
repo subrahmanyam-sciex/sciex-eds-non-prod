@@ -15,6 +15,33 @@
       }
     }
   ],
-  "models": [],
+  "models": [
+  {
+    "id": "searchresult",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "No results image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "name": "text1",
+        "value": "",
+        "label": "No results text1",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "text2",
+        "value": "",
+        "label": "No results text2",
+        "valueType": "string"
+      }
+    ]
+  }
+],
   "filters": []
 }
