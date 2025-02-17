@@ -1,0 +1,32 @@
+main > .breadcrumb-container {
+  grid-row: 1;
+  grid-column: 1;
+}
+
+main > .section > div {
+    padding: 15px 32px;
+    }
+
+@media (min-width: 900px) {
+  main .breadcrumb-container {
+    grid-row: 1;
+    grid-column: 1 / span 2;
+  }
+}
+
+.breadcrumb > nav a {
+  text-decoration: none;
+  color: black;
+  transition: color 0.3s, text-decoration 0.3s; /* Smooth transition for color and underline */
+}
+
+.breadcrumb > nav a:hover {
+  color: #d8862a;
+  text-decoration: underline;
+}
+
+.breadcrumb .breadcrumb-separator {
+  margin-inline: 1.5ch;
+  color: black;
+}
+
