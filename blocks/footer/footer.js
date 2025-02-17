@@ -67,12 +67,22 @@ function handleMiddleSections(child, block, iteration) {
     } else {
       // Add the event listener for mobile view
       sectionDiv.addEventListener('click', function () {
+        const footerSectionElement = document.querySelectorAll('.footer-section');
+        footerSectionElement.forEach((openElement) => {
+          if (openElement !== this) {
+            openElement.closest('div').querySelector('ul').style.display = 'none';
+          }
+        });
         const ulElement = this.closest('div').querySelector('ul');
         ulElement.style.display = (ulElement.style.display === 'block') ? 'none' : 'block';
         const upArrow = this.closest('div').querySelector('.footer-section-title .icon-chevron-up');
         const downArrow = this.closest('div').querySelector('.footer-section-title .icon-chevron-down');
-        upArrow.style.display = (upArrow.style.display === 'none') ? 'block' : 'none';
-        downArrow.style.display = (downArrow.style.display === 'block') ? 'none' : 'block';
+        const upArrowComputedStyle = window.getComputedStyle(upArrow);
+        const upArrowDisplayStyle = upArrowComputedStyle.display;
+        const downArrowComputedStyle = window.getComputedStyle(downArrow);
+        const downArrowDisplayStyle = downArrowComputedStyle.display;
+        upArrow.style.display = (upArrowDisplayStyle === 'none') ? 'block' : 'none';
+        downArrow.style.display = (downArrowDisplayStyle === 'block') ? 'none' : 'block';
       });
     }
   });
@@ -213,10 +223,8 @@ function processFragment(block, fragment) {
   selectedLanguage.textContent = listItems[0].textContent;
 
   if (selectedLanguage.textContent === 'United states') {
-    console.log('Sachin 1', selectedLanguage, usflag);
     selectedLanguage.prepend(usflag);
   } else if (selectedLanguage.textContent === 'Japanese') {
-    console.log('Sachin2 ', selectedLanguage, jpflag);
     selectedLanguage.prepend(jpflag);
   } else if (selectedLanguage.textContent === 'Korean') {
     selectedLanguage.prepend(krflag);
@@ -262,12 +270,12 @@ function processFragment(block, fragment) {
   const optionLinks = ul.querySelectorAll('li a');
   selectedLanguage.addEventListener('click', (e) => {
     e.preventDefault();
-    modal.style.display = 'block';
+    modal.style.display = 'flex';
   });
 
   cloneSelectedlang.addEventListener('click', (e) => {
     e.preventDefault();
-    modal.style.display = 'block';
+    modal.style.display = 'flex';
   });
 
   const clickFn = function (e) {
@@ -288,7 +296,6 @@ function processFragment(block, fragment) {
       selectedLanguage.prepend(usflag);
       selectedLanguage.appendChild(chevronDown);
       selectedLanguage.appendChild(chevronUp);
-      console.log('#####', usflag, selectedLanguage);
       this.prepend(usflag);
     } else if (this.text === 'Japanese') {
       cloneSelectedlang.prepend(jpflag);
