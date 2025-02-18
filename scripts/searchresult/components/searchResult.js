@@ -2,12 +2,15 @@ import { headlessResultsList, handleResultClick } from '../controller/controller
 
 const renderSearchResults = () => {
   const resultsElement = document.getElementById('coveo-results');
-
+  const noResultsElement = document.getElementById('coveo-no-results');
+  const querySortElement = document.getElementsByClassName('query-sort-section')[0];
   resultsElement.innerHTML = '';
 
   const results = headlessResultsList.state.results || [];
 
   if (results.length > 0) {
+    noResultsElement.style.display = 'none';
+    querySortElement.style.display = '';
     results.forEach((result) => {
       const resultItem = document.createElement('div');
       resultItem.className = 'result-item';
@@ -31,7 +34,16 @@ const renderSearchResults = () => {
       resultsElement.appendChild(resultItem);
     });
   } else {
-    resultsElement.innerHTML = '<h3>No Results Found</h3>';
+    const divElement = document.getElementById('noresults-text1');
+    // Access the data attribute 'data-example' using dataset
+    const { text1 } = divElement.dataset;
+    const inputText = document.getElementById('coveo-query').value;
+    if (inputText.trim() !== '') {
+      const updatedtext1 = `${text1} "${inputText}"`;
+      document.getElementById('noresults-text1').innerText = updatedtext1;
+    }
+    noResultsElement.style.display = '';
+    querySortElement.style.display = 'none';
   }
 };
 

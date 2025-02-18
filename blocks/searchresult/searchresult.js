@@ -151,6 +151,7 @@ export default async function decorate(block) {
   // Create results section div
   const coveoNoResultsDiv = document.createElement('div');
   coveoNoResultsDiv.id = 'coveo-no-results';
+  coveoNoResultsDiv.style.display = 'none';
 
   // Create life sciences div
   const lifeSciencesDiv = document.createElement('div');
@@ -167,6 +168,19 @@ export default async function decorate(block) {
       if (iteration === 1) {
         lifeSciencesDiv.appendChild(section.querySelector('div'));
         block.append(lifeSciencesDiv);
+      } else if (iteration === 2) {
+        if (main.querySelector('picture')) {
+          coveoNoResultsDiv.appendChild(main.querySelector('picture'));
+        }
+      } else if (iteration === 3) {
+        const noResultsText1 = section.querySelector('div');
+        noResultsText1.id = 'noresults-text1';
+        noResultsText1.setAttribute('data-text1', noResultsText1.textContent);
+        coveoNoResultsDiv.appendChild(noResultsText1);
+      } else if (iteration === 4) {
+        const noResultsText2 = section.querySelector('div');
+        noResultsText2.classList = 'noresults-text2';
+        coveoNoResultsDiv.appendChild(noResultsText2);
       }
     });
   }
@@ -181,6 +195,7 @@ export default async function decorate(block) {
   searchResultSectionDiv.appendChild(querySortSectionDiv);
   searchResultSectionDiv.appendChild(facetBreadcrumbDiv);
   searchResultSectionDiv.appendChild(coveoResultsDiv);
+  searchResultSectionDiv.appendChild(coveoNoResultsDiv);
   searchResultSectionDiv.appendChild(paginationDiv);
 
   // Append facets and search result sections to search wrapper
