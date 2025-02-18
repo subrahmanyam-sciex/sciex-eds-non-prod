@@ -3,8 +3,8 @@ import { buildSearchEngine } from 'https://static.cloud.coveo.com/headless/v3/he
 
 export const searchEngine = buildSearchEngine({
   configuration: {
-    organizationId: 'sciextestkympne75',
-    accessToken: 'xx3e8b448c-4265-4283-bd4f-9856cd68e916',
+    organizationId: 'danahernonproduction1892f3fhz',
+    accessToken: 'xxca9398dc-2af2-4d92-aaa6-62b8f55efc57',
     search: {
       searchHub: 'SCIEXMainSearch',
     },
@@ -13,8 +13,8 @@ export const searchEngine = buildSearchEngine({
 
 export const analyticsEngine = buildSearchEngine({
   configuration: {
-    organizationId: 'sciextestkympne75',
-    accessToken: 'xx8f638eec-65ca-4581-b72b-993e4fa148b2',
+    organizationId: 'danahernonproduction1892f3fhz',
+    accessToken: 'xxca9398dc-2af2-4d92-aaa6-62b8f55efc57',
     search: {
       searchHub: 'SCIEXMainSearch',
     },
