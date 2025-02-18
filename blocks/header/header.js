@@ -48,57 +48,93 @@ function createMainHeader(section) {
      *
      *
      *
-
-      render topBar Nav at the bottom of mobile menu
-     *
-     *
-     *
-     *  */
-    function renderMobileMenuBottom() {
-      const topBarNav = document.querySelector('.topbar-menu');
-      topBarNav.classList.toggle('tw-hidden');
-      const megaMenuWrapper = document.querySelector('.megamenu-wrapper');
-      megaMenuWrapper.insertAdjacentElement('beforeEnd', topBarNav);
-    }
-
-    /** ********
-     *
-     *
-     *
       function to handle mobile menu
      *
      *
      *
      *  */
     function handleMobileMenu() {
-      this.classList.toggle('menu-open');
-      this.classList.toggle('menu-close');
-      // adding class to header to style as per mobile
-      document.querySelector('.header-wrapper').classList.toggle('mobile-header');
+      // Initialize and declare variables
+      const headerWrapper = document.querySelector('.header-wrapper');
       const mobileMenuOpenIcon = document.getElementById('mobileMenuOpenIcon');
-      mobileMenuOpenIcon.classList.toggle('tw-hidden');
       const mobileMenuCloseIcon = document.getElementById('mobileMenuCloseIcon');
-      mobileMenuCloseIcon.classList.toggle('tw-hidden');
-
       const megaMenuWrapper = document.querySelector('.megamenu-wrapper');
-      megaMenuWrapper.classList.toggle('tw-hidden');
       const subMenu = document.querySelector('.submenu-container');
-      subMenu.classList.add('tw-hidden');
-      subMenu.classList.remove('secondnav-active');
-      subMenu.removeAttribute('style');
+      const backToMenuButton = document.querySelector('.back-to-menu-button');
+      const subMenus = document.querySelectorAll('.submenu-container');
 
-      // render topBar Nav at the bottom of mobile menu
+      // Toggle menu open/close classes
+      if (this.classList.contains('menu-open')) {
+        this.classList.remove('menu-open');
+        this.classList.add('menu-close');
+      } else {
+        this.classList.remove('menu-close');
+        this.classList.add('menu-open');
+      }
+
+      // Toggle mobile header
+      if (headerWrapper) {
+        headerWrapper.classList.toggle('mobile-header');
+      }
+
+      // Toggle menu icons
+      if (mobileMenuOpenIcon && mobileMenuCloseIcon) {
+        mobileMenuOpenIcon.classList.toggle('tw-hidden');
+        mobileMenuCloseIcon.classList.toggle('tw-hidden');
+      }
+
+      // Toggle megamenu wrapper
+      if (megaMenuWrapper) {
+        megaMenuWrapper.classList.toggle('tw-hidden');
+      }
+
+      // Hide submenu
+      if (subMenu) {
+        subMenu.classList.add('tw-hidden');
+        subMenu.classList.remove('secondnav-active');
+        subMenu.removeAttribute('style');
+      }
+
+      /** ********
+         *
+         *
+         *
+          render topBar Nav at the bottom of mobile menu
+        *
+        *
+        *
+        *  */
+      function renderMobileMenuBottom() {
+        const topBarNav = document.querySelector('.topbar-menu');
+        // const megaMenuWrapper = document.querySelector('.megamenu-wrapper');
+        if (topBarNav) {
+          if (topBarNav.classList.contains('tw-hidden')) {
+            topBarNav.classList.toggle('tw-hidden');
+          }
+          if (megaMenuWrapper) {
+            megaMenuWrapper.insertAdjacentElement('beforeEnd', topBarNav);
+          }
+        }
+      }
+
+      // Render topBar Nav at the bottom of mobile menu
       renderMobileMenuBottom();
+
+      // Additional handling when menu is closed
       if (this.classList.contains('menu-close')) {
-        document.querySelector('.back-to-menu-button ').classList.add('tw-hidden');
-        document.querySelector('.megamenu-wrapper').classList.add('tw-hidden');
-        // const subMenu = document.querySelectorAll('.submenu-container');
-        subMenu.forEach((item) => {
+        if (backToMenuButton) {
+          backToMenuButton.classList.add('tw-hidden');
+        }
+        if (megaMenuWrapper) {
+          megaMenuWrapper.classList.add('tw-hidden');
+        }
+
+        // Hide all submenus
+        subMenus.forEach((item) => {
           item.classList.add('tw-hidden');
         });
       }
     }
-
     // add click event to handle mobile menu button actions
     mobileMenuToggle.addEventListener('click', handleMobileMenu);
     if (index === 0) {
@@ -149,59 +185,110 @@ function createMainHeader(section) {
   return menuDiv;
 }
 
-/** *
-  function to handle back to menu actions
-** */
+/** ********
+     *
+     *
+     *
+      function to handle back to menu actions
+     *
+     *
+     *
+     *  */
 function handleBackToMenu() {
-  // back to main menu
-  const hasMainMenuClass = this.classList.contains('to-mainmenu');
-  if (hasMainMenuClass) {
-    document.querySelector('.megamenu-wrapper').classList.toggle('tw-hidden');
+  const dataSubMenuContainer = this.dataset.submenuContainer;
+  if (dataSubMenuContainer) {
+    const dataSubMenuContainerDiv = document.querySelector(
+      `#${dataSubMenuContainer}`,
+    );
+    const dataSubMenuContainerLinks = document.querySelector(
+      `#${dataSubMenuContainer} .submenu-links`,
+    );
+    const dataSubMenuContainerContent = document.querySelector(
+      `#${dataSubMenuContainer} .submenu-content`,
+    );
+    const dataSubMenuContainerImages = document.querySelector(
+      `#${dataSubMenuContainer} .submenu-images`,
+    );
+    const megaMenuWrapper = document.querySelector('.megamenu-wrapper');
     const subMenu = document.querySelectorAll('.submenu-container');
-    subMenu.forEach((item) => {
-      item.classList.add('tw-hidden');
-    });
-    this.classList.toggle('tw-hidden');
-    const dataSubMenuContainer = this.dataset.submenuContainer;
-    document.querySelector(`#${dataSubMenuContainer}`).removeAttribute('style');
-    document
-      .querySelector(`#${dataSubMenuContainer}`)
-      .classList.add('tw-hidden');
-    document
-      .querySelector(`#${dataSubMenuContainer} .submenu-links`)
-      .classList.remove('tw-hidden');
-    document
-      .querySelector(`#${dataSubMenuContainer} .submenu-content`)
-      .classList.toggle('tw-hidden');
-    document
-      .querySelector(`#${dataSubMenuContainer} .submenu-images`)
-      .classList.toggle('tw-hidden');
-  }
 
-  // back from submenu
-  const hasSubMenuClass = this.classList.contains('to-submenu');
-  if (hasSubMenuClass) {
-    const subMenu = document.querySelectorAll('.submenu-container');
-    subMenu.forEach((item) => {
-      item.classList.add('tw-hidden');
-      item.removeAttribute('style');
-    });
-    this.classList.remove('to-submenu');
-    this.classList.add('to-mainmenu');
-    const dataSubMenuContainer = this.dataset.submenuContainer;
-    document
-      .querySelector(`#${dataSubMenuContainer}`)
-      .classList.toggle('tw-hidden');
-    document
-      .querySelector(`#${dataSubMenuContainer} .submenu-links`)
-      .classList.toggle('tw-hidden');
-    document
-      .querySelector(`#${dataSubMenuContainer} .submenu-content`)
-      .classList.toggle('tw-hidden');
-    document
-      .querySelector(`#${dataSubMenuContainer} .submenu-images`)
-      .classList.toggle('tw-hidden');
-  }
+    //
+    //
+    // back to main menu
+    //
+    if (this.classList.contains('to-mainmenu')) {
+      // toggle mega menu
+      if (megaMenuWrapper && megaMenuWrapper.classList.contains('tw-hidden')) {
+        megaMenuWrapper.classList.toggle('tw-hidden');
+      }
+
+      // toggle submenu
+      if (subMenu) {
+        subMenu.forEach((item) => {
+          item.classList.add('tw-hidden');
+        });
+      }
+
+      this.classList.toggle('tw-hidden');
+
+      if (dataSubMenuContainerDiv) {
+        dataSubMenuContainerDiv.removeAttribute('style');
+        dataSubMenuContainerDiv.classList.add('tw-hidden');
+      }
+      if (
+        dataSubMenuContainerLinks
+        && dataSubMenuContainerLinks.classList.contains('tw-hidden')
+      ) {
+        dataSubMenuContainerLinks.classList.remove('tw-hidden');
+      }
+      if (
+        dataSubMenuContainerContent
+        && dataSubMenuContainerContent.classList.contains('tw-hidden')
+      ) {
+        dataSubMenuContainerContent.classList.toggle('tw-hidden');
+      }
+      if (
+        dataSubMenuContainerImages
+        && dataSubMenuContainerImages.classList.contains('tw-hidden')
+      ) {
+        dataSubMenuContainerImages.classList.toggle('tw-hidden');
+      }
+    }
+
+    // back from submenu
+    if (this.classList.contains('to-submenu')) {
+      if (subMenu) {
+        subMenu.forEach((item) => {
+          item.classList.add('tw-hidden');
+          item.removeAttribute('style');
+        });
+      }
+      if (this.classList.contains('to-submenu')) {
+        this.classList.remove('to-submenu');
+      }
+      this.classList.add('to-mainmenu');
+
+      // checks for tw-hidden class
+      if (
+        dataSubMenuContainerDiv
+        && dataSubMenuContainerDiv.classList.contains('tw-hidden')
+      ) {
+        dataSubMenuContainerDiv.classList.toggle('tw-hidden');
+      }
+      if (
+        dataSubMenuContainerLinks
+        && dataSubMenuContainerLinks.classList.contains('tw-hidden')
+      ) {
+        dataSubMenuContainerLinks.classList.toggle('tw-hidden');
+      }
+      if (dataSubMenuContainerContent) {
+        dataSubMenuContainerContent.classList.add('tw-hidden');
+      }
+      if (dataSubMenuContainerImages) {
+        dataSubMenuContainerImages.classList.add('tw-hidden');
+      }
+    } // to-submenu
+  } // submenu dataset
 }
 
 /** ********
@@ -214,9 +301,16 @@ function handleBackToMenu() {
      *
      *  */
 function showBackToMenuButton() {
-  document.querySelector('#backToMenu').classList.remove('tw-hidden');
-  document.querySelector('.back-to-menu-button ').classList.remove('tw-hidden');
+  const backToMenu = document.querySelector('#backToMenu');
+  if (backToMenu) {
+    backToMenu.classList.remove('tw-hidden');
+  }
+  const backToMenuWrapper = document.querySelector('.back-to-menu-button');
+  if (backToMenuWrapper) {
+    backToMenuWrapper.classList.remove('tw-hidden');
+  }
 }
+
 /** ********
      *
      *
@@ -245,21 +339,26 @@ function canMobileActions() {
 function createBackToMenuButton() {
   // add back to menu button
 
+  // create main div
   const backToMenuButtonDiv = document.createElement('div');
   backToMenuButtonDiv.className = 'tw-bg-gray-100 back-to-menu-button tw-z-10 tw-hidden tw-relative  lg:hidden tw-text-blue-700 tw-text-mobBase ';
   const backToMenuButtonDivContainer = document.createElement('div');
   backToMenuButtonDivContainer.className = 'tw-container';
 
+  // add button icon
   const backToMenuButtonIcon = document.createElement('span');
   backToMenuButtonIcon.className = 'tw-mr-12 tw-py-12';
   backToMenuButtonIcon.innerHTML = '<svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg" data-di-res-id="6410a14e-832a4f0e" data-di-rand="1739527915889"><path d="M7 13L1 7L7 0.999999" stroke="currentColor"></path></svg>';
   const backToMenuButton = document.createElement('button');
 
+  // add button text
   const backToMenuButtonText = document.createTextNode('Back');
   backToMenuButton.id = 'backToMenu';
   backToMenuButton.className = 'tw-flex tw-items-center tw-font-bold tw-w-fit tw-hidden lg:hidden';
 
+  // add event listener to button
   backToMenuButton.addEventListener('click', handleBackToMenu);
+
   backToMenuButton.appendChild(backToMenuButtonIcon);
   backToMenuButton.appendChild(backToMenuButtonText);
 
@@ -358,21 +457,26 @@ function createMegaMenuTopNav(section) {
           if (canMobileActions() === true) {
             showBackToMenuButton();
 
-            document
-              .querySelector('.megamenu-wrapper')
-              .classList.toggle('tw-hidden');
-
-            myDiv.classList.toggle('tw-hidden');
-            myDiv.removeAttribute('style');
-
+            const megaMenuWrapper = document.querySelector('.megamenu-wrapper');
             const backToMenuButton = document.getElementById('backToMenu');
-            backToMenuButton.classList.add('to-mainmenu');
-
-            backToMenuButton.dataset.submenuContainer = `submenu-${className}`;
-
             const subMenuElementsContent = myDiv.querySelector('.submenu-content');
             const subMenuElementsImages = myDiv.querySelector('.submenu-images');
 
+            if (megaMenuWrapper) {
+              if (megaMenuWrapper.classList.contains('tw-hidden')) {
+                megaMenuWrapper.classList.toggle('tw-hidden');
+              } else {
+                megaMenuWrapper.classList.add('tw-hidden');
+              }
+            }
+            if (myDiv) {
+              myDiv.classList.toggle('tw-hidden');
+              myDiv.removeAttribute('style');
+            }
+            if (backToMenuButton) {
+              backToMenuButton.classList.add('to-mainmenu');
+              backToMenuButton.dataset.submenuContainer = `submenu-${className}`;
+            }
             if (subMenuElementsContent) {
               subMenuElementsContent.classList.add('tw-hidden');
             }
@@ -400,32 +504,51 @@ function createMegaMenuTopNav(section) {
 
         // mobile actions
         if (canMobileActions() === true) {
-          document
-            .querySelector('.megamenu-wrapper')
-            .classList.toggle('tw-hidden');
-
-          myDiv.removeAttribute('style');
-          showBackToMenuButton();
+          const megaMenuWrapper = document.querySelector('.megamenu-wrapper');
           const backToMenuButton = document.getElementById('backToMenu');
-          backToMenuButton.classList.add('to-mainmenu');
-
-          backToMenuButton.dataset.submenuContainer = `submenu-${menuId.toLowerCase()}`;
-          myDiv.classList.remove('tw-hidden');
-          myDiv.removeAttribute('style');
-          myDiv
-            .querySelector('.submenu-container')
-            .classList.remove('tw-hidden');
-          const subMenuElementsLinks = myDiv.querySelector('.submenu-links');
           const subMenuElementsContent = myDiv.querySelector('.submenu-content');
           const subMenuElementsImages = myDiv.querySelector('.submenu-images');
+
+          if (megaMenuWrapper) {
+            if (megaMenuWrapper.classList.contains('tw-hidden')) {
+              megaMenuWrapper.classList.toggle('tw-hidden');
+            } else {
+              megaMenuWrapper.classList.add('tw-hidden');
+            }
+          }
+
+          myDiv.removeAttribute('style');
+
+          showBackToMenuButton();
+          if (backToMenuButton) {
+            backToMenuButton.classList.add('to-mainmenu');
+            backToMenuButton.dataset.submenuContainer = `submenu-${menuId.toLowerCase()}`;
+          }
+
+          myDiv.classList.remove('tw-hidden');
+          myDiv.removeAttribute('style');
+          const submenuContainer = myDiv.querySelector('.submenu-container');
+          if (
+            submenuContainer
+            && submenuContainer.classList.contains('tw-hidden')
+          ) {
+            submenuContainer.classList.remove('tw-hidden');
+          }
+          const subMenuElementsLinks = myDiv.querySelector('.submenu-links');
 
           if (subMenuElementsLinks) {
             subMenuElementsLinks.classList.add('tw-hidden');
           }
-          if (subMenuElementsContent) {
+          if (
+            subMenuElementsContent
+            && subMenuElementsContent.classList.contains('tw-hidden')
+          ) {
             subMenuElementsContent.classList.remove('tw-hidden');
           }
-          if (subMenuElementsImages) {
+          if (
+            subMenuElementsImages
+            && subMenuElementsImages.classList.contains('tw-hidden')
+          ) {
             subMenuElementsImages.classList.remove('tw-hidden');
           }
         } else if (myDiv && myDiv.style.display === 'none') {
@@ -556,18 +679,27 @@ function createSubMenuItems(section, containerDiv, firstpartdiv) {
 
           // mobile actions
           if (canMobileActions() === true) {
-            myDiv.classList.toggle('tw-hidden');
-            myDiv.style.display = 'flex';
+            if (myDiv) {
+              myDiv.classList.toggle('tw-hidden');
+              myDiv.style.display = 'flex';
+            }
 
             const subMenu = document.querySelectorAll('.submenu-container');
-            subMenu.forEach((item) => {
-              item.classList.add('tw-hidden');
-            });
+            if (subMenu) {
+              subMenu.forEach((item) => {
+                item.classList.add('tw-hidden');
+              });
+            }
 
             const backToMenuButton = document.getElementById('backToMenu');
-            backToMenuButton.classList.remove('to-mainmenu');
-            backToMenuButton.classList.add('to-submenu');
-            backToMenuButton.dataset.submenuContainer = `submenu-${liClassName}`;
+            if (
+              backToMenuButton
+              && backToMenuButton.classList.contains('to-mainmenu')
+            ) {
+              backToMenuButton.classList.remove('to-mainmenu');
+              backToMenuButton.classList.add('to-submenu');
+              backToMenuButton.dataset.submenuContainer = `submenu-${liClassName}`;
+            }
             const subMenuElementsLinks = myDiv.querySelector('.submenu-links');
             const subMenuElementsContent = myDiv.querySelector('.submenu-content');
             const subMenuElementsImages = myDiv.querySelector('.submenu-images');
@@ -575,10 +707,16 @@ function createSubMenuItems(section, containerDiv, firstpartdiv) {
             if (subMenuElementsLinks) {
               subMenuElementsLinks.classList.add('tw-hidden');
             }
-            if (subMenuElementsContent) {
+            if (
+              subMenuElementsContent
+              && subMenuElementsContent.classList.contains('tw-hidden')
+            ) {
               subMenuElementsContent.classList.remove('tw-hidden');
             }
-            if (subMenuElementsImages) {
+            if (
+              subMenuElementsImages
+              && subMenuElementsImages.classList.contains('tw-hidden')
+            ) {
               subMenuElementsImages.classList.remove('tw-hidden');
             }
           } else if (myDiv && myDiv.style.display === 'none') {
@@ -909,9 +1047,13 @@ function processHtml(block, main) {
       nav.append(createMainHeader(section));
     } else if (iteration === 2) {
       nav.append(createMegaMenuTopNav(section));
-      //  adding back to menu button
-      const megaMenuWrapper = nav.querySelector('.megamenu-wrapper');
-      nav.insertBefore(createBackToMenuButton(nav), megaMenuWrapper);
+      if (nav) {
+        //  adding back to menu button
+        const megaMenuWrapper = nav.querySelector('.megamenu-wrapper');
+        if (megaMenuWrapper) {
+          nav.insertBefore(createBackToMenuButton(nav), megaMenuWrapper);
+        }
+      }
     } else if (iteration === 3) {
       createMegaMenuSubNav(section);
     } else {
