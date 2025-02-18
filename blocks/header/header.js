@@ -99,6 +99,7 @@ function createMainHeader(section) {
          *
          *
          *
+
           render topBar Nav at the bottom of mobile menu
         *
         *
@@ -116,7 +117,6 @@ function createMainHeader(section) {
           }
         }
       }
-
       // Render topBar Nav at the bottom of mobile menu
       renderMobileMenuBottom();
 
@@ -135,6 +135,7 @@ function createMainHeader(section) {
         });
       }
     }
+
     // add click event to handle mobile menu button actions
     mobileMenuToggle.addEventListener('click', handleMobileMenu);
     if (index === 0) {
