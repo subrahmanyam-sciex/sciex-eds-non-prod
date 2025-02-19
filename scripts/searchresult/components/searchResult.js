@@ -7,11 +7,28 @@ const renderSearchResults = () => {
   resultsElement.innerHTML = '';
 
   const results = headlessResultsList.state.results || [];
+  const selectElement = document.getElementById('sort-element');
+  const selectedValue = selectElement.value;
+  const selectedCriterion = JSON.parse(selectedValue);
+  let sortedResults;
+  if (selectedCriterion.by === 'relevancy') {
+    sortedResults = results;
+  } else if (selectedCriterion.by === 'field' && selectedCriterion.field === 'title') {
+    sortedResults = [...results].sort((a, b) => a.title.localeCompare(b.title));
+  } else if (selectedCriterion.by === 'indexeddate') {
+    sortedResults = [...results].sort((a, b) => {
+      const dateA = new Date(a.indexeddate);
+      const dateB = new Date(b.indexeddate);
+      return dateB - dateA;
+    });
+  } else {
+    sortedResults = results; // No sorting
+  }
 
-  if (results.length > 0) {
+  if (sortedResults.length > 0) {
     noResultsElement.style.display = 'none';
     querySortElement.style.display = '';
-    results.forEach((result) => {
+    sortedResults.forEach((result) => {
       const resultItem = document.createElement('div');
       resultItem.className = 'result-item';
       resultItem.innerHTML = `
