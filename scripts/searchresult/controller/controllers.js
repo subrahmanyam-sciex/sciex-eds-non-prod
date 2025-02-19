@@ -98,6 +98,14 @@ export const sortController = buildSort(searchEngine, {
     criterion: { by: 'relevancy' },
   },
 });
+// Update Sorting
+export const updateSorting = (criterion) => {
+  return {
+    type: 'UPDATE_SORTING',  // Example action type
+    payload: criterion,      // The new sorting criterion
+  };
+};
+
 
 export const facetBreadcrumb = buildBreadcrumbManager(searchEngine)
 
