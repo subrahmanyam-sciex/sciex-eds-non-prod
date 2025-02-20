@@ -189,6 +189,16 @@ export default async function decorate(block) {
 
   document.body.appendChild(suggestionPopupDiv);
 
+  // function logError(message, error) {
+  //   const errorMessage = `${message}: ${error.message || error}`;
+
+  //   myloggingService.send({ level: 'error', message: errorMessage });
+
+  //   const logs = JSON.parse(localStorage.getItem('errorLogs')) || [];
+  //   logs.push(errorMessage);
+  //   localStorage.setItem('errorLogs', JSON.stringify(logs));
+  // }
+
   try {
     renderSearchBox();
     renderSorting();
@@ -209,10 +219,8 @@ export default async function decorate(block) {
       renderFacetBreadcurm();
     });
 
-    await searchEngine.executeFirstSearch().catch((error) => {
-      console.error('Error executing the first search:', error);
-    });
+    await searchEngine.executeFirstSearch();
   } catch (error) {
-    console.error('Error initializing search engine:', error);
+    searchEngine.executeFirstSearch();
   }
 }

@@ -19,7 +19,6 @@ const renderSorting = () => {
 
   selectElement.addEventListener('change', (event) => {
     const selectedCriterion = JSON.parse(event.target.value);
-    console.log('selectedCriterion', selectedCriterion);
     sortController.sortBy(selectedCriterion);
   });
 

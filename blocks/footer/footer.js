@@ -213,10 +213,8 @@ function processFragment(block, fragment) {
   selectedLanguage.textContent = listItems[0].textContent;
 
   if (selectedLanguage.textContent === 'United states') {
-    console.log('Sachin 1', selectedLanguage, usflag);
     selectedLanguage.prepend(usflag);
   } else if (selectedLanguage.textContent === 'Japanese') {
-    console.log('Sachin2 ', selectedLanguage, jpflag);
     selectedLanguage.prepend(jpflag);
   } else if (selectedLanguage.textContent === 'Korean') {
     selectedLanguage.prepend(krflag);
@@ -288,7 +286,6 @@ function processFragment(block, fragment) {
       selectedLanguage.prepend(usflag);
       selectedLanguage.appendChild(chevronDown);
       selectedLanguage.appendChild(chevronUp);
-      console.log('#####', usflag, selectedLanguage);
       this.prepend(usflag);
     } else if (this.text === 'Japanese') {
       cloneSelectedlang.prepend(jpflag);
