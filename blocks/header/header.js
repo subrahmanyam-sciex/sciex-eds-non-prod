@@ -809,7 +809,11 @@ function createMegaMenuThirdLevel(child) {
         const list = section.querySelectorAll('a');
         if (list.length > 0 && section.querySelector('strong')) {
           const listDiv = div({ class: 'lg:tw-w-full xl:tw-w-1/2 tw-pr-48 ' });
-          if (index > 2) {
+          if (canMobileActions() === true) {
+            if (index > 1) {
+              listDiv.classList.add('tw-mt-24');
+            }
+          } else if (index > 2) {
             listDiv.classList.add('tw-mt-24');
           }
           Array.from(list).forEach((element, ind) => {
@@ -887,7 +891,11 @@ function createMegaMenuThirdLevel(child) {
         const list = section.querySelectorAll('a');
         if (list.length > 0 && section.querySelector('strong')) {
           const listDiv = div({ class: 'tw-w-1/2 xl:tw-w-1/3 tw-pr-48 ' });
-          if (index > 3) {
+          if (canMobileActions() === true) {
+            if (index > 1) {
+              listDiv.classList.add('tw-mt-24');
+            }
+          } else if (index > 3) {
             listDiv.classList.add('tw-mt-24');
           }
           Array.from(list).forEach((element, ind) => {
@@ -932,7 +940,11 @@ function createMegaMenuThirdLevel(child) {
       } else {
         const list = section.querySelectorAll('a');
         const listDiv = div({ class: 'tw-w-1/4 tw-pr-48 ' });
-        if (index > 4) {
+        if (canMobileActions() === true) {
+          if (index > 1) {
+            listDiv.classList.add('tw-mt-24');
+          }
+        } else if (index > 4) {
           listDiv.classList.add('tw-mt-24');
         }
         if (list.length === 1 && !list[0].innerText.includes('#view-all#')) {
@@ -1083,6 +1095,22 @@ export default async function decorate(block) {
     processHtml(block, main);
   }
   decorateIcons(block);
+
+  document.getElementById('shop').addEventListener('click', () => {
+    alert('Element clicked!');
+    const redirectUrl = encodeURIComponent(window.location.href);
+    fetch('/bin/sciex/logout')
+      .then((response) => {
+        console.log('Logout successful');
+        return response;
+      })
+      .catch((error) => {
+        console.error('Logout failed:', error);
+      })
+      .finally(() => {
+        document.location = `https://sso.sciex.cloud/auth/realms/sciex/protocol/openid-connect/logout?redirect_uri=${redirectUrl}`;
+      });
+  });
 
   async function getUserDetails() {
     try {

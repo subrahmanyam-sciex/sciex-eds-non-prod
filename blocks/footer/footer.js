@@ -20,8 +20,14 @@ function handleMiddleSections(child, block, iteration) {
   sections.forEach((section) => {
     const sectionTitle = section.textContent.trim();
     const list = section.nextElementSibling;
-    const chevronDown = span({ class: 'icon icon-chevron-down tw-text-mobBase md:tw-text-base tw-font-bold tw-tracking-wide stretch-text tw-pr-6' });
-    const chevronUp = span({ class: 'icon icon-chevron-up tw-text-mobBase md:tw-text-base tw-font-bold tw-tracking-wide stretch-text tw-pr-6' });
+    const chevronDown = span({
+      class:
+        'icon icon-chevron-down tw-text-mobBase md:tw-text-base tw-font-bold tw-tracking-wide stretch-text tw-pr-6',
+    });
+    const chevronUp = span({
+      class:
+        'icon icon-chevron-up tw-text-mobBase md:tw-text-base tw-font-bold tw-tracking-wide stretch-text tw-pr-6',
+    });
 
     const sectionDiv = document.createElement('div');
     sectionDiv.classList.add('footer-section');
@@ -74,15 +80,19 @@ function handleMiddleSections(child, block, iteration) {
           }
         });
         const ulElement = this.closest('div').querySelector('ul');
-        ulElement.style.display = (ulElement.style.display === 'block') ? 'none' : 'block';
-        const upArrow = this.closest('div').querySelector('.footer-section-title .icon-chevron-up');
-        const downArrow = this.closest('div').querySelector('.footer-section-title .icon-chevron-down');
+        ulElement.style.display = ulElement.style.display === 'block' ? 'none' : 'block';
+        const upArrow = this.closest('div').querySelector(
+          '.footer-section-title .icon-chevron-up',
+        );
+        const downArrow = this.closest('div').querySelector(
+          '.footer-section-title .icon-chevron-down',
+        );
         const upArrowComputedStyle = window.getComputedStyle(upArrow);
         const upArrowDisplayStyle = upArrowComputedStyle.display;
         const downArrowComputedStyle = window.getComputedStyle(downArrow);
         const downArrowDisplayStyle = downArrowComputedStyle.display;
-        upArrow.style.display = (upArrowDisplayStyle === 'none') ? 'block' : 'none';
-        downArrow.style.display = (downArrowDisplayStyle === 'block') ? 'none' : 'block';
+        upArrow.style.display = upArrowDisplayStyle === 'none' ? 'block' : 'none';
+        downArrow.style.display = downArrowDisplayStyle === 'block' ? 'none' : 'block';
       });
     }
   });
@@ -92,9 +102,31 @@ function handleMiddleSections(child, block, iteration) {
   const header = child.querySelector('h2');
   const headerDiv = document.createElement('div');
   if (header) {
-    headerDiv.classList.add('footer-heading-div', 'tw-pb-32', 'tw-pt-48', 'md:tw-py-64', 'tw-border-b', 'tw-border-grey-700', 'tw-flex', 'tw-flex-col', 'md:tw-flex-row', 'tw-justify-start', 'md:tw-justify-between', 'md:tw-items-end');
+    headerDiv.classList.add(
+      'footer-heading-div',
+      'tw-pb-32',
+      'tw-pt-48',
+      'md:tw-py-64',
+      'tw-border-b',
+      'tw-border-grey-700',
+      'tw-flex',
+      'tw-flex-col',
+      'md:tw-flex-row',
+      'tw-justify-start',
+      'md:tw-justify-between',
+      'md:tw-items-end',
+    );
     const headerH2 = document.createElement('h2');
-    headerH2.classList.add('footer-heading', 'tw-text-[64px]', 'tw-leading-[72px]', 'md:tw-text-xl-display', 'tw-text-white', 'tw-font-thin', 'tw-max-w-[700px]', 'tw-tracking-tight');
+    headerH2.classList.add(
+      'footer-heading',
+      'tw-text-[64px]',
+      'tw-leading-[72px]',
+      'md:tw-text-xl-display',
+      'tw-text-white',
+      'tw-font-thin',
+      'tw-max-w-[700px]',
+      'tw-tracking-tight',
+    );
     headerH2.textContent = header.textContent;
     headerDiv.appendChild(headerH2);
     wrapperDiv.appendChild(headerDiv);
@@ -164,10 +196,26 @@ function handleLogoSection(child, block, iteration) {
  */
 function createSocialLinks() {
   const socialPlatforms = [
-    { name: 'LinkedIn', url: 'https://www.linkedin.com/company/sciex', svg: '<svg viewBox="0 0 16 16" fill="none"><path d="M3.91708 15.3333H0.825185V5.50271H3.91708V15.3333ZM2.41077 4.15496C1.45942 4.15496 0.666626 3.36217 0.666626 2.41082C0.666626 1.45947 1.45942 0.666672 2.41077 0.666672C3.36212 0.666672 4.15491 1.45947 4.15491 2.41082C4.15491 3.36217 3.36212 4.15496 2.41077 4.15496ZM15.3333 15.3333H12.2414V10.5766C12.2414 9.46667 12.2414 7.96037 10.6558 7.96037C9.07023 7.96037 8.83239 9.22883 8.83239 10.4973V15.3333H5.7405V5.50271H8.75311V6.85046H8.83239C9.22879 6.05766 10.2594 5.26487 11.6864 5.26487C14.7783 5.26487 15.3333 7.32613 15.3333 9.94235V15.3333Z" fill="currentColor"></path></svg>' },
-    { name: 'Twitter', url: 'https://twitter.com/SCIEXnews', svg: '<svg viewBox="0 0 16 16" fill="none"><path d="M5.02682 14.3295C11.0345 14.3295 14.3448 9.36398 14.3448 5.07279C14.3448 4.95019 14.3448 4.76628 14.3448 4.64367C14.9579 4.15325 15.5096 3.60153 16 2.9272C15.387 3.17241 14.7739 3.35632 14.0996 3.41762C14.7739 2.9885 15.2644 2.37547 15.5096 1.57854C14.8966 1.94636 14.1609 2.25287 13.4253 2.37547C12.8123 1.76245 11.954 1.33333 11.0345 1.33333C9.2567 1.33333 7.78544 2.80459 7.78544 4.58237C7.78544 4.82758 7.78544 5.07279 7.84674 5.318C5.14943 5.2567 2.69732 3.96934 1.10345 2.00766C0.858238 2.49808 0.67433 3.0498 0.67433 3.66283C0.67433 4.82758 1.22605 5.80842 2.14559 6.36015C1.59387 6.36015 1.10345 6.17624 0.613027 5.93103C0.613027 5.93103 0.613027 5.93103 0.613027 5.99233C0.613027 7.5862 1.71648 8.87356 3.24904 9.18007C3.00383 9.24137 2.69732 9.30268 2.3908 9.30268C2.2069 9.30268 1.96169 9.30268 1.77778 9.24137C2.2069 10.5287 3.37165 11.5096 4.84291 11.5096C3.73946 12.3678 2.3295 12.9195 0.796935 12.9195C0.551724 12.9195 0.245211 12.9195 0 12.8582C1.47126 13.7778 3.18774 14.3295 5.02682 14.3295Z" fill="currentColor"></path></svg>' },
-    { name: 'Facebook', url: 'https://www.facebook.com/SCIEXnews', svg: '<svg viewBox="0 0 16 16" fill="none"><path d="M8.91101 15.3333V8.63047H11.1674L11.4992 6.04224H8.91101V4.38311C8.91101 3.6531 9.11011 3.12218 10.1719 3.12218H11.5656V0.799402C11.3002 0.799402 10.5038 0.666672 9.57466 0.666672C7.58371 0.666672 6.25641 1.86124 6.25641 4.11765V6.04224H4V8.63047H6.25641V15.3333H8.91101Z" fill="currentColor"></path></svg>' },
-    { name: 'Instagram', url: 'https://instagram.com/instasciex', svg: '<svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="3.5" stroke="currentColor" stroke-width="1.5"></circle><circle cx="12.5" cy="3.5" r="1" fill="currentColor"></circle><rect x="1.5" y="1.5" width="13" height="13" rx="3.5" stroke="currentColor" stroke-width="1.5"></rect></svg>' },
+    {
+      name: 'LinkedIn',
+      url: 'https://www.linkedin.com/company/sciex',
+      svg: '<svg viewBox="0 0 16 16" fill="none"><path d="M3.91708 15.3333H0.825185V5.50271H3.91708V15.3333ZM2.41077 4.15496C1.45942 4.15496 0.666626 3.36217 0.666626 2.41082C0.666626 1.45947 1.45942 0.666672 2.41077 0.666672C3.36212 0.666672 4.15491 1.45947 4.15491 2.41082C4.15491 3.36217 3.36212 4.15496 2.41077 4.15496ZM15.3333 15.3333H12.2414V10.5766C12.2414 9.46667 12.2414 7.96037 10.6558 7.96037C9.07023 7.96037 8.83239 9.22883 8.83239 10.4973V15.3333H5.7405V5.50271H8.75311V6.85046H8.83239C9.22879 6.05766 10.2594 5.26487 11.6864 5.26487C14.7783 5.26487 15.3333 7.32613 15.3333 9.94235V15.3333Z" fill="currentColor"></path></svg>',
+    },
+    {
+      name: 'Twitter',
+      url: 'https://twitter.com/SCIEXnews',
+      svg: '<svg viewBox="0 0 16 16" fill="none"><path d="M5.02682 14.3295C11.0345 14.3295 14.3448 9.36398 14.3448 5.07279C14.3448 4.95019 14.3448 4.76628 14.3448 4.64367C14.9579 4.15325 15.5096 3.60153 16 2.9272C15.387 3.17241 14.7739 3.35632 14.0996 3.41762C14.7739 2.9885 15.2644 2.37547 15.5096 1.57854C14.8966 1.94636 14.1609 2.25287 13.4253 2.37547C12.8123 1.76245 11.954 1.33333 11.0345 1.33333C9.2567 1.33333 7.78544 2.80459 7.78544 4.58237C7.78544 4.82758 7.78544 5.07279 7.84674 5.318C5.14943 5.2567 2.69732 3.96934 1.10345 2.00766C0.858238 2.49808 0.67433 3.0498 0.67433 3.66283C0.67433 4.82758 1.22605 5.80842 2.14559 6.36015C1.59387 6.36015 1.10345 6.17624 0.613027 5.93103C0.613027 5.93103 0.613027 5.93103 0.613027 5.99233C0.613027 7.5862 1.71648 8.87356 3.24904 9.18007C3.00383 9.24137 2.69732 9.30268 2.3908 9.30268C2.2069 9.30268 1.96169 9.30268 1.77778 9.24137C2.2069 10.5287 3.37165 11.5096 4.84291 11.5096C3.73946 12.3678 2.3295 12.9195 0.796935 12.9195C0.551724 12.9195 0.245211 12.9195 0 12.8582C1.47126 13.7778 3.18774 14.3295 5.02682 14.3295Z" fill="currentColor"></path></svg>',
+    },
+    {
+      name: 'Facebook',
+      url: 'https://www.facebook.com/SCIEXnews',
+      svg: '<svg viewBox="0 0 16 16" fill="none"><path d="M8.91101 15.3333V8.63047H11.1674L11.4992 6.04224H8.91101V4.38311C8.91101 3.6531 9.11011 3.12218 10.1719 3.12218H11.5656V0.799402C11.3002 0.799402 10.5038 0.666672 9.57466 0.666672C7.58371 0.666672 6.25641 1.86124 6.25641 4.11765V6.04224H4V8.63047H6.25641V15.3333H8.91101Z" fill="currentColor"></path></svg>',
+    },
+    {
+      name: 'Instagram',
+      url: 'https://instagram.com/instasciex',
+      svg: '<svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="3.5" stroke="currentColor" stroke-width="1.5"></circle><circle cx="12.5" cy="3.5" r="1" fill="currentColor"></circle><rect x="1.5" y="1.5" width="13" height="13" rx="3.5" stroke="currentColor" stroke-width="1.5"></rect></svg>',
+    },
   ];
 
   const nav = document.createElement('nav');
@@ -185,6 +233,13 @@ function createSocialLinks() {
 
   nav.appendChild(ul);
   return nav;
+}
+
+// function to  add country flag before name
+function addCountryFlag(countryCode) {
+  const countryIcon = document.createElement('img');
+  countryIcon.src = `/icons/${countryCode}.svg`;
+  return countryIcon;
 }
 
 function processFragment(block, fragment) {
@@ -206,21 +261,49 @@ function processFragment(block, fragment) {
     }
   });
 
-  const chevronDown = span({ class: 'icon icon-chevron-down tw-text-mobBase md:tw-text-base tw-font-bold tw-tracking-wide stretch-text tw-pr-6' });
-  const chevronUp = span({ class: 'icon icon-chevron-up tw-text-mobBase md:tw-text-base tw-font-bold tw-tracking-wide stretch-text tw-pr-6' });
-  const usflag = span({ class: 'icon icon-us tw-text-mobBase md:tw-text-base tw-font-bold tw-tracking-wide stretch-text tw-pr-6' });
-  const esflag = span({ class: 'icon icon-es tw-text-mobBase md:tw-text-base tw-font-bold tw-tracking-wide stretch-text tw-pr-6' });
-  const jpflag = span({ class: 'icon icon-jp tw-text-mobBase md:tw-text-base tw-font-bold tw-tracking-wide stretch-text tw-pr-6' });
-  const krflag = span({ class: 'icon icon-kr tw-text-mobBase md:tw-text-base tw-font-bold tw-tracking-wide stretch-text tw-pr-6' });
+  const chevronDown = span({
+    class:
+      'icon icon-chevron-down tw-text-mobBase md:tw-text-base tw-font-bold tw-tracking-wide stretch-text tw-pr-6',
+  });
+  const chevronUp = span({
+    class:
+      'icon icon-chevron-up tw-text-mobBase md:tw-text-base tw-font-bold tw-tracking-wide stretch-text tw-pr-6',
+  });
+  const usflag = span({
+    class:
+      'icon icon-us tw-text-mobBase md:tw-text-base tw-font-bold tw-tracking-wide stretch-text tw-pr-6',
+  });
+  const esflag = span({
+    class:
+      'icon icon-es tw-text-mobBase md:tw-text-base tw-font-bold tw-tracking-wide stretch-text tw-pr-6',
+  });
+  const jpflag = span({
+    class:
+      'icon icon-jp tw-text-mobBase md:tw-text-base tw-font-bold tw-tracking-wide stretch-text tw-pr-6',
+  });
+  const krflag = span({
+    class:
+      'icon icon-kr tw-text-mobBase md:tw-text-base tw-font-bold tw-tracking-wide stretch-text tw-pr-6',
+  });
 
-  const countrySelect = firstSectionContent.querySelector('.default-content-wrapper');
+  const countrySelect = firstSectionContent.querySelector(
+    '.default-content-wrapper',
+  );
   const ul = countrySelect.querySelector('ul');
   const selectedLanguage = document.createElement('div');
   selectedLanguage.classList.add('selected-language');
   const listItems = ul.getElementsByTagName('li');
   countrySelect.appendChild(selectedLanguage);
 
-  selectedLanguage.textContent = listItems[0].textContent;
+  if (listItems[0].textContent === 'United states') {
+    selectedLanguage.append(addCountryFlag('us'), listItems[0].textContent);
+  } else if (listItems[0].textContent === 'Japanese') {
+    selectedLanguage.append(addCountryFlag('jp'), listItems[0].textContent);
+  } else if (listItems[0].textContent === 'Korean') {
+    selectedLanguage.append(addCountryFlag('kr'), listItems[0].textContent);
+  } else if (listItems[0].textContent === 'Spanish') {
+    selectedLanguage.append(addCountryFlag('es'), listItems[0].textContent);
+  }
 
   if (selectedLanguage.textContent === 'United states') {
     selectedLanguage.prepend(usflag);
@@ -293,25 +376,25 @@ function processFragment(block, fragment) {
 
     if (this.text === 'United states') {
       cloneSelectedlang.prepend(usflag);
-      selectedLanguage.prepend(usflag);
+      selectedLanguage.prepend(addCountryFlag('us'), usflag);
       selectedLanguage.appendChild(chevronDown);
       selectedLanguage.appendChild(chevronUp);
       this.prepend(usflag);
     } else if (this.text === 'Japanese') {
       cloneSelectedlang.prepend(jpflag);
-      selectedLanguage.prepend(jpflag);
+      selectedLanguage.prepend(addCountryFlag('jp'), jpflag);
       selectedLanguage.appendChild(chevronDown);
       selectedLanguage.appendChild(chevronUp);
       this.prepend(jpflag);
     } else if (this.text === 'Korean') {
       cloneSelectedlang.prepend(krflag);
-      selectedLanguage.prepend(krflag);
+      selectedLanguage.prepend(addCountryFlag('kr'), krflag);
       selectedLanguage.appendChild(chevronDown);
       selectedLanguage.appendChild(chevronUp);
       this.prepend(krflag);
     } else if (this.text === 'Spanish') {
       cloneSelectedlang.prepend(esflag);
-      selectedLanguage.prepend(esflag);
+      selectedLanguage.prepend(addCountryFlag('es'), esflag);
       selectedLanguage.appendChild(chevronDown);
       selectedLanguage.appendChild(chevronUp);
       this.prepend(esflag);
@@ -320,7 +403,13 @@ function processFragment(block, fragment) {
 
   for (let i = 0; i < optionLinks.length; i += 1) {
     optionLinks[i].addEventListener('click', clickFn);
-    optionLinks[i].classList.add('tw-mx-3', 'stretch-text', 'tw-font-bold', 'tw-tracking-wide', 'country-list');
+    optionLinks[i].classList.add(
+      'tw-mx-3',
+      'stretch-text',
+      'tw-font-bold',
+      'tw-tracking-wide',
+      'country-list',
+    );
     if (optionLinks[i].textContent === 'United states') {
       optionLinks[i].prepend(usflag);
     } else if (optionLinks[i].textContent === 'Japanese') {
@@ -338,7 +427,9 @@ function processFragment(block, fragment) {
 
 export default async function decorate(block) {
   const footerMeta = getMetadata('footer');
-  const footerPath = footerMeta ? new URL(footerMeta, window.location).pathname : '/footer';
+  const footerPath = footerMeta
+    ? new URL(footerMeta, window.location).pathname
+    : '/footer';
   const fragment = await loadFragment(footerPath);
   block.textContent = '';
   processFragment(block, fragment);
