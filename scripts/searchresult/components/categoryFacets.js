@@ -8,6 +8,8 @@ import {
   hplcFacetController,
   filetypeFacetController,
   tagsFacetController,
+  map,
+  
 } from "../controller/controllers.js";
 
 let debounceTimeout;
@@ -92,6 +94,7 @@ function createToggleButtons(facetItemsContainer, facetController) {
 }
 
 function renderFacet(facetElementId, facetController, headerText) {
+
   const facetElement = document.getElementById(facetElementId);
   facetElement.innerHTML = `<h3 class="facet-header tw-text-gray-800 tw-text-lg tw-mb-2 tw-pb-1">${headerText}
   <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -127,7 +130,76 @@ function renderFacet(facetElementId, facetController, headerText) {
 }
 
 function createFacetRender(facetController, facetElementId, headerText) {
-  renderFacet(facetElementId, facetController, headerText);
+  const { values } = facetController.state;
+  if(values.length>0){
+    if(facetElementId.indexOf('product')!=-1){
+      let startIndex = facetElementId.indexOf("product") + "product".length;
+      facetElementId  = facetElementId.substring(startIndex,facetElementId.length)
+    }if(facetElementId.indexOf('course')!=-1){
+     
+      let startIndex = facetElementId.indexOf("course") + "course".length;
+      facetElementId  = facetElementId.substring(startIndex,facetElementId.length);
+    }
+    const id= facetElementId+"-facet"
+    createFacetDiv(facetElementId);
+    renderFacet(id, facetController, headerText);
+}
+  }
+  
+function createFacetDiv(id){
+  const ele= document.getElementById( id+'-facet');
+  const facetsElement = document.getElementById('facets');
+  if(ele ==null){
+    const mainFacetDiv = document.createElement('div');
+    mainFacetDiv.id = id+'-facet';
+    facetsElement.appendChild(mainFacetDiv);
+  }
+  
+}
+export function callCreateFacet(){
+  const facetController =map;
+  const facetsId = {
+    'contenttype':'Content Type',
+    'coursecertificatetypecategories':'Certificate Type',
+    'coursecapillaryelectrophoresiscategories':'Capillary Electrophoresis',
+    'productcapillaryelectrophoresiscategories':'Capillary Electrophoresis',
+    'coursecertificatetypecategories':'Certificate Type',
+    'coursediagnosticsinstrumentscategories':'Diagnostics Instruments',
+    'coursehplcandceproductscategories':'HPLC and CE products',
+    'courseintegratedsolutionscategories':'Integrated Solutions',
+    'courseionmobilityspectrometrycategories': 'Ion Mobility Spectrometry',
+    'courseionsourcescategories':'Ion Sources',
+    'courselevelcategories':'Level',
+    'courselifescienceresearchcategories':'Life Science Research',
+    'coursemassspectrometerscategories':'Mass Spectrometers',
+    'coursesoftwarecategories':'Software',
+    'coursestandardsandreagentscategories':'Standards and Reagents',
+    'coursetechniquescategories':'Techniques',
+    'coursetrainingtopiccategories':'Training Topic',
+    'coursetrainingtypecategories':'Training Type',
+    'producttrainingtypecategories':'Training Type',
+    'producttrainingtopiccategories':'Training Topic',
+    'producttechniquescategories':'Techniques',
+    'productstandardsandreagentscategories':'Standards and Reagents',
+    'productsoftwarecategories':'Software',
+    'productmassspectrometerscategories':'Mass Spectrometers',
+    'productlifescienceresearchcategories':'Life Science Research',
+    'productlevelcategories':'Level',
+    'productlifescienceresearchcategories':'Life Science Research',
+    'productionsourcescategories':'Ion Sources',
+    'productionmobilityspectrometrycategories': 'Ion Mobility Spectrometry',
+    'productintegratedsolutionscategories':'Integrated Solutions',
+    'producthplcandceproductscategories':'HPLC and CE products',
+    'productdiagnosticsinstrumentscategories':'Diagnostics Instruments',
+    'productcertificatetypecategories':'Certificate Type'
+  };
+  
+ // facetsId.forEach((item) => {
+  for (let item in facetsId) {
+     const val =facetController.get(item);
+     const facet =createFacetRender(val,item,facetsId[item]);
+  };
+
 }
 
 /** ********
@@ -156,35 +228,8 @@ export const handleMobileFilters = () => {
     }
   }
 };
-export const renderSourceFacet = () =>
-  createFacetRender(
-    sourceFacetController,
-    "source-facet",
-    "Mass Spectrometers"
-  );
-export const softwarecategories = () =>
-  createFacetRender(softwareFacetController, "software-facet", "Software");
-export const techniquesfacetcategories = () =>
-  createFacetRender(
-    techniquesFacetController,
-    "techniques-facet",
-    "Techniques"
-  );
-export const diagnosticsinstrumentscategories = () =>
-  createFacetRender(
-    diagnosticsFacetController,
-    "diagnostics-facet",
-    "Diagnostics Instruments"
-  );
-export const trainingcategories = () =>
-  createFacetRender(
-    trainingFacetController,
-    "training-facet",
-    "Training Topic"
-  );
-export const hplccategories = () =>
-  createFacetRender(hplcFacetController, "hplc-facet", "Training Topic");
+
 export const renderFiletypeFacet = () =>
   createFacetRender(filetypeFacetController, "filetype-facet", "Filetype");
-export const renderTagsFacet = () =>
-  createFacetRender(tagsFacetController, "tags-facet", "Course Catalog");
+
+
