@@ -44,7 +44,7 @@ export const tagsFacetController = buildFacet(searchEngine, {
 export const sourceFacetController = buildFacet(searchEngine, {
   options: { 
     numberOfValues: 5,
-    field: 'massspectrometerscategories' 
+    field: 'productmassspectrometerscategories' 
   },
 });
 export const softwareFacetController = buildFacet(searchEngine, {
@@ -114,4 +114,56 @@ export  function handleResultClick(results) {
     options: {result : results}
   })
   interactiveResult.select();
+}
+export const map =createFacetController();
+
+function createFacetController() {
+  //console.log('createFacetController>');
+  const facetsId = [
+    'contenttype',
+    'coursecapillaryelectrophoresiscategories',
+    'coursecertificatetypecategories',
+    'coursediagnosticsinstrumentscategories',
+    'coursehplcandceproductscategories',
+    'courseintegratedsolutionscategories',
+    'courseionmobilityspectrometrycategories',
+    'courseionsourcescategories',
+    'courselevelcategories',
+    'courselifescienceresearchcategories',
+    'coursemassspectrometerscategories',
+    'coursesoftwarecategories',
+    'coursestandardsandreagentscategories',
+    'coursetechniquescategories',
+    'coursetrainingtopiccategories',
+    'coursetrainingtypecategories',
+    'producttrainingtypecategories',
+    'producttrainingtopiccategories',
+    'producttechniquescategories',
+    'productstandardsandreagentscategories',
+    'productsoftwarecategories',
+    'productmassspectrometerscategories',
+    'productlifescienceresearchcategories',
+    'productlevelcategories',
+    'productlifescienceresearchcategories',
+    'productionsourcescategories',
+    'productionmobilityspectrometrycategories',
+    'productintegratedsolutionscategories',
+    'producthplcandceproductscategories',
+    'productdiagnosticsinstrumentscategories',
+    'productcertificatetypecategories',
+    'productcapillaryelectrophoresiscategories',
+  ];
+  const controllerMap = new Map();
+  facetsId.forEach((item) => {
+   const controller = buildFacet(searchEngine, {
+    options: { 
+      numberOfValues: 5,
+      field: item
+    },
+  });
+  controllerMap.set(item,controller);
+});
+
+  //console.log('controllerMap>'+controllerMap);
+  return controllerMap;
 }

@@ -3,15 +3,7 @@ import { searchEngine } from '../../scripts/searchresult/engine.js';
 import renderSearchBox from '../../scripts/searchresult/components/renderSearchBox.js';
 import renderSearchResults from '../../scripts/searchresult/components/searchResult.js';
 import {
-  renderSourceFacet,
-  softwarecategories,
-  techniquesfacetcategories,
-  diagnosticsinstrumentscategories,
-  trainingcategories,
-  hplccategories,
-  renderFiletypeFacet,
-  renderTagsFacet,
-  handleMobileFilters,
+  callCreateFacet, handleMobileFilters,
 } from '../../scripts/searchresult/components/categoryFacets.js';
 import renderPagination from '../../scripts/searchresult/components/pagination.js';
 import renderQuerySummary from '../../scripts/searchresult/components/querySummary.js';
@@ -118,7 +110,6 @@ export default async function decorate(block) {
     'tw-bg-white',
   );
   sourceSuggestionBox.style.position = 'absolute';
-
   // Create filetype facet div
   const filetypeFacetDiv = document.createElement('div');
   filetypeFacetDiv.id = 'filetype-facet';
@@ -153,19 +144,8 @@ export default async function decorate(block) {
   tagsInput.placeholder = 'Enter tags...';
 
   // Append facet divs and input boxes
-  facetsDiv.appendChild(sourceFacetDiv);
-  facetsDiv.appendChild(softwareFacetDiv);
-  facetsDiv.appendChild(techniquesFacetDiv);
-  facetsDiv.appendChild(diagnosticsFacetDiv);
-  facetsDiv.appendChild(trainingFacetDiv);
-  facetsDiv.appendChild(hplcFacetDiv);
   facetsDiv.appendChild(sourceInput);
   facetsDiv.appendChild(sourceSuggestionBox);
-  facetsDiv.appendChild(tagSuggestionBox);
-  facetsDiv.appendChild(document.createElement('br')); // Add <br />
-  facetsDiv.appendChild(filetypeFacetDiv);
-  facetsDiv.appendChild(document.createElement('br')); // Add <br />
-  facetsDiv.appendChild(tagsFacetDiv);
   facetsDiv.appendChild(tagsInput); // Add input under tags facet
 
   // Create search result section div
@@ -347,14 +327,7 @@ export default async function decorate(block) {
       renderSearchResults();
       renderQuerySummary();
       renderPagination();
-      renderSourceFacet();
-      softwarecategories();
-      techniquesfacetcategories();
-      diagnosticsinstrumentscategories();
-      trainingcategories();
-      hplccategories();
-      renderFiletypeFacet();
-      renderTagsFacet();
+      callCreateFacet();
       renderFacetBreadcurm();
     });
 
