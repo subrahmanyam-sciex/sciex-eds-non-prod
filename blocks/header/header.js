@@ -1096,20 +1096,19 @@ export default async function decorate(block) {
   }
   decorateIcons(block);
 
-  document.getElementById('shop').addEventListener('click', () => {
-    alert('Element clicked!');
-    const redirectUrl = encodeURIComponent(window.location.href);
+  document.getElementById("logout").addEventListener("click", function() {
+    const redirectUrl =  encodeURIComponent(window.location.href);
     fetch('/bin/sciex/logout')
-      .then((response) => {
-        console.log('Logout successful');
-        return response;
-      })
-      .catch((error) => {
-        console.error('Logout failed:', error);
-      })
-      .finally(() => {
-        document.location = `https://sso.sciex.cloud/auth/realms/sciex/protocol/openid-connect/logout?redirect_uri=${redirectUrl}`;
-      });
+        .then(response => {
+            console.log('Logout successful');
+            return response;
+        })
+        .catch(error => {
+            console.error('Logout failed:', error);
+        })
+        .finally(() => {
+            document.location = "https://sso.sciex.cloud/auth/realms/sciex/protocol/openid-connect/logout?redirect_uri=" + redirectUrl;
+    });
   });
 
   async function getUserDetails() {
