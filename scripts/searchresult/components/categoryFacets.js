@@ -130,6 +130,32 @@ function createFacetRender(facetController, facetElementId, headerText) {
   renderFacet(facetElementId, facetController, headerText);
 }
 
+/** ********
+     *
+     *
+     *
+      function to handle mobile actions
+     *
+     *
+     *
+     *  */
+export const handleMobileFilters = () => {
+  const facets = document.querySelector("#facets");
+  const mobileFilterHeader = document.querySelector("#mobile-filter-header");
+  if (facets) {
+    facets.style.display =
+      facets.style.display === "" || facets.style.display === "none"
+        ? "block"
+        : "none";
+  }
+  if (mobileFilterHeader) {
+    if (mobileFilterHeader.classList.contains("tw-hidden")) {
+      mobileFilterHeader.classList.remove("tw-hidden");
+    } else {
+      mobileFilterHeader.classList.add("tw-hidden");
+    }
+  }
+};
 export const renderSourceFacet = () =>
   createFacetRender(
     sourceFacetController,

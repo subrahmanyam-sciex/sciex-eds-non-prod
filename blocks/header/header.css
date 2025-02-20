@@ -54,7 +54,7 @@ header nav ul li picture:hover {
         height: 100vh;
         overflow-y: scroll;
         background: #fff;
-        z-index: 100;
+        z-index: 1234;
     }
     .mobile-header .header-topbar {
         position: fixed;
