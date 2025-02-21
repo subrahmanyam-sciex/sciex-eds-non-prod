@@ -62,6 +62,7 @@ header nav ul li picture:hover {
     }
     .megamenu-wrapper .topbar-menu {
         padding: 24px;
+        margin: 0 auto;
     }
     .megamenu-wrapper .topbar-menu ul li {
         flex: 1;
@@ -69,10 +70,11 @@ header nav ul li picture:hover {
     }
     .megamenu-wrapper .topbar-menu ul li:last-child {
         flex: 1;
+        bottom: 0;
         margin-top: 9pt;
         position: fixed;
+        margin: 0 auto;
         width: 100%;
-        left: -24px;
     }
 }
 @media (min-width: 1024px) {
@@ -81,3 +83,49 @@ header nav ul li picture:hover {
     }
 }
 /***   Mobile Css  */
+
+@media (min-width: 640px) {
+    .mobile-header .topbar-menu,
+    .megamenu-wrapper .topbar-menu ul li:last-child {
+        max-width: 40pc !important;
+    }
+}
+
+@media (min-width: 768px) {
+    .mobile-header .topbar-menu,
+    .megamenu-wrapper .topbar-menu ul li:last-child {
+        max-width: 8in !important;
+    }
+}
+
+@media (min-width: 1024px) {
+    .mobile-header .topbar-menu,
+    .megamenu-wrapper .topbar-menu ul li:last-child {
+        max-width: 64pc !important;
+        padding-left: 40px !important;
+        padding-right: 40px !important;
+    }
+}
+
+@media (min-width: 1280px) {
+    .mobile-header .topbar-menu,
+    .megamenu-wrapper .topbar-menu ul li:last-child {
+        max-width: 80pc !important;
+        padding-left: 4pc !important;
+        padding-right: 4pc !important;
+    }
+}
+
+@media (min-width: 1440px) {
+    .mobile-header .topbar-menu,
+    .megamenu-wrapper .topbar-menu ul li:last-child {
+        max-width: 90pc !important;
+    }
+}
+
+@media (min-width: 1536px) {
+    .mobile-header .topbar-menu,
+    .megamenu-wrapper .topbar-menu ul li:last-child {
+        max-width: 96pc !important;
+    }
+}
