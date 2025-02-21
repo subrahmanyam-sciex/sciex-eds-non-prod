@@ -130,32 +130,38 @@ function renderFacet(facetElementId, facetController, headerText) {
 }
 
 function createFacetRender(facetController, facetElementId, headerText) {
+  let isValues = false;
   const { values } = facetController.state;
-  if(values.length>0){
-    if(facetElementId.indexOf('product')!=-1){
-      let startIndex = facetElementId.indexOf("product") + "product".length;
-      facetElementId  = facetElementId.substring(startIndex,facetElementId.length)
-    }if(facetElementId.indexOf('course')!=-1){
-     
-      let startIndex = facetElementId.indexOf("course") + "course".length;
-      facetElementId  = facetElementId.substring(startIndex,facetElementId.length);
-    }
-    const id= facetElementId+"-facet"
-    createFacetDiv(facetElementId);
-    renderFacet(id, facetController, headerText);
-}
+  if(values.length > 0) {
+    isValues = true;
   }
-  
-function createFacetDiv(id){
+  if(facetElementId.indexOf('product')!=-1) {
+    let startIndex = facetElementId.indexOf("product") + "product".length;
+    facetElementId  = facetElementId.substring(startIndex,facetElementId.length)
+  }
+  if(facetElementId.indexOf('course')!=-1) {
+    let startIndex = facetElementId.indexOf("course") + "course".length;
+    facetElementId  = facetElementId.substring(startIndex,facetElementId.length);
+  }
+  const id= facetElementId+"-facet";
+  const ele= document.getElementById( id);
+  if(ele !== null && !isValues) {
+    ele.remove();
+  }
+  createFacetDiv(facetElementId, isValues);
+  renderFacet(id, facetController, headerText); 
+}
+
+function createFacetDiv(id) {
   const ele= document.getElementById( id+'-facet');
   const facetsElement = document.getElementById('facets');
-  if(ele ==null){
+  if(ele == null) {
     const mainFacetDiv = document.createElement('div');
     mainFacetDiv.id = id+'-facet';
     facetsElement.appendChild(mainFacetDiv);
-  }
-  
+  } 
 }
+
 export function callCreateFacet(){
   const facetController =map;
   const facetsId = {
