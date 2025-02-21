@@ -5,7 +5,7 @@ footer {
 
 footer .footer > div {
     margin: auto;
-    max-width: 1200px;
+    /*    max-width: 1200px; */
     padding: 40px 24px 24px;
 }
 
@@ -23,7 +23,7 @@ footer .footer > div {
     justify-content: center;
     flex-wrap: wrap;
     @media (min-width: 768px) {
-        padding: 40px 90px;
+        padding: 40px 24px;
     }
 }
 
@@ -334,22 +334,28 @@ footer .footer > div {
 /* Responsive Design */
 @media (max-width: 1200px) {
     .logo-container {
-        grid-template-columns: repeat(6, 1fr); /* 6 per row on medium screens */
+        grid-template-columns: repeat(
+            auto-fill,
+            minmax(175px, 6fr)
+        ); /* 6 per row on medium screens */
     }
 }
 
 @media (max-width: 900px) {
     .logo-container {
         grid-template-columns: repeat(
-            4,
-            1fr
+            auto-fill,
+            minmax(175px, 4fr)
         ); /* 4 per row on smaller screens */
     }
 }
 
 @media (max-width: 600px) {
     .logo-container {
-        grid-template-columns: repeat(2, 1fr); /* 2 per row on mobile */
+        grid-template-columns: repeat(
+            auto-fill,
+            minmax(175px, 2fr)
+        ); /* 2 per row on mobile */
     }
 }
 
@@ -442,4 +448,44 @@ a.active {
     color: #000;
     text-decoration: none;
     cursor: pointer;
+}
+
+@media (min-width: 640px) {
+    .footer-wrapper .footer.block {
+        max-width: 40pc !important;
+    }
+}
+
+@media (min-width: 768px) {
+    .footer-wrapper .footer.block {
+        max-width: 8in !important;
+    }
+}
+
+@media (min-width: 1024px) {
+    .footer-wrapper .footer.block {
+        max-width: 64pc !important;
+        padding-left: 40px !important;
+        padding-right: 40px !important;
+    }
+}
+
+@media (min-width: 1280px) {
+    .footer-wrapper .footer.block {
+        max-width: 80pc !important;
+        padding-left: 4pc !important;
+        padding-right: 4pc !important;
+    }
+}
+
+@media (min-width: 1440px) {
+    .footer-wrapper .footer.block {
+        max-width: 90pc !important;
+    }
+}
+
+@media (min-width: 1536px) {
+    .footer-wrapper .footer.block {
+        max-width: 96pc !important;
+    }
 }
