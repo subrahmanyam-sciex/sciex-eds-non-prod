@@ -45,7 +45,7 @@ footer .footer > div {
 }
 
 .footer-list .selected-language {
-    display: block;
+    display: flex;
     text-align: left;
     margin-top: 32px;
     @media (min-width: 768px) {
@@ -490,7 +490,7 @@ footer .footer > div {
 }
 
 .footer-list .selected-language {
-    display: block;
+    display: flex;
     text-align: left;
     margin-top: 32px;
     @media (min-width: 768px) {
@@ -799,7 +799,7 @@ footer .footer > div {
     .logo-container {
         grid-template-columns: repeat(
             auto-fill,
-            minmax(175px, 2fr)
+            minmax(150px, 2fr)
         ); /* 2 per row on mobile */
     }
 }
