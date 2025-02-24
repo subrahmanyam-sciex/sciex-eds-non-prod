@@ -15,20 +15,20 @@
 
 .search-wrapper {
     display: flex;
-    gap: 24px;
+    gap: 40px;
     flex-wrap: wrap;
     margin: 0 auto;
 }
 
 .search-container {
     justify-content: center;
-    padding: 24px 20px;
+    padding: 24px 0px;
     background-color: #fff;
 }
 
 .search-box {
     width: 100%;
-    padding: 12px 16px;
+    padding: 12px 16px !important;
     border-radius: 4px;
     border: 1px solid #c6c6c6;
 }
@@ -46,7 +46,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 20px;
+    padding: 0 0px;
 }
 
 #sort {
@@ -89,6 +89,7 @@
     display: flex;
     flex-direction: column;
     gap: 14px;
+    border-bottom: 1px solid var(--Grey-100, #ececec);
     padding-top: 16px;
     padding-bottom: 16px;
 }
@@ -96,7 +97,6 @@
     display: flex;
     flex-direction: column;
     gap: 15px;
-    border-bottom: 1px solid var(--Grey-100, #ececec);
     padding: 0px 24px;
 }
 .facet-section {
@@ -126,8 +126,7 @@
 }
 
 .facet-item label {
-    color: var(--Grey-900, #141414);
-
+    color: var(--Grey-700, #434343);
     font-size: 16px;
     font-style: normal;
     font-weight: 330;
@@ -215,7 +214,7 @@
 .result-section {
     flex: 1;
     background-color: white;
-    padding: 20px;
+    padding: 0px;
     border-radius: 8px;
 }
 
@@ -261,7 +260,7 @@
     background: #141414;
     color: #fff !important;
     text-align: center;
-    font-family: "Geogrotesque Sharp VF", sans-serif;
+
     font-size: 14px;
     font-weight: 450;
     line-height: 20px;
@@ -275,7 +274,6 @@
     color: #000;
     margin-top: 10px;
     margin-bottom: 5px;
-    font-family: "Geogrotesque Sharp VF", sans-serif;
     font-weight: 530;
     line-height: 26px;
     letter-spacing: 0.045px;
@@ -283,7 +281,6 @@
 
 .result-item p {
     color: #000;
-    font-family: "Geogrotesque Sharp VF", sans-serif;
     font-size: 16px;
     font-weight: 330;
     line-height: 24px;
@@ -551,12 +548,28 @@
 }
 
 @media (min-width: 1024px) {
+    .desktop-links {
+        border: none;
+    }
+    .megamenu-wrapper {
+        border-bottom: 2px solid var(--Grey-100, #ececec);
+    }
+    .search-result-section {
+        margin-top: 10px;
+    }
+    .mainmenu-ul li:first-child {
+        margin-left: 18px;
+    }
     .searchresult-wrapper,
-    #coveo-life-sciences div,
     .searchresult-wrapper #facets,
     #mobile-filter-header {
         max-width: 64pc !important;
         padding-left: 40px !important;
+        padding-right: 40px !important;
+    }
+    #coveo-life-sciences div {
+        max-width: 64pc !important;
+        padding-left: 58px !important;
         padding-right: 40px !important;
     }
 }
@@ -577,11 +590,18 @@
 
     #coveo-life-sciences div {
         max-width: 80pc !important;
-        padding-left: 4pc !important;
-        padding-right: 4pc !important;
+        padding-left: 22px !important;
+        padding-right: 24px !important;
     }
 }
 
+@media (min-width: 1281px) and (max-width: 1399px) {
+    #coveo-life-sciences div {
+        max-width: 72pc !important;
+        padding-left: 22px !important;
+        padding-right: 24px !important;
+    }
+}
 @media (min-width: 1440px) {
     .searchresult-wrapper,
     #coveo-life-sciences div,
@@ -593,9 +613,11 @@
 
 @media (min-width: 1536px) {
     .searchresult-wrapper,
-    #coveo-life-sciences div,
     .searchresult-wrapper #facets,
     #mobile-filter-header {
         max-width: 96pc !important;
+    }
+    #coveo-life-sciences div {
+        max-width: 88pc !important;
     }
 }
