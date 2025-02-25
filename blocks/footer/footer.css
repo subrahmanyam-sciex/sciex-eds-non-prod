@@ -797,10 +797,7 @@ footer .footer > div {
 
 @media (max-width: 600px) {
     .logo-container {
-        grid-template-columns: repeat(
-            auto-fill,
-            minmax(175px, 2fr)
-        ); /* 2 per row on mobile */
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
