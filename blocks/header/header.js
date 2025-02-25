@@ -639,7 +639,7 @@ function createSubMenuItems(section, containerDiv, firstpartdiv) {
           if (litext.includes("#view-all#")) {
             anchorTag.href = element.firstChild.href;
             anchorTag.className =
-              "tw-mt-32 tw-transition tw-duration-300 tw-group tw-flex tw-font-bold tw-items-center tw-text-blue-700 hover:tw-text-blue-800";
+              "tw-mt-32 submenu-viewall tw-transition tw-duration-300 tw-group tw-flex tw-font-bold tw-items-center tw-text-blue-700 hover:tw-text-blue-800";
             const anchDiv = div({
               class:
                 "tw-text-mobBase md:tw-text-base tw-relative tw-overflow-hidden tw-pb-2",
@@ -781,7 +781,7 @@ function createViewallTag(list, viewAllTag) {
     if (element.textContent.includes("#view-all#")) {
       viewAllTag.href = element.href;
       viewAllTag.className =
-        "tw-mt-32 tw-transition tw-duration-300 tw-group tw-flex tw-font-bold tw-items-center tw-text-blue-700 hover:tw-text-blue-800";
+        "tw-mt-32 tw-transition submenu-viewall tw-duration-300 tw-group tw-flex tw-font-bold tw-items-center tw-text-blue-700 hover:tw-text-blue-800";
       const anchDiv = div({
         class:
           "tw-text-mobBase md:tw-text-base tw-relative tw-overflow-hidden tw-pb-2",

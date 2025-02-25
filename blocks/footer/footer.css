@@ -113,7 +113,6 @@ footer .footer > div {
     display: block;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
-    border-top: 1px solid #777;
     padding-top: 20px;
     @media (min-width: 768px) {
         display: grid;
@@ -184,7 +183,10 @@ footer .footer > div {
         display: flex;
     }
 }
-
+.footer-heading-div h2 {
+    font-family: "Geogrotesque" !important;
+    font-weight: 270 !important;
+}
 .footer-heading {
     font-size: 64px;
     line-height: 72px;
@@ -461,7 +463,7 @@ footer .footer > div {
 }
 
 .footer-wrapper {
-    background-color: black;
+    background: var(--Grey-900, #141414);
     color: #ddd;
     padding: 40px 0;
     display: flex;
@@ -523,11 +525,21 @@ footer .footer > div {
     color: #8a8a8a;
 }
 
-.footer-list ul li a,
-.black-section ul li a {
+.footer-list ul li a {
     text-decoration: none;
     color: #bbb;
     font-size: 14px;
+    transition: color 0.3s;
+}
+.wrapper-3.black-section ul li a {
+    text-decoration: none;
+    color: #8a8a8a;
+    font-size: 13px;
+    transition: color 0.3s;
+}
+.wrapper-3.black-section p {
+    color: #8a8a8a;
+    font-size: 13px;
     transition: color 0.3s;
 }
 
@@ -558,7 +570,6 @@ footer .footer > div {
     display: block;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
-    border-top: 1px solid #777;
     padding-top: 20px;
     @media (min-width: 768px) {
         display: grid;
@@ -567,6 +578,7 @@ footer .footer > div {
 
 .footer-section {
     border-bottom: 1px solid #777;
+    border-top: 1px solid #777;
     padding: 20px 0;
     @media (min-width: 768px) {
         max-width: 305px;
@@ -580,10 +592,11 @@ footer .footer > div {
 }
 
 .footer-section-title {
-    font-weight: bold;
+    font-weight: 530;
     margin-bottom: 10px;
     color: white;
     font-size: 15px;
+    font-family: "Geogrotesque MD" !important;
     display: flex;
     justify-content: space-between;
     @media (min-width: 768px) {
@@ -605,13 +618,15 @@ footer .footer > div {
 }
 
 .footer-section ul li {
-    margin-bottom: 8px;
+    margin-bottom: 0px;
 }
 
 .footer-section ul li a {
-    color: #bbb;
+    color: #8a8a8a;
     text-decoration: none;
-    font-size: 14px;
+    font-size: 15px;
+    font-weight: 330;
+    line-height: 23px;
     transition: color 0.3s;
 }
 
@@ -790,7 +805,7 @@ footer .footer > div {
     .logo-container {
         grid-template-columns: repeat(
             auto-fill,
-            minmax(175px, 4fr)
+            minmax(145px, 4fr)
         ); /* 4 per row on smaller screens */
     }
 }
@@ -799,7 +814,7 @@ footer .footer > div {
     .logo-container {
         grid-template-columns: repeat(
             auto-fill,
-            minmax(150px, 2fr)
+            minmax(145px, 2fr)
         ); /* 2 per row on mobile */
     }
 }
@@ -895,6 +910,27 @@ a.active {
     cursor: pointer;
 }
 
+@media (max-width: 1024px) {
+    .footer-section {
+        border-bottom: 0px;
+    }
+    .footer-section:nth-of-type(4) {
+        border-bottom: 1px solid #777 !important;
+    }
+    .footer-section-title {
+        font-weight: 370;
+    }
+    footer .footer > div {
+        padding: 0 24px;
+    }
+    .footer-list .selected-language {
+        justify-content: left;
+    }
+    .footer-list .selected-language span:nth-child(1) {
+        display: none;
+    }
+}
+
 @media (min-width: 640px) {
     .footer-wrapper .footer.block {
         max-width: 40pc !important;
@@ -908,6 +944,9 @@ a.active {
 }
 
 @media (min-width: 1024px) {
+    .footer-social-links {
+        padding-bottom: 0 !important;
+    }
     .footer-wrapper .footer.block {
         max-width: 64pc !important;
         padding-left: 40px !important;
