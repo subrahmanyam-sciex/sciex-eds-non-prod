@@ -138,9 +138,7 @@ function loadDelayed() {
   // load anything that can be postponed to the latest here
 }
 
-/**
- * Dynamically injects the OneTrust privacy script.
- */
+
 /**
  * Dynamically injects the OneTrust privacy script with encoded settings.
  */
@@ -155,7 +153,6 @@ function loadPrivacyScript() {
 
   document.head.appendChild(script);
 }
-
 
 async function loadPage() {
   loadPrivacyScript();
