@@ -138,7 +138,24 @@ function loadDelayed() {
   // load anything that can be postponed to the latest here
 }
 
+/**
+ * Dynamically injects the OneTrust privacy script.
+ */
+function loadPrivacyScript() {
+  const script = document.createElement('script');
+  script.src = 'https://privacyportalde-cdn.onetrust.com/privacy-notice-scripts/otnotice-1.0.min.js';
+  script.type = 'text/javascript';
+  script.charset = 'UTF-8';
+  script.id = 'otprivacy-notice-script';
+  script.setAttribute('settings', JSON.stringify({
+    callbackUrl: 'https://privacyportal-de.onetrust.com/request/v1/privacyNotices/states/views',
+  }));
+
+  document.head.appendChild(script);
+}
+
 async function loadPage() {
+  loadPrivacyScript();
   await loadEager(document);
   await loadLazy(document);
   loadDelayed();
