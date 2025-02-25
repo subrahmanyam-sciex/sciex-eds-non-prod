@@ -1,5 +1,5 @@
 import { createElement } from '../../scripts/scripts.js';
-import { getMetadata, decorateIcons } from '../../scripts/aem.js';
+import { decorateIcons } from '../../scripts/aem.js';
 
 const getPageTitle = async (url) => {
   const resp = await fetch(url);
@@ -60,10 +60,9 @@ export default async function decorate(block) {
   const HomeLink = createLink({
     path: '',
     url: window.location.origin,
-    icon: 'icon-home' // Add the icon class here
+    icon: 'icon-home', // Add the icon class here
   });
   const breadcrumbLinks = [HomeLink.outerHTML];
-  
 
   window.setTimeout(async () => {
     const path = window.location.pathname;
