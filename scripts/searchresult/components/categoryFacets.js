@@ -93,7 +93,9 @@ function renderFacet(facetElementId, facetController, headerText) {
   const { values } = facetController.state;
   const facetItemsContainer = document.createElement("div");
   facetItemsContainer.className = "facet-items-container";
-
+  if(values.length){
+    facetElement.style.borderBottom = '1px solid #ececec'
+  }
   values.forEach((value) => {
     const facetItem = document.createElement("div");
     facetItem.className = "facet-item tw-flex tw-items-center tw-gap-2 tw-py-1";
@@ -172,7 +174,9 @@ export function callCreateFacet(){
     'language' : 'Language',
     'year': 'Year',
     'location': 'Training Location',
-    'applications': 'Applications'
+    'applications': 'Applications',
+    'technicaldocuments': 'Technical Documents',
+    'instrumentfamily': 'Instrument Family'
   };
 
   for (let item in facetsId) {
@@ -210,6 +214,3 @@ export const handleMobileFilters = () => {
     }
   }
 };
-
-
-

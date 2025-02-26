@@ -89,7 +89,6 @@
     display: flex;
     flex-direction: column;
     gap: 14px;
-    border-bottom: 1px solid var(--Grey-100, #ececec);
     padding-top: 16px;
     padding-bottom: 16px;
 }
