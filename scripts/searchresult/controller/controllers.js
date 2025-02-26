@@ -109,7 +109,9 @@ function createFacetController() {
     'language',
     'year',
     'location',
-    'applications'
+    'applications',
+    'technicaldocuments',
+    'instrumentfamily'
   ];
   const controllerMap = new Map();
   facetsId.forEach((item) => {
