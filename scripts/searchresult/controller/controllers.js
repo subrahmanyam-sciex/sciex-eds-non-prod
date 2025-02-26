@@ -9,7 +9,6 @@ import {
   buildInteractiveResult,
   buildBreadcrumbManager,
   buildFacetConditionsManager,
-  buildCategoryFacet
 } from 'https://static.cloud.coveo.com/headless/v3/headless.esm.js';
 import { searchEngine, analyticsEngine }  from '../engine.js';
 
@@ -109,11 +108,13 @@ function createFacetController() {
     'language',
     'year',
     'location',
-    'applications'
+    'applications',
+    'technicaldocuments',
+    'instrumentfamily'
   ];
   const controllerMap = new Map();
   facetsId.forEach((item) => {
-   const controller = buildCategoryFacet(searchEngine, {
+   const controller = buildFacet(searchEngine, {
     options: { 
       numberOfValues: 5,
       field: item,
@@ -151,5 +152,3 @@ function initDependentFacet(dependentFacet, parentFacets) {
   });
   return facetConditionsManager.stopWatching;
 }
-
-
