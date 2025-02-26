@@ -1,18 +1,6 @@
 /* eslint-disable */
-import {
-  sourceFacetController,
-  softwareFacetController,
-  techniquesFacetController,
-  diagnosticsFacetController,
-  trainingFacetController,
-  hplcFacetController,
-  filetypeFacetController,
-  tagsFacetController,
-  map,
-  
-} from "../controller/controllers.js";
+import {contentTypeFacetController, allFacetController } from "../controller/controllers.js";
 
-let debounceTimeout;
 function facetAccordion(values, facetElement, facetItemsContainer) {
   if (values.length !== 0) {
     facetElement.appendChild(facetItemsContainer);
@@ -163,47 +151,35 @@ function createFacetDiv(id) {
 }
 
 export function callCreateFacet(){
-  const facetController =map;
+  createFacetRender(contentTypeFacetController, "contenttype-facet", "Content Type");
+  const facetController = allFacetController;
   const facetsId = {
-    'contenttype':'Content Type',
-    'coursecertificatetypecategories':'Certificate Type',
-    'coursecapillaryelectrophoresiscategories':'Capillary Electrophoresis',
-    'productcapillaryelectrophoresiscategories':'Capillary Electrophoresis',
-    'coursecertificatetypecategories':'Certificate Type',
-    'coursediagnosticsinstrumentscategories':'Diagnostics Instruments',
-    'coursehplcandceproductscategories':'HPLC and CE products',
-    'courseintegratedsolutionscategories':'Integrated Solutions',
-    'courseionmobilityspectrometrycategories': 'Ion Mobility Spectrometry',
-    'courseionsourcescategories':'Ion Sources',
-    'courselevelcategories':'Level',
-    'courselifescienceresearchcategories':'Life Science Research',
-    'coursemassspectrometerscategories':'Mass Spectrometers',
-    'coursesoftwarecategories':'Software',
-    'coursestandardsandreagentscategories':'Standards and Reagents',
-    'coursetechniquescategories':'Techniques',
-    'coursetrainingtopiccategories':'Training Topic',
-    'coursetrainingtypecategories':'Training Type',
-    'producttrainingtypecategories':'Training Type',
-    'producttrainingtopiccategories':'Training Topic',
-    'producttechniquescategories':'Techniques',
-    'productstandardsandreagentscategories':'Standards and Reagents',
-    'productsoftwarecategories':'Software',
-    'productmassspectrometerscategories':'Mass Spectrometers',
-    'productlifescienceresearchcategories':'Life Science Research',
-    'productlevelcategories':'Level',
-    'productlifescienceresearchcategories':'Life Science Research',
-    'productionsourcescategories':'Ion Sources',
-    'productionmobilityspectrometrycategories': 'Ion Mobility Spectrometry',
-    'productintegratedsolutionscategories':'Integrated Solutions',
-    'producthplcandceproductscategories':'HPLC and CE products',
-    'productdiagnosticsinstrumentscategories':'Diagnostics Instruments',
-    'productcertificatetypecategories':'Certificate Type'
+    'coursetypecategories':'Course Type',
+    'certificatetypecategories':'Certificate Type',
+    'capillaryelectrophoresiscategories':'Capillary Electrophoresis',
+    'hplcandceproductscategories':'Liquid Chromatography',
+    'integratedsolutionscategories':'Integrated Solutions',
+    'levelcategories':'Level',
+    'massspectrometerscategories':'Mass Spectrometers',
+    'softwarecategories':'Software',
+    'standardsandreagentscategories':'Standards and Reagents',
+    'techniquescategories':'Techniques',
+    'trainingtopiccategories':'Training Topic',
+    'trainingtypecategories':'Training Type',
+    'assettypes': 'Asset Type',
+    'instrumentfamily': 'Instrument family',
+    'languagecountry': 'Language-country',
+    'language' : 'Language',
+    'year': 'Year',
+    'location': 'Training Location',
+    'applications': 'Applications'
   };
-  
- // facetsId.forEach((item) => {
+
   for (let item in facetsId) {
-     const val =facetController.get(item);
-     const facet =createFacetRender(val,item,facetsId[item]);
+    const val = facetController.get(item);
+    if(val){
+      createFacetRender(val,item,facetsId[item]);
+    }
   };
 
 }
@@ -235,7 +211,5 @@ export const handleMobileFilters = () => {
   }
 };
 
-export const renderFiletypeFacet = () =>
-  createFacetRender(filetypeFacetController, "filetype-facet", "Filetype");
 
 
