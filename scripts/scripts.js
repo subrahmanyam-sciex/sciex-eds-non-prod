@@ -10,6 +10,7 @@ import {
   loadSection,
   loadSections,
   loadCSS,
+  getMetadata
 } from './aem.js';
 
 /**
@@ -138,13 +139,17 @@ function loadDelayed() {
   // load anything that can be postponed to the latest here
 }
 
+const gtmtrackingscript = getMetadata("gtmtrackingscript");
+
 /**
- * Dynamically injects the Google Tag Manager (GTM) script.
+ * Dynamically injects the Google Tag Manager (GTM) script if gtmtrackingscript is valid.
  */
 function loadGTM() {
-  const script = document.createElement('script');
-  script.innerHTML = '(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({\'gtm.start\':new Date().getTime(),event:\'gtm.js\'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!=\'dataLayer\'?\'&l=\'+l:\'\';j.async=true;j.src= \'https://www.googletagmanager.com/gtm.js?id=\'+i+dl;f.parentNode.insertBefore(j,f);})(window,document,\'script\',\'dataLayer\',\'GTM-WMZL3B\');';
-
+  if (typeof gtmtrackingscript !== "string" || !gtmtrackingscript.includes("googletagmanager.com/gtm.js")) {
+    return;
+  }
+  const script = document.createElement("script");
+  script.innerHTML = gtmtrackingscript;
   document.head.appendChild(script);
 }
 
