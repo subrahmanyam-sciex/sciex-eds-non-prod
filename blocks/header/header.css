@@ -10,11 +10,21 @@ header nav ul li picture:hover {
 .submenu-container ul li {
     margin-bottom: 10px;
 }
-
+#menu-button img {
+    width: 16px;
+    padding: 0;
+}
 /***   Mobile Css  */
-@media (max-width: 1024px) {
+@media (max-width: 1023.9px) {
     .submenu-container div {
         border-right: none;
+        width: 100% !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+    .submenu-container .submenu-content {
+        border-bottom: 1px solid #e5e7eb;
+        padding-bottom: 44px !important;
     }
     .submenu-container .submenu-content a:nth-last-child() {
         padding-bottom: 24px;
@@ -25,37 +35,43 @@ header nav ul li picture:hover {
     .megamenu-wrapper {
         padding-top: 24px;
         height: 100%;
-        padding-top: 80px;
+        padding-top: 84px;
         padding-bottom: 180px;
+    }
+    .submenu-container ul li {
+        margin-bottom: 0;
+    }
+    .submenu-container ul li a {
+        font-size: 20px !important;
     }
     #mega-menu ul {
         display: flex;
         flex: 1;
-        padding-bottom: 24px;
+        gap: 16px;
+        padding-bottom: 20px;
         flex-direction: column;
     }
     #backToMenu {
         padding-top: 60px;
-        height: 120px;
+        height: 107px;
     }
 
     .submenu-container {
         display: flex;
+        padding-top: 24px !important;
         flex-direction: column;
     }
-    .submenu-container div {
-        width: 100% !important;
-    }
     .mainmenu-ul li {
+        border: none;
         padding-top: 0px !important;
         padding-bottom: 0px !important;
+        margin-left: 0px !important;
     }
     .mainmenu-ul li a {
         display: flex;
         line-height: 26px;
         font-size: 20px;
         font-weight: 330;
-        margin-top: 1pc;
         justify-content: space-between;
     }
     .mobile-header {
@@ -70,13 +86,21 @@ header nav ul li picture:hover {
         position: fixed;
         z-index: 123;
     }
+    .header-topbar a {
+        webkit-transform: translateX(-18px) !important;
+        transform: translateX(-18px) !important;
+    }
+    .header-topbar img {
+        width: 88px;
+        height: 28px;
+    }
     .megamenu-wrapper .topbar-menu {
-        padding: 12px 24px 24px 24px;
+        padding: 20px 24px 24px 24px;
         margin: 0 auto;
     }
     .megamenu-wrapper .topbar-menu ul li {
         flex: 1;
-        margin-top: 9pt;
+        margin-left: 0;
     }
     .megamenu-wrapper .topbar-menu ul li:last-child {
         flex: 1;
@@ -93,8 +117,25 @@ header nav ul li picture:hover {
         width: 100vw;
     }
     .megamenu-wrapper .topbar-menu ul li:last-child a {
-        padding-left: 40px;
+        padding-left: 24px;
         margin: 0 auto;
+    }
+    .submenu-links .submenu-viewall {
+        max-width: fit-content;
+        margin: 0;
+    }
+    .submenu-links .submenu-viewall .icon-arrow {
+        width: 19px;
+        margin: -1px 0 0 5px;
+    }
+    .submenu-content .submenu-viewall {
+        max-width: fit-content;
+        margin-top: 20px;
+        margin-bottom: 4px;
+    }
+    .submenu-content .submenu-viewall .icon-arrow {
+        width: 19px;
+        margin: -1px 0 0 5px;
     }
 }
 /***   Mobile Css  */

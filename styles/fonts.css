@@ -43,3 +43,12 @@
   font-style: normal;
   font-display: swap;
 }
+
+@font-face {
+  font-family: "Geogrotesque MD";
+  src: url(../fonts/Geogrotesque-Md.woff2) format("woff2"),
+      url(../fonts/Geogrotesque-Md.woff) format("woff");
+  font-style: normal;
+  font-weight: 530;
+  font-display: swap;
+}
