@@ -10,7 +10,7 @@ import {
   loadSection,
   loadSections,
   loadCSS,
-  getMetadata
+  getMetadata,
 } from './aem.js';
 
 /**
@@ -139,16 +139,16 @@ function loadDelayed() {
   // load anything that can be postponed to the latest here
 }
 
-const gtmtrackingscript = getMetadata("gtmtrackingscript");
+const gtmtrackingscript = getMetadata('gtmtrackingscript');
 
 /**
  * Dynamically injects the Google Tag Manager (GTM) script if gtmtrackingscript is valid.
  */
 function loadGTM() {
-  if (typeof gtmtrackingscript !== "string" || !gtmtrackingscript.includes("googletagmanager.com/gtm.js")) {
+  if (typeof gtmtrackingscript !== 'string' || !gtmtrackingscript.includes('googletagmanager.com/gtm.js')) {
     return;
   }
-  const script = document.createElement("script");
+  const script = document.createElement('script');
   script.innerHTML = gtmtrackingscript;
   document.head.appendChild(script);
 }

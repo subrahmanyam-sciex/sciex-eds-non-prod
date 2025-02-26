@@ -1,24 +1,26 @@
-import { div, span, ul, li, a, p } from "../../scripts/dom-builder.js";
-import { decorateIcons } from "../../scripts/aem.js";
+import {
+  div, span, ul, li, a, p,
+} from '../../scripts/dom-builder.js';
+import { decorateIcons } from '../../scripts/aem.js';
 
 const menuLinks = {};
 function createMainHeader(section) {
   const menuDiv = div({
     class:
-      "tw-flex tw-w-full tw-bg-grey-900 tw-text-grey-300 tw-z-[100] tw-relative header-topbar",
+      'tw-flex tw-w-full tw-bg-grey-900 tw-text-grey-300 tw-z-[100] tw-relative header-topbar',
   });
-  const containerDiv = div({ class: "tw-flex tw-container" });
+  const containerDiv = div({ class: 'tw-flex tw-container' });
   const parentdiv = div({
     class:
-      "topbar-menu tw-hidden lg:tw-block lg:tw-absolute lg:tw-top-0 lg:tw-right-0 tw-h-64",
+      'topbar-menu tw-hidden lg:tw-block lg:tw-absolute lg:tw-top-0 lg:tw-right-0 tw-h-64',
   });
   const ulTag = ul({
-    class: "tw-list-none tw-flex tw-items-stretch tw-text-sm tw-h-full",
+    class: 'tw-list-none tw-flex tw-items-stretch tw-text-sm tw-h-full',
   });
-  const headerDiv = section.querySelector(".header");
+  const headerDiv = section.querySelector('.header');
   Array.from(headerDiv.children).forEach((child, index) => {
-    const picture = child.querySelector("picture");
-    const anchorTag = child.querySelector("a");
+    const picture = child.querySelector('picture');
+    const anchorTag = child.querySelector('a');
 
     /** ********
      *
@@ -29,19 +31,18 @@ function createMainHeader(section) {
      *
      *
      *  */
-    const mobileMenuToggle = document.createElement("button");
-    mobileMenuToggle.className =
-      "lg:tw-hidden tw-flex tw-ml-auto tw-items-center menu-close";
-    const mobileMenuToggleIcon = document.createElement("span");
+    const mobileMenuToggle = document.createElement('button');
+    mobileMenuToggle.className = 'lg:tw-hidden tw-flex tw-ml-auto tw-items-center menu-close';
+    const mobileMenuToggleIcon = document.createElement('span');
     mobileMenuToggleIcon.insertAdjacentHTML(
-      "beforeend",
-      '<svg  id="mobileMenuOpenIcon"  class="openIcon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" data-di-rand="1739507371221"><path d="M0 20H20" stroke="#ffffff"></path><path d="M0 4H24" stroke="#ffffff"></path><path d="M0 12H16" stroke="#ffffff"></path></svg>'
+      'beforeend',
+      '<svg  id="mobileMenuOpenIcon"  class="openIcon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" data-di-rand="1739507371221"><path d="M0 20H20" stroke="#ffffff"></path><path d="M0 4H24" stroke="#ffffff"></path><path d="M0 12H16" stroke="#ffffff"></path></svg>',
     );
     mobileMenuToggleIcon.insertAdjacentHTML(
-      "beforeend",
-      '<svg id="mobileMenuCloseIcon" class="tw-hidden" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" data-di-rand="1739527915887"><path d="M4 20L19.9998 4.0002" stroke="white" stroke-width="1.2"></path><path d="M4 4L19.9998 19.9998" stroke="white" stroke-width="1.2"></path></svg>'
+      'beforeend',
+      '<svg id="mobileMenuCloseIcon" class="tw-hidden" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" data-di-rand="1739527915887"><path d="M4 20L19.9998 4.0002" stroke="white" stroke-width="1.2"></path><path d="M4 4L19.9998 19.9998" stroke="white" stroke-width="1.2"></path></svg>',
     );
-    mobileMenuToggle.id = "toggleMobileMenu";
+    mobileMenuToggle.id = 'toggleMobileMenu';
 
     /** ********
      *
@@ -54,46 +55,46 @@ function createMainHeader(section) {
      *  */
     function handleMobileMenu() {
       // Initialize and declare variables
-      const headerWrapper = document.querySelector(".header-wrapper");
-      const mobileMenuOpenIcon = document.getElementById("mobileMenuOpenIcon");
+      const headerWrapper = document.querySelector('.header-wrapper');
+      const mobileMenuOpenIcon = document.getElementById('mobileMenuOpenIcon');
       const mobileMenuCloseIcon = document.getElementById(
-        "mobileMenuCloseIcon"
+        'mobileMenuCloseIcon',
       );
-      const megaMenuWrapper = document.querySelector(".megamenu-wrapper");
-      const subMenu = document.querySelector(".submenu-container");
-      const backToMenuButton = document.querySelector(".back-to-menu-button");
-      const subMenus = document.querySelectorAll(".submenu-container");
+      const megaMenuWrapper = document.querySelector('.megamenu-wrapper');
+      const subMenu = document.querySelector('.submenu-container');
+      const backToMenuButton = document.querySelector('.back-to-menu-button');
+      const subMenus = document.querySelectorAll('.submenu-container');
 
       // Toggle menu open/close classes
-      if (this.classList.contains("menu-open")) {
-        this.classList.remove("menu-open");
-        this.classList.add("menu-close");
+      if (this.classList.contains('menu-open')) {
+        this.classList.remove('menu-open');
+        this.classList.add('menu-close');
       } else {
-        this.classList.remove("menu-close");
-        this.classList.add("menu-open");
+        this.classList.remove('menu-close');
+        this.classList.add('menu-open');
       }
 
       // Toggle mobile header
       if (headerWrapper) {
-        headerWrapper.classList.toggle("mobile-header");
+        headerWrapper.classList.toggle('mobile-header');
       }
 
       // Toggle menu icons
       if (mobileMenuOpenIcon && mobileMenuCloseIcon) {
-        mobileMenuOpenIcon.classList.toggle("tw-hidden");
-        mobileMenuCloseIcon.classList.toggle("tw-hidden");
+        mobileMenuOpenIcon.classList.toggle('tw-hidden');
+        mobileMenuCloseIcon.classList.toggle('tw-hidden');
       }
 
       // Toggle megamenu wrapper
       if (megaMenuWrapper) {
-        megaMenuWrapper.classList.toggle("tw-hidden");
+        megaMenuWrapper.classList.toggle('tw-hidden');
       }
 
       // Hide submenu
       if (subMenu) {
-        subMenu.classList.add("tw-hidden");
-        subMenu.classList.remove("secondnav-active");
-        subMenu.removeAttribute("style");
+        subMenu.classList.add('tw-hidden');
+        subMenu.classList.remove('secondnav-active');
+        subMenu.removeAttribute('style');
       }
 
       /** ********
@@ -107,14 +108,14 @@ function createMainHeader(section) {
         *
         *  */
       function renderMobileMenuBottom() {
-        const topBarNav = document.querySelector(".topbar-menu");
+        const topBarNav = document.querySelector('.topbar-menu');
         // const megaMenuWrapper = document.querySelector('.megamenu-wrapper');
         if (topBarNav) {
-          if (topBarNav.classList.contains("tw-hidden")) {
-            topBarNav.classList.toggle("tw-hidden");
+          if (topBarNav.classList.contains('tw-hidden')) {
+            topBarNav.classList.toggle('tw-hidden');
           }
           if (megaMenuWrapper) {
-            megaMenuWrapper.insertAdjacentElement("beforeEnd", topBarNav);
+            megaMenuWrapper.insertAdjacentElement('beforeEnd', topBarNav);
           }
         }
       }
@@ -122,26 +123,26 @@ function createMainHeader(section) {
       renderMobileMenuBottom();
 
       // Additional handling when menu is closed
-      if (this.classList.contains("menu-close")) {
+      if (this.classList.contains('menu-close')) {
         if (backToMenuButton) {
-          backToMenuButton.classList.add("tw-hidden");
+          backToMenuButton.classList.add('tw-hidden');
         }
         if (megaMenuWrapper) {
-          megaMenuWrapper.classList.add("tw-hidden");
+          megaMenuWrapper.classList.add('tw-hidden');
         }
 
         // Hide all submenus
         subMenus.forEach((item) => {
-          item.classList.add("tw-hidden");
+          item.classList.add('tw-hidden');
         });
       }
     }
 
     // add click event to handle mobile menu button actions
-    mobileMenuToggle.addEventListener("click", handleMobileMenu);
+    mobileMenuToggle.addEventListener('click', handleMobileMenu);
     if (index === 0) {
-      anchorTag.text = "";
-      anchorTag.className = "tw-py-16";
+      anchorTag.text = '';
+      anchorTag.className = 'tw-py-16';
       // anchorTag.target = '_blank';
       anchorTag.appendChild(picture);
       containerDiv.appendChild(anchorTag);
@@ -150,32 +151,31 @@ function createMainHeader(section) {
     } else if (headerDiv.children.length !== index + 1) {
       const liTag = li({
         class:
-          "tw-ml-16 tw-flex tw-items-center hover:tw-text-white tw-transition-colors",
+          'tw-ml-16 tw-flex tw-items-center hover:tw-text-white tw-transition-colors',
       });
       const liId = anchorTag.text;
       liTag.id = liId
-        .replace(/ /g, "-")
+        .replace(/ /g, '-')
         .toLowerCase()
-        .replace(/\//g, "")
-        .replace("--", "-");
-      anchorTag.className = "tw-inline-flex tw-items-center";
+        .replace(/\//g, '')
+        .replace('--', '-');
+      anchorTag.className = 'tw-inline-flex tw-items-center';
       // anchorTag.target = '_blank';
       if (picture) {
-        picture.className = "tw-mr-8";
+        picture.className = 'tw-mr-8';
         anchorTag.prepend(picture);
       }
       liTag.append(anchorTag);
       ulTag.append(liTag);
     } else {
-      const liTag = li({ class: "tw-ml-32" });
-      anchorTag.className =
-        "tw-text-mobBase md:tw-text-base tw-flex tw-items-center tw-whitespace-nowrap focus-visible:tw-outline focus-visible:tw-outline-2 focus-visible:tw-outline-offset-2 focus-visible:tw-outline-blue-700 tw-rounded tw-border tw-py-12 tw-px-16 md:tw-px-20 active:tw-bg-blue-900 tw-border-blue-700 tw-text-white tw-bg-gradient-to-r tw-bg-blue-700 tw-from-blue-800 tw-via-blue-800 tw-to-blue-800 tw-bg-bottom tw-bg-no-repeat tw-bg-[length:100%_0px] hover:tw-bg-[length:100%_100%] tw-transition-all tw-h-full tw-rounded-none lg:tw-px-32";
-      anchorTag.target = "_blank";
+      const liTag = li({ class: 'tw-ml-32' });
+      anchorTag.className = 'tw-text-mobBase md:tw-text-base tw-flex tw-items-center tw-whitespace-nowrap focus-visible:tw-outline focus-visible:tw-outline-2 focus-visible:tw-outline-offset-2 focus-visible:tw-outline-blue-700 tw-rounded tw-border tw-py-12 tw-px-16 md:tw-px-20 active:tw-bg-blue-900 tw-border-blue-700 tw-text-white tw-bg-gradient-to-r tw-bg-blue-700 tw-from-blue-800 tw-via-blue-800 tw-to-blue-800 tw-bg-bottom tw-bg-no-repeat tw-bg-[length:100%_0px] hover:tw-bg-[length:100%_100%] tw-transition-all tw-h-full tw-rounded-none lg:tw-px-32';
+      anchorTag.target = '_blank';
       const buttondiv = div(
-        { class: "tw-flex tw-items-center tw-justify-between" },
-        span(anchorTag.text)
+        { class: 'tw-flex tw-items-center tw-justify-between' },
+        span(anchorTag.text),
       );
-      anchorTag.text = "";
+      anchorTag.text = '';
       anchorTag.append(buttondiv);
       liTag.append(anchorTag);
       ulTag.append(liTag);
@@ -201,94 +201,94 @@ function handleBackToMenu() {
   const dataSubMenuContainer = this.dataset.submenuContainer;
   if (dataSubMenuContainer) {
     const dataSubMenuContainerDiv = document.querySelector(
-      `#${dataSubMenuContainer}`
+      `#${dataSubMenuContainer}`,
     );
     const dataSubMenuContainerLinks = document.querySelector(
-      `#${dataSubMenuContainer} .submenu-links`
+      `#${dataSubMenuContainer} .submenu-links`,
     );
     const dataSubMenuContainerContent = document.querySelector(
-      `#${dataSubMenuContainer} .submenu-content`
+      `#${dataSubMenuContainer} .submenu-content`,
     );
     const dataSubMenuContainerImages = document.querySelector(
-      `#${dataSubMenuContainer} .submenu-images`
+      `#${dataSubMenuContainer} .submenu-images`,
     );
-    const megaMenuWrapper = document.querySelector(".megamenu-wrapper");
-    const subMenu = document.querySelectorAll(".submenu-container");
+    const megaMenuWrapper = document.querySelector('.megamenu-wrapper');
+    const subMenu = document.querySelectorAll('.submenu-container');
 
     //
     //
     // back to main menu
     //
-    if (this.classList.contains("to-mainmenu")) {
+    if (this.classList.contains('to-mainmenu')) {
       // toggle mega menu
-      if (megaMenuWrapper && megaMenuWrapper.classList.contains("tw-hidden")) {
-        megaMenuWrapper.classList.toggle("tw-hidden");
+      if (megaMenuWrapper && megaMenuWrapper.classList.contains('tw-hidden')) {
+        megaMenuWrapper.classList.toggle('tw-hidden');
       }
 
       // toggle submenu
       if (subMenu) {
         subMenu.forEach((item) => {
-          item.classList.add("tw-hidden");
+          item.classList.add('tw-hidden');
         });
       }
 
-      this.classList.toggle("tw-hidden");
+      this.classList.toggle('tw-hidden');
 
       if (dataSubMenuContainerDiv) {
-        dataSubMenuContainerDiv.removeAttribute("style");
-        dataSubMenuContainerDiv.classList.add("tw-hidden");
+        dataSubMenuContainerDiv.removeAttribute('style');
+        dataSubMenuContainerDiv.classList.add('tw-hidden');
       }
       if (
-        dataSubMenuContainerLinks &&
-        dataSubMenuContainerLinks.classList.contains("tw-hidden")
+        dataSubMenuContainerLinks
+        && dataSubMenuContainerLinks.classList.contains('tw-hidden')
       ) {
-        dataSubMenuContainerLinks.classList.remove("tw-hidden");
+        dataSubMenuContainerLinks.classList.remove('tw-hidden');
       }
       if (
-        dataSubMenuContainerContent &&
-        dataSubMenuContainerContent.classList.contains("tw-hidden")
+        dataSubMenuContainerContent
+        && dataSubMenuContainerContent.classList.contains('tw-hidden')
       ) {
-        dataSubMenuContainerContent.classList.toggle("tw-hidden");
+        dataSubMenuContainerContent.classList.toggle('tw-hidden');
       }
       if (
-        dataSubMenuContainerImages &&
-        dataSubMenuContainerImages.classList.contains("tw-hidden")
+        dataSubMenuContainerImages
+        && dataSubMenuContainerImages.classList.contains('tw-hidden')
       ) {
-        dataSubMenuContainerImages.classList.toggle("tw-hidden");
+        dataSubMenuContainerImages.classList.toggle('tw-hidden');
       }
     }
 
     // back from submenu
-    if (this.classList.contains("to-submenu")) {
+    if (this.classList.contains('to-submenu')) {
       if (subMenu) {
         subMenu.forEach((item) => {
-          item.classList.add("tw-hidden");
-          item.removeAttribute("style");
+          item.classList.add('tw-hidden');
+          item.removeAttribute('style');
         });
       }
-      if (this.classList.contains("to-submenu")) {
-        this.classList.remove("to-submenu");
+      if (this.classList.contains('to-submenu')) {
+        this.classList.remove('to-submenu');
       }
-      this.classList.add("to-mainmenu");
+      this.classList.add('to-mainmenu');
 
       // checks for tw-hidden class
       if (
-        dataSubMenuContainerDiv &&
-        dataSubMenuContainerDiv.classList.contains("tw-hidden")
+        dataSubMenuContainerDiv
+        && dataSubMenuContainerDiv.classList.contains('tw-hidden')
       ) {
-        dataSubMenuContainerDiv.classList.toggle("tw-hidden");
+        dataSubMenuContainerDiv.classList.toggle('tw-hidden');
       }
       if (
-        dataSubMenuContainerLinks &&
-        dataSubMenuContainerLinks.classList.contains("tw-hidden")
+        dataSubMenuContainerLinks
+        && dataSubMenuContainerLinks.classList.contains('tw-hidden')
       ) {
-        dataSubMenuContainerLinks.classList.toggle("tw-hidden");
+        dataSubMenuContainerLinks.classList.toggle('tw-hidden');
       }
       if (dataSubMenuContainerContent) {
-        dataSubMenuContainerContent.classList.add("tw-hidden");
+        dataSubMenuContainerContent.classList.add('tw-hidden');
       }
       if (dataSubMenuContainerImages) {
-        dataSubMenuContainerImages.classList.add("tw-hidden");
+        dataSubMenuContainerImages.classList.add('tw-hidden');
       }
     } // to-submenu
   } // submenu dataset
@@ -304,13 +304,13 @@ function handleBackToMenu() {
      *
      *  */
 function showBackToMenuButton() {
-  const backToMenu = document.querySelector("#backToMenu");
+  const backToMenu = document.querySelector('#backToMenu');
   if (backToMenu) {
-    backToMenu.classList.remove("tw-hidden");
+    backToMenu.classList.remove('tw-hidden');
   }
-  const backToMenuWrapper = document.querySelector(".back-to-menu-button");
+  const backToMenuWrapper = document.querySelector('.back-to-menu-button');
   if (backToMenuWrapper) {
-    backToMenuWrapper.classList.remove("tw-hidden");
+    backToMenuWrapper.classList.remove('tw-hidden');
   }
 }
 
@@ -343,27 +343,24 @@ function createBackToMenuButton() {
   // add back to menu button
 
   // create main div
-  const backToMenuButtonDiv = document.createElement("div");
-  backToMenuButtonDiv.className =
-    "tw-bg-gray-100 back-to-menu-button tw-z-10 tw-hidden tw-relative  lg:hidden tw-text-blue-700 tw-text-mobBase ";
-  const backToMenuButtonDivContainer = document.createElement("div");
-  backToMenuButtonDivContainer.className = "tw-container";
+  const backToMenuButtonDiv = document.createElement('div');
+  backToMenuButtonDiv.className = 'tw-bg-gray-100 back-to-menu-button tw-z-10 tw-hidden tw-relative  lg:hidden tw-text-blue-700 tw-text-mobBase ';
+  const backToMenuButtonDivContainer = document.createElement('div');
+  backToMenuButtonDivContainer.className = 'tw-container';
 
   // add button icon
-  const backToMenuButtonIcon = document.createElement("span");
-  backToMenuButtonIcon.className = "tw-mr-12 tw-py-12";
-  backToMenuButtonIcon.innerHTML =
-    '<svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg" data-di-res-id="6410a14e-832a4f0e" data-di-rand="1739527915889"><path d="M7 13L1 7L7 0.999999" stroke="currentColor"></path></svg>';
-  const backToMenuButton = document.createElement("button");
+  const backToMenuButtonIcon = document.createElement('span');
+  backToMenuButtonIcon.className = 'tw-mr-12 tw-py-12';
+  backToMenuButtonIcon.innerHTML = '<svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg" data-di-res-id="6410a14e-832a4f0e" data-di-rand="1739527915889"><path d="M7 13L1 7L7 0.999999" stroke="currentColor"></path></svg>';
+  const backToMenuButton = document.createElement('button');
 
   // add button text
-  const backToMenuButtonText = document.createTextNode("Back");
-  backToMenuButton.id = "backToMenu";
-  backToMenuButton.className =
-    "tw-flex tw-items-center tw-font-bold tw-w-fit tw-hidden lg:hidden";
+  const backToMenuButtonText = document.createTextNode('Back');
+  backToMenuButton.id = 'backToMenu';
+  backToMenuButton.className = 'tw-flex tw-items-center tw-font-bold tw-w-fit tw-hidden lg:hidden';
 
   // add event listener to button
-  backToMenuButton.addEventListener("click", handleBackToMenu);
+  backToMenuButton.addEventListener('click', handleBackToMenu);
 
   backToMenuButton.appendChild(backToMenuButtonIcon);
   backToMenuButton.appendChild(backToMenuButtonText);
@@ -376,50 +373,47 @@ function createBackToMenuButton() {
 }
 
 function hideAllActiveDivs() {
-  const maninNavliList = document.querySelectorAll(".mainmenu-ul li");
+  const maninNavliList = document.querySelectorAll('.mainmenu-ul li');
   Array.from(maninNavliList).forEach((ele) => {
-    ele.classList.remove("menu-active");
+    ele.classList.remove('menu-active');
   });
-  const activediv = document.querySelector("div .secondnav-active");
+  const activediv = document.querySelector('div .secondnav-active');
   if (activediv) {
-    activediv.classList.remove("secondnav-active");
-    const liList = activediv.querySelectorAll("ul li");
+    activediv.classList.remove('secondnav-active');
+    const liList = activediv.querySelectorAll('ul li');
     Array.from(liList).forEach((elem) => {
       if (
-        elem.querySelector("a .submenu-active") &&
-        elem.querySelector("a .submenu-active") === "submenu-active"
+        elem.querySelector('a .submenu-active')
+        && elem.querySelector('a .submenu-active') === 'submenu-active'
       ) {
-        elem.querySelector("a").classList.remove("submenu-active");
+        elem.querySelector('a').classList.remove('submenu-active');
       }
     });
-    activediv.style.display = "none";
+    activediv.style.display = 'none';
   }
-  document.getElementById("menu-button").style.display = "none";
-  document.getElementById("menu-overlay").style.display = "none";
+  document.getElementById('menu-button').style.display = 'none';
+  document.getElementById('menu-overlay').style.display = 'none';
 }
 function createMegaMenuTopNav(section) {
-  const parentDiv = document.createElement("div");
-  parentDiv.className =
-    "tw-hidden megamenu-wrapper lg:tw-flex tw-w-full tw-bg-white tw-relative tw-z-[100]";
-  const container = document.createElement("div");
-  container.className = "tw-container ";
+  const parentDiv = document.createElement('div');
+  parentDiv.className = 'tw-hidden megamenu-wrapper lg:tw-flex tw-w-full tw-bg-white tw-relative tw-z-[100]';
+  const container = document.createElement('div');
+  container.className = 'tw-container ';
 
-  const border = document.createElement("div");
-  border.className = "tw-border-b  tw-flex tw-items-center desktop-links ";
+  const border = document.createElement('div');
+  border.className = 'tw-border-b  tw-flex tw-items-center desktop-links ';
 
-  const ulTag = document.createElement("ul");
-  ulTag.className =
-    "mainmenu-ul tw-list-none tw-inline-flex stretch-text tw-text-grey-900";
+  const ulTag = document.createElement('ul');
+  ulTag.className = 'mainmenu-ul tw-list-none tw-inline-flex stretch-text tw-text-grey-900';
 
-  const elements = section.querySelector("ul").children;
+  const elements = section.querySelector('ul').children;
   Array.from(elements).forEach((element) => {
-    element.className = "tw-py-20 tw-border-b-2 tw-border-white tw-ml-24";
+    element.className = 'tw-py-20 tw-border-b-2 tw-border-white tw-ml-24';
     element.id = element.firstChild.text
-      .replace(/ /g, "-")
-      .replace(/\//g, "")
-      .replace("--", "-");
-    element.firstChild.className =
-      "tw-flex tw-items-center tw-group hover:tw-text-blue-700 tw-transition-colors";
+      .replace(/ /g, '-')
+      .replace(/\//g, '')
+      .replace('--', '-');
+    element.firstChild.className = 'tw-flex tw-items-center tw-group hover:tw-text-blue-700 tw-transition-colors';
     const svg = canMobileActions()
       ? '<svg width="8" height="16" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg" data-di-rand="1739527915888"><path d="M0.5 9.5L5 5L0.500001 0.499999" stroke="currentColor"></path></svg>'
       : '<span class="tw-ml-6"><svg width="14" height="8" viewBox="0 0 14 8" fill="none"><path d="M13 1L7 7L1 0.999999" stroke="currentColor"></path></svg></span>';
@@ -434,151 +428,145 @@ function createMegaMenuTopNav(section) {
      *
      *  */
       if (canMobileActions()) {
-        const mainMenuLinkTextSpan = document.createElement("span");
+        const mainMenuLinkTextSpan = document.createElement('span');
         mainMenuLinkTextSpan.textContent = element.firstChild.text;
 
-        element.firstChild.innerHTML = "";
+        element.firstChild.innerHTML = '';
         element.firstChild.appendChild(mainMenuLinkTextSpan);
       }
 
-      element.firstChild.insertAdjacentHTML("beforeend", svg);
+      element.firstChild.insertAdjacentHTML('beforeend', svg);
     }
     ulTag.append(element);
 
-    element.addEventListener("click", (event) => {
+    element.addEventListener('click', (event) => {
       const menuId = event.currentTarget.id;
 
-      const overlayDiv = document.getElementById("menu-overlay");
-      const buttoniv = document.getElementById("menu-button");
+      const overlayDiv = document.getElementById('menu-overlay');
+      const buttoniv = document.getElementById('menu-button');
 
       if (menuLinks[menuId] && menuLinks[menuId].length > 0) {
         const firstLi = menuLinks[menuId][0].firstElementChild.text;
         if (firstLi) {
           const className = firstLi
             .trim()
-            .replace(/ /g, "-")
+            .replace(/ /g, '-')
             .toLowerCase()
-            .replace(/\//g, "")
-            .replace("--", "-");
+            .replace(/\//g, '')
+            .replace('--', '-');
           const myDiv = document.getElementById(`submenu-${className}`);
 
           // mobile actions
           if (canMobileActions() === true) {
             showBackToMenuButton();
 
-            const megaMenuWrapper = document.querySelector(".megamenu-wrapper");
-            const backToMenuButton = document.getElementById("backToMenu");
-            const toggleMobileMenu =
-              document.getElementById("toggleMobileMenu");
+            const megaMenuWrapper = document.querySelector('.megamenu-wrapper');
+            const backToMenuButton = document.getElementById('backToMenu');
+            const toggleMobileMenu = document.getElementById('toggleMobileMenu');
 
             if (myDiv) {
-              myDiv.classList.toggle("tw-hidden");
-              myDiv.removeAttribute("style");
+              myDiv.classList.toggle('tw-hidden');
+              myDiv.removeAttribute('style');
 
-              const subMenuElementsContent =
-                myDiv.querySelector(".submenu-content");
-              const subMenuElementsImages =
-                myDiv.querySelector(".submenu-images");
+              const subMenuElementsContent = myDiv.querySelector('.submenu-content');
+              const subMenuElementsImages = myDiv.querySelector('.submenu-images');
 
               if (megaMenuWrapper) {
-                if (megaMenuWrapper.classList.contains("tw-hidden")) {
-                  megaMenuWrapper.classList.toggle("tw-hidden");
+                if (megaMenuWrapper.classList.contains('tw-hidden')) {
+                  megaMenuWrapper.classList.toggle('tw-hidden');
                 } else {
-                  megaMenuWrapper.classList.add("tw-hidden");
+                  megaMenuWrapper.classList.add('tw-hidden');
                 }
               }
               if (backToMenuButton) {
-                backToMenuButton.classList.add("to-mainmenu");
+                backToMenuButton.classList.add('to-mainmenu');
                 backToMenuButton.dataset.submenuContainer = `submenu-${className}`;
               }
               if (subMenuElementsContent) {
-                subMenuElementsContent.classList.add("tw-hidden");
+                subMenuElementsContent.classList.add('tw-hidden');
               }
               if (subMenuElementsImages) {
-                subMenuElementsImages.classList.add("tw-hidden");
+                subMenuElementsImages.classList.add('tw-hidden');
               }
-            } else {
-              if (toggleMobileMenu) {
-                toggleMobileMenu.click();
-              }
+            } else if (toggleMobileMenu) {
+              toggleMobileMenu.click();
             }
-          } else if (myDiv && myDiv.style.display === "none") {
+          } else if (myDiv && myDiv.style.display === 'none') {
             hideAllActiveDivs();
             // showing current active div
-            event.currentTarget.classList.add("menu-active");
-            myDiv.querySelector("ul li a").classList.add("submenu-active");
-            myDiv.classList.add("secondnav-active");
-            myDiv.style.display = "";
+            event.currentTarget.classList.add('menu-active');
+            myDiv.querySelector('ul li a').classList.add('submenu-active');
+            myDiv.classList.add('secondnav-active');
+            myDiv.style.display = '';
             // showing ovelay and button
-            overlayDiv.style.display = "";
-            buttoniv.style.display = "";
+            overlayDiv.style.display = '';
+            buttoniv.style.display = '';
           } else {
             hideAllActiveDivs();
           }
         }
       } else {
         const myDiv = document.getElementById(
-          `submenu-${menuId.toLowerCase()}`
+          `submenu-${menuId.toLowerCase()}`,
         );
 
         // mobile actions
         if (canMobileActions() === true) {
-          const megaMenuWrapper = document.querySelector(".megamenu-wrapper");
-          const backToMenuButton = document.getElementById("backToMenu");
-          const subMenuElementsContent =
-            myDiv.querySelector(".submenu-content");
-          const subMenuElementsImages = myDiv.querySelector(".submenu-images");
+          const megaMenuWrapper = document.querySelector('.megamenu-wrapper');
+          const backToMenuButton = document.getElementById('backToMenu');
+          const subMenuElementsContent = myDiv.querySelector('.submenu-content');
+          const subMenuElementsImages = myDiv.querySelector('.submenu-images');
 
           if (megaMenuWrapper) {
-            if (megaMenuWrapper.classList.contains("tw-hidden")) {
-              megaMenuWrapper.classList.toggle("tw-hidden");
+            if (megaMenuWrapper.classList.contains('tw-hidden')) {
+              megaMenuWrapper.classList.toggle('tw-hidden');
             } else {
-              megaMenuWrapper.classList.add("tw-hidden");
+              megaMenuWrapper.classList.add('tw-hidden');
             }
           }
 
-          myDiv.removeAttribute("style");
+          myDiv.removeAttribute('style');
 
           showBackToMenuButton();
           if (backToMenuButton) {
-            backToMenuButton.classList.add("to-mainmenu");
+            backToMenuButton.classList.add('to-mainmenu');
             backToMenuButton.dataset.submenuContainer = `submenu-${menuId.toLowerCase()}`;
           }
 
-          myDiv.classList.remove("tw-hidden");
-          myDiv.removeAttribute("style");
-          const submenuContainer = myDiv.querySelector(".submenu-container");
+          myDiv.classList.remove('tw-hidden');
+          myDiv.removeAttribute('style');
+          const submenuContainer = myDiv.querySelector('.submenu-container');
           if (
-            submenuContainer &&
-            submenuContainer.classList.contains("tw-hidden")
+            submenuContainer
+            && submenuContainer.classList.contains('tw-hidden')
           ) {
-            submenuContainer.classList.remove("tw-hidden");
+            submenuContainer.classList.remove('tw-hidden');
           }
-          const subMenuElementsLinks = myDiv.querySelector(".submenu-links");
+          const subMenuElementsLinks = myDiv.querySelector('.submenu-links');
 
           if (subMenuElementsLinks) {
-            subMenuElementsLinks.classList.add("tw-hidden");
+            subMenuElementsLinks.classList.add('tw-hidden');
           }
           if (
-            subMenuElementsContent &&
-            subMenuElementsContent.classList.contains("tw-hidden")
+            subMenuElementsContent
+            && subMenuElementsContent.classList.contains('tw-hidden')
           ) {
-            subMenuElementsContent.classList.remove("tw-hidden");
+            subMenuElementsContent.classList.remove('tw-hidden');
           }
           if (
-            subMenuElementsImages &&
-            subMenuElementsImages.classList.contains("tw-hidden")
+            subMenuElementsImages
+            && subMenuElementsImages.classList.contains('tw-hidden')
           ) {
-            subMenuElementsImages.classList.remove("tw-hidden");
+            subMenuElementsImages.classList.remove('tw-hidden');
           }
-        } else if (myDiv && myDiv.style.display === "none") {
+        } else if (myDiv && myDiv.style.display === 'none') {
           hideAllActiveDivs();
-          event.currentTarget.classList.add("menu-active");
-          myDiv.classList.add("secondnav-active");
-          myDiv.style.display = "";
+          event.currentTarget.classList.add('menu-active');
+          myDiv.classList.add('secondnav-active');
+          myDiv.style.display = '';
           // showing ovelay and button
-          overlayDiv.style.display = "";
-          buttoniv.style.display = "";
+          overlayDiv.style.display = '';
+          buttoniv.style.display = '';
         } else {
           hideAllActiveDivs();
         }
@@ -594,16 +582,16 @@ function createMegaMenuTopNav(section) {
 
 function createMegaMenuSubNav(child) {
   // Select all section headings (e.g., "Products", "Applications", etc.)
-  const sections = child.querySelectorAll("p");
+  const sections = child.querySelectorAll('p');
   sections.forEach((section) => {
     const sectionTitle = section.textContent
       .trim()
-      .replace(/ /g, "-")
-      .replace(/\//g, "")
-      .replace("--", "-");
+      .replace(/ /g, '-')
+      .replace(/\//g, '')
+      .replace('--', '-');
     const list = section.nextElementSibling;
     const subMenuLinks = [];
-    list.querySelectorAll("ul > li").forEach((childMenuItem) => {
+    list.querySelectorAll('ul > li').forEach((childMenuItem) => {
       subMenuLinks.push(childMenuItem);
     });
     menuLinks[sectionTitle] = subMenuLinks;
@@ -612,70 +600,69 @@ function createMegaMenuSubNav(child) {
 
 function createSubMenuItems(section, containerDiv, firstpartdiv) {
   const sectionTitle = section.textContent.trim();
-  if (sectionTitle.includes("|")) {
-    const nameArray = sectionTitle.split("|");
+  if (sectionTitle.includes('|')) {
+    const nameArray = sectionTitle.split('|');
     const productTitle = nameArray[0]
       .trim()
-      .replace(/ /g, "-")
-      .replace(/\//g, "")
-      .replace("--", "-");
+      .replace(/ /g, '-')
+      .replace(/\//g, '')
+      .replace('--', '-');
     const subNavClass = nameArray[1]
       .trim()
-      .replace(/ /g, "-")
+      .replace(/ /g, '-')
       .toLowerCase()
-      .replace(/\//g, "")
-      .replace("--", "-");
+      .replace(/\//g, '')
+      .replace('--', '-');
     const secondLevelList = menuLinks[productTitle];
     // First part preparation
-    const ulTag = document.createElement("ul");
-    const anchorTag = document.createElement("a");
+    const ulTag = document.createElement('ul');
+    const anchorTag = document.createElement('a');
     ulTag.className = `${subNavClass}-ul`;
     containerDiv.id = `submenu-${subNavClass}`;
     if (secondLevelList) {
       Array.from(secondLevelList).forEach((element) => {
-        const liEle = document.createElement("li");
+        const liEle = document.createElement('li');
         if (element.firstChild) {
           const litext = element.firstChild.text;
-          if (litext.includes("#view-all#")) {
+          if (litext.includes('#view-all#')) {
             anchorTag.href = element.firstChild.href;
-            anchorTag.className =
-              "tw-mt-32 tw-transition tw-duration-300 tw-group tw-flex tw-font-bold tw-items-center tw-text-blue-700 hover:tw-text-blue-800";
+            anchorTag.className = 'tw-mt-32 submenu-viewall tw-transition tw-duration-300 tw-group tw-flex tw-font-bold tw-items-center tw-text-blue-700 hover:tw-text-blue-800';
             const anchDiv = div({
               class:
-                "tw-text-mobBase md:tw-text-base tw-relative tw-overflow-hidden tw-pb-2",
+                'tw-text-mobBase md:tw-text-base tw-relative tw-overflow-hidden tw-pb-2',
             });
-            const textArray = litext.split("#");
+            const textArray = litext.split('#');
             const lastValue = textArray[textArray.length - 1];
             anchDiv.textContent = lastValue;
             const spanTag = span({
               class:
-                "ttw-absolute tw-left-0 tw-bottom-0 tw-block tw-w-full group-hover:tw-left-[100%] tw-transition-all tw-duration-500 tw-h-1 tw-bg-blue-700 hover:tw-bg-blue-800 ",
+                'ttw-absolute tw-left-0 tw-bottom-0 tw-block tw-w-full group-hover:tw-left-[100%] tw-transition-all tw-duration-500 tw-h-1 tw-bg-blue-700 hover:tw-bg-blue-800 ',
             });
             anchDiv.appendChild(spanTag);
             const arrowSvg = span({
               class:
-                "icon icon-arrow tw-transition-all tw-duration-500 tw-block tw-ml-8 tw-mb-4 group-hover:tw-ml-12",
+                'icon icon-arrow tw-transition-all tw-duration-500 tw-block tw-ml-8 tw-mb-4 group-hover:tw-ml-12',
             });
             anchorTag.append(anchDiv);
             anchorTag.appendChild(arrowSvg);
           } else {
             const liClass = litext
               .trim()
-              .replace(/ /g, "-")
+              .replace(/ /g, '-')
               .toLowerCase()
-              .replace(/\//g, "")
-              .replace("--", "-");
+              .replace(/\//g, '')
+              .replace('--', '-');
             liEle.className = liClass;
             liEle.append(
               a(
                 {
                   class:
-                    "tw-relative submenu tw-font-light tw-text-lg tw-text-grey-900 tw-flex tw-items-center tw-justify-between tw-w-full tw-group hover:tw-text-blue-700 tw-transition-all tw-duration-200",
+                    'tw-relative submenu tw-font-light tw-text-lg tw-text-grey-900 tw-flex tw-items-center tw-justify-between tw-w-full tw-group hover:tw-text-blue-700 tw-transition-all tw-duration-200',
                   title: subNavClass,
-                  href: "#",
+                  href: '#',
                 },
-                span({ class: "tw-mr-3" }, `${element.firstChild.text}`)
-              )
+                span({ class: 'tw-mr-3' }, `${element.firstChild.text}`),
+              ),
             );
             /** *****
              *
@@ -686,85 +673,80 @@ function createSubMenuItems(section, containerDiv, firstpartdiv) {
               */
             const subMenuSvg = canMobileActions()
               ? '<svg width="8" height="16" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg" data-di-rand="1739527915888"><path d="M0.5 9.5L5 5L0.500001 0.499999" stroke="currentColor"></path></svg>'
-              : "";
-            liEle.querySelectorAll("a").forEach((item) => {
-              item.insertAdjacentHTML("beforeend", subMenuSvg);
+              : '';
+            liEle.querySelectorAll('a').forEach((item) => {
+              item.insertAdjacentHTML('beforeend', subMenuSvg);
             });
 
             ulTag.append(liEle);
           }
         }
-        liEle.addEventListener("click", (event) => {
+        liEle.addEventListener('click', (event) => {
           const liClassName = event.currentTarget.className;
           const myDiv = document.getElementById(`submenu-${liClassName}`);
-          const toggleMobileMenu = document.getElementById("toggleMobileMenu");
+          const toggleMobileMenu = document.getElementById('toggleMobileMenu');
 
           // mobile actions
           if (canMobileActions() === true) {
             if (myDiv) {
-              myDiv.classList.toggle("tw-hidden");
-              myDiv.style.display = "flex";
+              myDiv.classList.toggle('tw-hidden');
+              myDiv.style.display = 'flex';
 
-              const subMenu = document.querySelectorAll(".submenu-container");
+              const subMenu = document.querySelectorAll('.submenu-container');
               if (subMenu) {
                 subMenu.forEach((item) => {
-                  item.classList.add("tw-hidden");
+                  item.classList.add('tw-hidden');
                 });
               }
 
-              const backToMenuButton = document.getElementById("backToMenu");
+              const backToMenuButton = document.getElementById('backToMenu');
               if (
-                backToMenuButton &&
-                backToMenuButton.classList.contains("to-mainmenu")
+                backToMenuButton
+                && backToMenuButton.classList.contains('to-mainmenu')
               ) {
-                backToMenuButton.classList.remove("to-mainmenu");
-                backToMenuButton.classList.add("to-submenu");
+                backToMenuButton.classList.remove('to-mainmenu');
+                backToMenuButton.classList.add('to-submenu');
                 backToMenuButton.dataset.submenuContainer = `submenu-${liClassName}`;
               }
-              const subMenuElementsLinks =
-                myDiv.querySelector(".submenu-links");
-              const subMenuElementsContent =
-                myDiv.querySelector(".submenu-content");
-              const subMenuElementsImages =
-                myDiv.querySelector(".submenu-images");
+              const subMenuElementsLinks = myDiv.querySelector('.submenu-links');
+              const subMenuElementsContent = myDiv.querySelector('.submenu-content');
+              const subMenuElementsImages = myDiv.querySelector('.submenu-images');
 
               if (subMenuElementsLinks) {
-                subMenuElementsLinks.classList.add("tw-hidden");
+                subMenuElementsLinks.classList.add('tw-hidden');
               }
               if (
-                subMenuElementsContent &&
-                subMenuElementsContent.classList.contains("tw-hidden")
+                subMenuElementsContent
+                && subMenuElementsContent.classList.contains('tw-hidden')
               ) {
-                subMenuElementsContent.classList.remove("tw-hidden");
+                subMenuElementsContent.classList.remove('tw-hidden');
               }
               if (
-                subMenuElementsImages &&
-                subMenuElementsImages.classList.contains("tw-hidden")
+                subMenuElementsImages
+                && subMenuElementsImages.classList.contains('tw-hidden')
               ) {
-                subMenuElementsImages.classList.remove("tw-hidden");
+                subMenuElementsImages.classList.remove('tw-hidden');
               }
-            } else {
-              if (toggleMobileMenu) {
-                toggleMobileMenu.click();
-              }
+            } else if (toggleMobileMenu) {
+              toggleMobileMenu.click();
             }
-          } else if (myDiv && myDiv.style.display === "none") {
+          } else if (myDiv && myDiv.style.display === 'none') {
             // hiding current div
-            const activediv = document.querySelector("div .secondnav-active");
+            const activediv = document.querySelector('div .secondnav-active');
             activediv
-              .querySelector("ul li a")
-              .classList.remove("submenu-active");
-            activediv.classList.remove("secondnav-active");
-            activediv.style.display = "none";
+              .querySelector('ul li a')
+              .classList.remove('submenu-active');
+            activediv.classList.remove('secondnav-active');
+            activediv.style.display = 'none';
             // showing selected div
-            const liList = myDiv.querySelectorAll("ul li");
+            const liList = myDiv.querySelectorAll('ul li');
             Array.from(liList).forEach((ele) => {
               if (ele.className === liClassName) {
-                ele.querySelector("a").classList.add("submenu-active");
+                ele.querySelector('a').classList.add('submenu-active');
               }
             });
-            myDiv.classList.add("secondnav-active");
-            myDiv.style.display = "";
+            myDiv.classList.add('secondnav-active');
+            myDiv.style.display = '';
           } else {
             hideAllActiveDivs();
           }
@@ -778,25 +760,24 @@ function createSubMenuItems(section, containerDiv, firstpartdiv) {
 
 function createViewallTag(list, viewAllTag) {
   Array.from(list).forEach((element) => {
-    if (element.textContent.includes("#view-all#")) {
+    if (element.textContent.includes('#view-all#')) {
       viewAllTag.href = element.href;
-      viewAllTag.className =
-        "tw-mt-32 tw-transition tw-duration-300 tw-group tw-flex tw-font-bold tw-items-center tw-text-blue-700 hover:tw-text-blue-800";
+      viewAllTag.className = 'tw-mt-32 tw-transition submenu-viewall tw-duration-300 tw-group tw-flex tw-font-bold tw-items-center tw-text-blue-700 hover:tw-text-blue-800';
       const anchDiv = div({
         class:
-          "tw-text-mobBase md:tw-text-base tw-relative tw-overflow-hidden tw-pb-2",
+          'tw-text-mobBase md:tw-text-base tw-relative tw-overflow-hidden tw-pb-2',
       });
-      const textArray = element.textContent.split("#");
+      const textArray = element.textContent.split('#');
       const lastValue = textArray[textArray.length - 1];
       anchDiv.textContent = lastValue;
       const spanTag = span({
         class:
-          "ttw-absolute tw-left-0 tw-bottom-0 tw-block tw-w-full group-hover:tw-left-[100%] tw-transition-all tw-duration-500 tw-h-1 tw-bg-blue-700 hover:tw-bg-blue-800 ",
+          'ttw-absolute tw-left-0 tw-bottom-0 tw-block tw-w-full group-hover:tw-left-[100%] tw-transition-all tw-duration-500 tw-h-1 tw-bg-blue-700 hover:tw-bg-blue-800 ',
       });
       anchDiv.appendChild(spanTag);
       const arrowSvg = span({
         class:
-          "icon icon-arrow tw-transition-all tw-duration-500 tw-block tw-ml-8 tw-mb-4 group-hover:tw-ml-12",
+          'icon icon-arrow tw-transition-all tw-duration-500 tw-block tw-ml-8 tw-mb-4 group-hover:tw-ml-12',
       });
       viewAllTag.append(anchDiv);
       viewAllTag.appendChild(arrowSvg);
@@ -806,105 +787,103 @@ function createViewallTag(list, viewAllTag) {
 
 function createMegaMenuThirdLevel(child) {
   const parentDiv = div({
-    class: "tw-w-full tw-bg-white tw-relative tw-z-[100]",
+    class: 'tw-w-full tw-bg-white tw-relative tw-z-[100]',
   });
-  const containerDiv = document.createElement("div");
-  containerDiv.className =
-    "submenu-container tw-hidden lg:tw-flex tw-container tw-pt-32 tw-pb-40 tw-columns-12";
-  containerDiv.style.display = "none";
-  const sections = child.querySelectorAll("p");
-  const isImages = child.querySelectorAll("img");
+  const containerDiv = document.createElement('div');
+  containerDiv.className = 'submenu-container tw-hidden lg:tw-flex tw-container tw-pt-32 tw-pb-40 tw-columns-12';
+  containerDiv.style.display = 'none';
+  const sections = child.querySelectorAll('p');
+  const isImages = child.querySelectorAll('img');
   let isSubItems = true;
-  if (sections.length > 0 && !sections[0].textContent.includes("|")) {
+  if (sections.length > 0 && !sections[0].textContent.includes('|')) {
     isSubItems = false;
   }
 
   // First part preparation
   const firstpartdiv = div({
-    class: "tw-w-3/12 submenu-links tw-border-r tw-relative tw-pr-24",
+    class: 'tw-w-3/12 submenu-links tw-border-r tw-relative tw-pr-24',
   });
 
   const secondPartdiv = div({
-    class: "tw-w-6/12 submenu-content tw-px-32 tw-pr-40 tw-border-r",
+    class: 'tw-w-6/12 submenu-content tw-px-32 tw-pr-40 tw-border-r',
   });
-  const wrapdiv = div({ class: "tw-flex tw-flex-wrap tw-h-fit" });
-  const viewAllTag = document.createElement("a");
+  const wrapdiv = div({ class: 'tw-flex tw-flex-wrap tw-h-fit' });
+  const viewAllTag = document.createElement('a');
 
-  const thirdPartdiv = div({ class: "tw-w-3/12 tw-pl-32 submenu-images" });
+  const thirdPartdiv = div({ class: 'tw-w-3/12 tw-pl-32 submenu-images' });
   if (sections.length > 0 && isImages.length > 0) {
     sections.forEach((section, index) => {
       if (index === 0) {
         createSubMenuItems(section, containerDiv, firstpartdiv);
       } else {
-        const list = section.querySelectorAll("a");
-        if (list.length > 0 && section.querySelector("strong")) {
-          const listDiv = div({ class: "lg:tw-w-full xl:tw-w-1/2 tw-pr-48 " });
+        const list = section.querySelectorAll('a');
+        if (list.length > 0 && section.querySelector('strong')) {
+          const listDiv = div({ class: 'lg:tw-w-full xl:tw-w-1/2 tw-pr-48 ' });
           if (canMobileActions() === true) {
             if (index > 1) {
-              listDiv.classList.add("tw-mt-24");
+              listDiv.classList.add('tw-mt-24');
             }
           } else if (index > 2) {
-            listDiv.classList.add("tw-mt-24");
+            listDiv.classList.add('tw-mt-24');
           }
           Array.from(list).forEach((element, ind) => {
-            element.className = "tw-group";
+            element.className = 'tw-group';
             const spanTag = span(
               {
                 class:
-                  "tw-text-mobBase md:tw-text-base tw-text-grey-500 tw-flex tw-items-center group-hover:tw-text-blue-700 tw-transition-all tw-duration-200 ",
+                  'tw-text-mobBase md:tw-text-base tw-text-grey-500 tw-flex tw-items-center group-hover:tw-text-blue-700 tw-transition-all tw-duration-200 ',
               },
-              element.text
+              element.text,
             );
             if (ind === 0) {
-              spanTag.classList.add("tw-font-bold");
-              spanTag.classList.replace("tw-text-grey-500", "tw-text-grey-900");
+              spanTag.classList.add('tw-font-bold');
+              spanTag.classList.replace('tw-text-grey-500', 'tw-text-grey-900');
             }
-            element.text = "";
+            element.text = '';
             element.append(spanTag);
             const chevronRight = span({
               class:
-                "icon icon-chevron-right tw-ml-8 tw-duration-500 group-hover:tw-pl-2",
+                'icon icon-chevron-right tw-ml-8 tw-duration-500 group-hover:tw-pl-2',
             });
             spanTag.append(chevronRight);
             listDiv.append(element);
           });
           wrapdiv.append(listDiv);
         } else {
-          const img = section.querySelector("img");
-          const listDiv = div({ class: "" });
+          const img = section.querySelector('img');
+          const listDiv = div({ class: '' });
           if (img != null) {
             const picDiv = div({
-              class: "tw-relative tw-overflow-hidden tw-pt-[56.25%]",
+              class: 'tw-relative tw-overflow-hidden tw-pt-[56.25%]',
             });
-            img.className =
-              "tw-transition-all tw-duration-500 tw-absolute tw-inset-0 tw-top-0 tw-left-0 tw-w-full tw-h-full tw-object-cover hover:tw-scale-[1.05]";
+            img.className = 'tw-transition-all tw-duration-500 tw-absolute tw-inset-0 tw-top-0 tw-left-0 tw-w-full tw-h-full tw-object-cover hover:tw-scale-[1.05]';
             picDiv.append(img);
             listDiv.append(picDiv);
             thirdPartdiv.append(listDiv);
           }
-          if (section.previousElementSibling.querySelector("picture")) {
-            const anchTag = section.querySelector("a");
+          if (section.previousElementSibling.querySelector('picture')) {
+            const anchTag = section.querySelector('a');
             if (anchTag) {
               const spanTag = span(
                 {
                   class:
-                    "tw-block tw-pt-16 tw-text-grey-900 tw-font-bold tw-flex tw-items-center group-hover:tw-text-blue-700 tw-transition-colors",
+                    'tw-block tw-pt-16 tw-text-grey-900 tw-font-bold tw-flex tw-items-center group-hover:tw-text-blue-700 tw-transition-colors',
                 },
-                anchTag.text
+                anchTag.text,
               );
               const chevronRight = span({
                 class:
-                  "icon icon-chevron-right tw-ml-8 tw-duration-500 group-hover:tw-pl-2",
+                  'icon icon-chevron-right tw-ml-8 tw-duration-500 group-hover:tw-pl-2',
               });
               spanTag.append(chevronRight);
-              anchTag.text = "";
+              anchTag.text = '';
               anchTag.append(spanTag);
               const pTag = section.nextElementSibling;
-              pTag.className = "tw-mt-2 tw-text-grey-500 tw-text-sm tw-mb-0";
+              pTag.className = 'tw-mt-2 tw-text-grey-500 tw-text-sm tw-mb-0';
               anchTag.append(pTag);
               listDiv.append(anchTag);
               thirdPartdiv.append(listDiv);
-              thirdPartdiv.append(document.createElement("br"));
+              thirdPartdiv.append(document.createElement('br'));
             }
           } else {
             createViewallTag(list, viewAllTag);
@@ -913,40 +892,40 @@ function createMegaMenuThirdLevel(child) {
       }
     });
   } else if (sections.length > 0 && isSubItems) {
-    secondPartdiv.className = "tw-w-9/12 submenu-content tw-px-32 tw-pr-40";
-    wrapdiv.className = "tw-flex tw-flex-wrap tw-h-fit";
+    secondPartdiv.className = 'tw-w-9/12 submenu-content tw-px-32 tw-pr-40';
+    wrapdiv.className = 'tw-flex tw-flex-wrap tw-h-fit';
     sections.forEach((section, index) => {
       if (index === 0) {
         createSubMenuItems(section, containerDiv, firstpartdiv);
       } else {
-        const list = section.querySelectorAll("a");
-        if (list.length > 0 && section.querySelector("strong")) {
-          const listDiv = div({ class: "tw-w-1/2 xl:tw-w-1/3 tw-pr-48 " });
+        const list = section.querySelectorAll('a');
+        if (list.length > 0 && section.querySelector('strong')) {
+          const listDiv = div({ class: 'tw-w-1/2 xl:tw-w-1/3 tw-pr-48 ' });
           if (canMobileActions() === true) {
             if (index > 1) {
-              listDiv.classList.add("tw-mt-24");
+              listDiv.classList.add('tw-mt-24');
             }
           } else if (index > 3) {
-            listDiv.classList.add("tw-mt-24");
+            listDiv.classList.add('tw-mt-24');
           }
           Array.from(list).forEach((element, ind) => {
-            element.className = "tw-group";
+            element.className = 'tw-group';
             const spanTag = span(
               {
                 class:
-                  "tw-text-mobBase md:tw-text-base tw-text-grey-500 tw-flex tw-items-center group-hover:tw-text-blue-700 tw-transition-all tw-duration-200 ",
+                  'tw-text-mobBase md:tw-text-base tw-text-grey-500 tw-flex tw-items-center group-hover:tw-text-blue-700 tw-transition-all tw-duration-200 ',
               },
-              element.text
+              element.text,
             );
             if (ind === 0) {
-              spanTag.classList.add("tw-font-bold");
-              spanTag.classList.replace("tw-text-grey-500", "tw-text-grey-900");
+              spanTag.classList.add('tw-font-bold');
+              spanTag.classList.replace('tw-text-grey-500', 'tw-text-grey-900');
             }
-            element.text = "";
+            element.text = '';
             element.append(spanTag);
             const chevronRight = span({
               class:
-                "icon icon-chevron-right tw-ml-8 tw-duration-500 group-hover:tw-pl-2",
+                'icon icon-chevron-right tw-ml-8 tw-duration-500 group-hover:tw-pl-2',
             });
             spanTag.append(chevronRight);
             listDiv.append(element);
@@ -958,76 +937,74 @@ function createMegaMenuThirdLevel(child) {
       }
     });
   } else if (sections.length > 0) {
-    parentDiv.className = "tw-w-full  tw-bg-white tw-relative tw-z-[100] ";
-    parentDiv.style.display = "none";
-    containerDiv.style.display = "";
-    containerDiv.className =
-      "tw-hidden submenu-container tw-container lg:tw-flex  tw-columns-12 tw-pt-32 tw-pb-40";
-    wrapdiv.className =
-      "tw-w-full submenu-content tw-pr-40 tw-flex tw-flex-wrap";
-    secondPartdiv.className = "tw-flex tw-flex-wrap tw-h-fit";
+    parentDiv.className = 'tw-w-full  tw-bg-white tw-relative tw-z-[100] ';
+    parentDiv.style.display = 'none';
+    containerDiv.style.display = '';
+    containerDiv.className = 'tw-hidden submenu-container tw-container lg:tw-flex  tw-columns-12 tw-pt-32 tw-pb-40';
+    wrapdiv.className = 'tw-w-full submenu-content tw-pr-40 tw-flex tw-flex-wrap';
+    secondPartdiv.className = 'tw-flex tw-flex-wrap tw-h-fit';
     sections.forEach((section, index) => {
       if (index === 0) {
         const sectionTitle = section.textContent.trim().toLowerCase();
         parentDiv.id = `submenu-${sectionTitle}`;
       } else {
-        const list = section.querySelectorAll("a");
-        const listDiv = div({ class: "tw-w-1/4 tw-pr-48 " });
+        const list = section.querySelectorAll('a');
+        const listDiv = div({ class: 'tw-w-1/4 tw-pr-48 ' });
         if (canMobileActions() === true) {
           if (index > 1) {
-            listDiv.classList.add("tw-mt-24");
+            listDiv.classList.add('tw-mt-24');
           }
         } else if (index > 4) {
-          listDiv.classList.add("tw-mt-24");
+          listDiv.classList.add('tw-mt-24');
         }
-        if (list.length === 1 && !list[0].innerText.includes("#view-all#")) {
+        if (list.length === 1 && !list[0].innerText.includes('#view-all#')) {
           const anchorTag = list[0];
-          anchorTag.className = "tw-group";
+          anchorTag.className = 'tw-group';
           const spanTag = span(
             {
               class:
-                "tw-font-bold tw-text-mobBase md:tw-text-base tw-text-grey-900 tw-flex tw-items-center group-hover:tw-text-blue-700 tw-transition-all tw-duration-200 ",
+                'tw-font-bold tw-text-mobBase md:tw-text-base tw-text-grey-900 tw-flex tw-items-center group-hover:tw-text-blue-700 tw-transition-all tw-duration-200 ',
             },
-            anchorTag.text
+            anchorTag.text,
           );
-          anchorTag.text = "";
+          anchorTag.text = '';
           anchorTag.append(spanTag);
           const chevronRight = span({
             class:
-              "icon icon-chevron-right tw-ml-8 tw-duration-500 group-hover:tw-pl-2",
+              'icon icon-chevron-right tw-ml-8 tw-duration-500 group-hover:tw-pl-2',
           });
           spanTag.append(chevronRight);
           const { childNodes } = section;
-          let decription = "";
+          let decription = '';
           childNodes.forEach((element) => {
-            if (element.nodeName === "#text") decription = element.nodeValue;
+            if (element.nodeName === '#text') decription = element.nodeValue;
           });
           const ptag = p(
-            { class: "tw-text-grey-500 tw-text-sm tw-mt-2 tw-mb-0" },
-            decription
+            { class: 'tw-text-grey-500 tw-text-sm tw-mt-2 tw-mb-0' },
+            decription,
           );
           anchorTag.appendChild(ptag);
           listDiv.append(anchorTag);
           wrapdiv.append(listDiv);
-        } else if (list.length > 0 && section.querySelector("strong")) {
+        } else if (list.length > 0 && section.querySelector('strong')) {
           Array.from(list).forEach((element, ind) => {
-            element.className = "tw-group";
+            element.className = 'tw-group';
             const spanTag = span(
               {
                 class:
-                  "tw-text-mobBase md:tw-text-base tw-text-grey-500 tw-flex tw-items-center group-hover:tw-text-blue-700 tw-transition-all tw-duration-200 ",
+                  'tw-text-mobBase md:tw-text-base tw-text-grey-500 tw-flex tw-items-center group-hover:tw-text-blue-700 tw-transition-all tw-duration-200 ',
               },
-              element.text
+              element.text,
             );
             if (ind === 0) {
-              spanTag.classList.add("tw-font-bold");
-              spanTag.classList.replace("tw-text-grey-500", "tw-text-grey-900");
+              spanTag.classList.add('tw-font-bold');
+              spanTag.classList.replace('tw-text-grey-500', 'tw-text-grey-900');
             }
-            element.text = "";
+            element.text = '';
             element.append(spanTag);
             const chevronRight = span({
               class:
-                "icon icon-chevron-right tw-ml-8 tw-duration-500 group-hover:tw-pl-2",
+                'icon icon-chevron-right tw-ml-8 tw-duration-500 group-hover:tw-pl-2',
             });
             spanTag.append(chevronRight);
             listDiv.append(element);
@@ -1055,26 +1032,25 @@ function createMegaMenuThirdLevel(child) {
 function createOverlay(nav) {
   const overlayDiv = div({
     class:
-      "tw-hidden lg:tw-block tw-fixed tw-inset-0 tw-bg-black tw-opacity-60 tw-z-50",
+      'tw-hidden lg:tw-block tw-fixed tw-inset-0 tw-bg-black tw-opacity-60 tw-z-50',
   });
-  overlayDiv.id = "menu-overlay";
-  overlayDiv.style.display = "none";
-  const buttondiv = document.createElement("button");
-  buttondiv.className =
-    "tw-hidden lg:tw-block tw-flex tw-w-32 tw-h-32 tw-rounded-full tw-mx-auto tw-bg-gray-900/30 hover:tw-bg-gray-900/40 tw-transition tw-relative tw-z-[100] tw-mt-24 tw-cursor-pointer";
-  buttondiv.id = "menu-button";
+  overlayDiv.id = 'menu-overlay';
+  overlayDiv.style.display = 'none';
+  const buttondiv = document.createElement('button');
+  buttondiv.className = 'tw-hidden lg:tw-block tw-flex tw-w-32 tw-h-32 tw-rounded-full tw-mx-auto tw-bg-gray-900/30 hover:tw-bg-gray-900/40 tw-transition tw-relative tw-z-[100] tw-mt-24 tw-cursor-pointer';
+  buttondiv.id = 'menu-button';
   const chevronUp = span({
     class:
-      "icon icon-chevron-up tw-flex tw-items-center tw-justify-center tw-w-full tw-h-full",
+      'icon icon-chevron-up tw-flex tw-items-center tw-justify-center tw-w-full tw-h-full',
   });
   buttondiv.append(chevronUp);
-  buttondiv.style.display = "none";
+  buttondiv.style.display = 'none';
   nav.appendChild(buttondiv);
   nav.appendChild(overlayDiv);
-  overlayDiv.addEventListener("click", () => {
+  overlayDiv.addEventListener('click', () => {
     hideAllActiveDivs();
   });
-  buttondiv.addEventListener("click", () => {
+  buttondiv.addEventListener('click', () => {
     hideAllActiveDivs();
   });
 }
@@ -1083,10 +1059,10 @@ function createOverlay(nav) {
  * Processes and appends the sections to the header block
  */
 function processHtml(block, main) {
-  const parentDiv = div({ class: "tw" });
-  const nav = document.createElement("nav");
-  nav.id = "mega-menu";
-  nav.className = "tw tw-z-99";
+  const parentDiv = div({ class: 'tw' });
+  const nav = document.createElement('nav');
+  nav.id = 'mega-menu';
+  nav.className = 'tw tw-z-99';
   const sections = main.children;
   Array.from(sections).forEach((section, index, array) => {
     const iteration = index + 1;
@@ -1096,7 +1072,7 @@ function processHtml(block, main) {
       nav.append(createMegaMenuTopNav(section));
       if (nav) {
         //  adding back to menu button
-        const megaMenuWrapper = nav.querySelector(".megamenu-wrapper");
+        const megaMenuWrapper = nav.querySelector('.megamenu-wrapper');
         if (megaMenuWrapper) {
           nav.insertBefore(createBackToMenuButton(nav), megaMenuWrapper);
         }
@@ -1120,25 +1096,25 @@ function processHtml(block, main) {
  */
 export default async function decorate(block) {
   // load nav as fragment
-  const resp = await fetch("/nav.plain.html");
+  const resp = await fetch('/nav.plain.html');
 
   if (resp.ok) {
     const html = await resp.text();
-    const main = document.createElement("main");
+    const main = document.createElement('main');
     main.innerHTML = html;
     processHtml(block, main);
   }
   decorateIcons(block);
 
-  document.getElementById("logout").addEventListener("click", () => {
+  document.getElementById('logout').addEventListener('click', () => {
     const redirectUrl = encodeURIComponent(window.location.href);
-    fetch("/bin/sciex/logout")
+    fetch('/bin/sciex/logout')
       .then((response) => {
-        console.log("Logout successful");
+        console.log('Logout successful');
         return response;
       })
       .catch((error) => {
-        console.error("Logout failed:", error);
+        console.error('Logout failed:', error);
       })
       .finally(() => {
         document.location = `https://sso.sciex.cloud/auth/realms/sciex/protocol/openid-connect/logout?redirect_uri=${redirectUrl}`;
@@ -1147,11 +1123,11 @@ export default async function decorate(block) {
 
   async function getUserDetails() {
     try {
-      const response = await fetch("/bin/sciex/currentuserdetails", {
-        method: "GET",
-        credentials: "include",
+      const response = await fetch('/bin/sciex/currentuserdetails', {
+        method: 'GET',
+        credentials: 'include',
         headers: {
-          Accept: "application/json",
+          Accept: 'application/json',
         },
       });
       if (!response.ok) {
@@ -1166,14 +1142,14 @@ export default async function decorate(block) {
   // Conditionally shwoing the login/logout links
   const userData = await getUserDetails();
   if (userData && userData.loggedIn) {
-    document.getElementById("view-profile").style.display = "";
-    document.getElementById("logout").style.display = "";
-    document.getElementById("register").style.display = "none";
-    document.getElementById("login").style.display = "none";
+    document.getElementById('view-profile').style.display = '';
+    document.getElementById('logout').style.display = '';
+    document.getElementById('register').style.display = 'none';
+    document.getElementById('login').style.display = 'none';
   } else {
-    document.getElementById("view-profile").style.display = "none";
-    document.getElementById("logout").style.display = "none";
-    document.getElementById("register").style.display = "";
-    document.getElementById("login").style.display = "";
+    document.getElementById('view-profile').style.display = 'none';
+    document.getElementById('logout').style.display = 'none';
+    document.getElementById('register').style.display = '';
+    document.getElementById('login').style.display = '';
   }
 }

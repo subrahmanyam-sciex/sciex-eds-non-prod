@@ -24,11 +24,13 @@ const getAllPathsExceptCurrent = async (paths) => {
     const url = `${window.location.origin}${path}`;
 
     // Push the promise to the array
-    fetchPromises.push(getPageTitle(url).then((name) => {
-      if (name) {
-        result.push({ path, name, url });
-      }
-    }));
+    fetchPromises.push(
+      getPageTitle(url).then((name) => {
+        if (name) {
+          result.push({ path, name, url });
+        }
+      }),
+    );
   }
 
   await Promise.all(fetchPromises);
@@ -39,7 +41,11 @@ const getAllPathsExceptCurrent = async (paths) => {
 const createLink = (path) => {
   const pathLink = document.createElement('a');
   pathLink.href = path.url;
-  pathLink.innerText = path.name;
+  if (path.name === 'Home') {
+    pathLink.innerHTML = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="16/home"><path id="Vector 568" d="M3.33398 13V5.66667L8.00065 2L12.6673 5.66667V13H9.33398V8.66667H6.66732V13H3.33398Z" stroke="#707070"/></g></svg>';
+  } else {
+    pathLink.innerText = path.name;
+  }
   pathLink.classList.add('breadcrumb-link');
   return pathLink;
 };
@@ -50,7 +56,11 @@ export default async function decorate(block) {
   });
   block.innerHTML = '';
 
-  const HomeLink = createLink({ path: '', name: 'Home', url: window.location.origin });
+  const HomeLink = createLink({
+    path: '',
+    name: 'Home',
+    url: window.location.origin,
+  });
   const breadcrumbLinks = [HomeLink.outerHTML];
 
   window.setTimeout(async () => {
@@ -65,7 +75,7 @@ export default async function decorate(block) {
     currentPath.style.color = 'black';
     breadcrumbLinks.push(currentPath.outerHTML);
 
-    const separator = '<span class="breadcrumb-separator">></span>';
+    const separator = '<span class="breadcrumb-separator"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="16/chevron-right"><path id="Vector 118" d="M3.75 10.5L8.25 6L3.75 1.5" stroke="#707070"/></g></svg></span>';
 
     breadcrumb.innerHTML = breadcrumbLinks.join(separator);
     block.append(breadcrumb);
