@@ -139,21 +139,6 @@ function loadDelayed() {
 }
 
 /**
- * Dynamically injects the OneTrust privacy script with encoded settings.
- */
-function loadPrivacyScript() {
-  const script = document.createElement('script');
-  script.src = 'https://privacyportalde-cdn.onetrust.com/privacy-notice-scripts/otnotice-1.0.min.js';
-  script.type = 'text/javascript';
-  script.charset = 'UTF-8';
-  script.id = 'otprivacy-notice-script';
-  const encodedSettings = 'eyJjYWxsYmFja1VybCI6Imh0dHBzOi8vcHJpdmFjeXBvcnRhbC1kZS5vbmV0cnVzdC5jb20vcmVxdWVzdC92MS9wcml2YWN5Tm90aWNlcy9zdGF0cy92aWV3cyJ9';
-  script.setAttribute('settings', encodedSettings);
-
-  document.head.appendChild(script);
-}
-
-/**
  * Dynamically injects the Google Tag Manager (GTM) script.
  */
 function loadGTM() {
@@ -168,7 +153,6 @@ function loadGTM() {
  */
 async function loadPage() {
   loadGTM();
-  loadPrivacyScript();
   await loadEager(document);
   await loadLazy(document);
   loadDelayed();
