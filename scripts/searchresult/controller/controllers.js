@@ -8,6 +8,8 @@ import {
   buildSort,
   buildInteractiveResult,
   buildBreadcrumbManager,
+  buildFacetConditionsManager,
+  buildCategoryFacet
 } from 'https://static.cloud.coveo.com/headless/v3/headless.esm.js';
 import { searchEngine, analyticsEngine }  from '../engine.js';
 
@@ -44,45 +46,15 @@ export const tagsFacetController = buildFacet(searchEngine, {
 export const sourceFacetController = buildFacet(searchEngine, {
   options: { 
     numberOfValues: 5,
-    field: 'productmassspectrometerscategories' 
-  },
-});
-export const softwareFacetController = buildFacet(searchEngine, {
-  options: { 
-    numberOfValues: 5,
-    field: 'softwarecategories' 
-  },
-});
-export const techniquesFacetController = buildFacet(searchEngine, {
-  options: { 
-    numberOfValues: 5,
-    field: 'techniquescategories' 
-  },
-});
-export const diagnosticsFacetController = buildFacet(searchEngine, {
-  options: { 
-    numberOfValues: 5,
-    field: 'diagnosticsinstrumentscategories' 
-  },
-});
-export const trainingFacetController = buildFacet(searchEngine, {
-  options: { 
-    numberOfValues: 5,
-    field: 'trainingtopiccategories' 
-  },
-});
-export const hplcFacetController = buildFacet(searchEngine, {
-  options: { 
-    numberOfValues: 5,
-    field: 'hplcandceproductscategories' 
+    field: 'contenttype' 
   },
 });
 
-
-export const filetypeFacetController = buildFacet(searchEngine, {
+export const contentTypeFacetController = buildFacet(searchEngine, {
   options: { 
     numberOfValues: 5,
-    field: 'filetype' 
+    field: 'contenttype',
+    facetId: 'contenttype'
   },
 });
 
@@ -115,55 +87,69 @@ export  function handleResultClick(results) {
   })
   interactiveResult.select();
 }
-export const map =createFacetController();
+export const allFacetController = createFacetController();
 
 function createFacetController() {
-  //console.log('createFacetController>');
   const facetsId = [
-    'contenttype',
-    'coursecapillaryelectrophoresiscategories',
-    'coursecertificatetypecategories',
-    'coursediagnosticsinstrumentscategories',
-    'coursehplcandceproductscategories',
-    'courseintegratedsolutionscategories',
-    'courseionmobilityspectrometrycategories',
-    'courseionsourcescategories',
-    'courselevelcategories',
-    'courselifescienceresearchcategories',
-    'coursemassspectrometerscategories',
-    'coursesoftwarecategories',
-    'coursestandardsandreagentscategories',
-    'coursetechniquescategories',
-    'coursetrainingtopiccategories',
-    'coursetrainingtypecategories',
-    'producttrainingtypecategories',
-    'producttrainingtopiccategories',
-    'producttechniquescategories',
-    'productstandardsandreagentscategories',
-    'productsoftwarecategories',
-    'productmassspectrometerscategories',
-    'productlifescienceresearchcategories',
-    'productlevelcategories',
-    'productlifescienceresearchcategories',
-    'productionsourcescategories',
-    'productionmobilityspectrometrycategories',
-    'productintegratedsolutionscategories',
-    'producthplcandceproductscategories',
-    'productdiagnosticsinstrumentscategories',
-    'productcertificatetypecategories',
-    'productcapillaryelectrophoresiscategories',
+    'coursetypecategories',
+    'capillaryelectrophoresiscategories',
+    'certificatetypecategories',
+    'hplcandceproductscategories',
+    'integratedsolutionscategories',
+    'levelcategories',
+    'massspectrometerscategories',
+    'softwarecategories',
+    'standardsandreagentscategories',
+    'techniquescategories',
+    'trainingtopiccategories',
+    'trainingtypecategories',
+    'assettypes',
+    'instrumentfamily',
+    'languagecountry',
+    'language',
+    'year',
+    'location',
+    'applications'
   ];
   const controllerMap = new Map();
   facetsId.forEach((item) => {
-   const controller = buildFacet(searchEngine, {
+   const controller = buildCategoryFacet(searchEngine, {
     options: { 
       numberOfValues: 5,
-      field: item
+      field: item,
+      facetId: item,
+      basePath: [],
+      delimitingCharacter: '|'
     },
   });
+  initDependentFacet(controller, contentTypeFacetController);
   controllerMap.set(item,controller);
 });
-
-  //console.log('controllerMap>'+controllerMap);
   return controllerMap;
 }
+
+function initDependentFacet(dependentFacet, parentFacets) {
+  const facetConditionsManager = buildFacetConditionsManager(searchEngine, {
+    facetId: dependentFacet.state.facetId,
+    conditions: [
+      {
+        parentFacetId: parentFacets.state.facetId,
+        condition: (parentValues) =>
+          parentValues.some(
+            (value) =>
+              'value' in value &&
+              (value.value === 'Products & Services' || 
+                value.value === 'Training' || 
+                value.value === 'Technotes or Resource library' || 
+                value.value === 'Customer Docs' ||
+                value.value === 'Regulatory Docs' ||
+                value.value === 'Applications') &&
+              value.state === 'selected'
+          ),
+      },
+    ],
+  });
+  return facetConditionsManager.stopWatching;
+}
+
+
