@@ -113,7 +113,7 @@
           {
             "component": "text",
             "valueType": "string",
-            "name": "metaRobots",
+            "name": "Robots",
             "label": "Meta Tag: Robots",
             "value": "default Robots"
           },
