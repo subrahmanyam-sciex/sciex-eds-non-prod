@@ -124,9 +124,9 @@ function renderFacet(facetElementId, facetController, headerText) {
       sessionStorage.setItem('focusedElement', facetId+'-input');
     });
 
-    facetInput.addEventListener('focusout', () => {
-      sessionStorage.removeItem('focusedElement');
-    });
+    // facetInput.addEventListener('focusout', () => {
+    //   sessionStorage.removeItem('focusedElement');
+    // });
 
     if(facetInputElement == null){
       facetElement.appendChild(facetInput);

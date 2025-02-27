@@ -383,10 +383,7 @@
 
 .searchresult-wrapper {
     margin: 0 auto !important;
-    max-width: 80pc !important;
-    padding-left: 4pc !important;
-    padding-right: 4pc !important;
-    margin-top: 90px !important;
+    max-width: 90pc !important;
 }
 
 /* Media Queries for Responsiveness */
@@ -401,8 +398,6 @@
     }
     .searchresult-wrapper {
         margin-top: 0 !important;
-        padding-left: 24px !important;
-        padding-right: 24px !important;
     }
     .searchresult-wrapper #facets {
         display: none;
@@ -560,8 +555,6 @@
     .searchresult-wrapper #facets,
     #mobile-filter-header {
         max-width: 64pc !important;
-        padding-left: 40px !important;
-        padding-right: 40px !important;
     }
     #coveo-life-sciences div {
         max-width: 64pc !important;
@@ -573,15 +566,11 @@
 @media (min-width: 1280px) {
     .searchresult-wrapper,
     #mobile-filter-header {
-        max-width: 80pc !important;
-        padding-left: 4pc !important;
-        padding-right: 4pc !important;
+        max-width: 90pc !important;
     }
 
     .searchresult-wrapper #facets {
         max-width: 80pc !important;
-        padding-left: 24px !important;
-        padding-right: 24px !important;
         width: 32%;
     }
 
