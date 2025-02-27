@@ -7,8 +7,38 @@ const renderFacetBreadcurm = () => {
   const breadcrumbContainer = document.createElement('div');
   breadcrumbContainer.classList.add('facet-breadcrumb-container');
 
+  const facetsId = {
+    'coursetypecategories':'Course Type',
+    'certificatetypecategories':'Certificate Type',
+    'capillaryelectrophoresiscategories':'Capillary Electrophoresis',
+    'hplcandceproductscategories':'Liquid Chromatography',
+    'integratedsolutionscategories':'Integrated Solutions',
+    'levelcategories':'Course level',
+    'massspectrometerscategories':'Mass Spectrometers',
+    'softwarecategories':'Software',
+    'standardsandreagentscategories':'Standards and Reagents',
+    'techniquescategories':'Techniques',
+    'trainingtopiccategories':'Training Topic',
+    'trainingtypecategories':'Training Type',
+    'assettypes': 'Asset Type',
+    'instrumentfamily': 'Instrument family',
+    'languagecountry': 'Language-country',
+    'language' : 'Language',
+    'year': 'Year',
+    'location': 'Training Location',
+    'applications': 'Applications',
+    'technicaldocuments': 'Technical Documents',
+    'instrumentfamily': 'Instrument Family'
+  };
+
   facetBreadcrumb.state.facetBreadcrumbs.forEach((value) => {
     value.values.forEach((item) => {
+      let fieldName;
+      if(value.field == 'contenttype'){
+        fieldName = 'Content Type';
+      }else {
+        fieldName = facetsId[value.field]
+      }
       const gridContainer = document.createElement('div');
       gridContainer.classList.add('facet-breadcrumb');
       gridContainer.addEventListener('click', () => item.deselect());
@@ -16,7 +46,7 @@ const renderFacetBreadcurm = () => {
       const gridItem1 = document.createElement('div');
       gridItem1.classList.add('grid-item');
       const box1 = document.createElement('div');
-      box1.textContent = `${value.field} : ${item.value.value}`;
+      box1.textContent = `${fieldName} : ${item.value.value}`;
       gridItem1.appendChild(box1);
 
       const gridItem2 = document.createElement('div');

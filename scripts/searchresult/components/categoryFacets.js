@@ -124,10 +124,6 @@ function renderFacet(facetElementId, facetController, headerText) {
       sessionStorage.setItem('focusedElement', facetId+'-input');
     });
 
-    // facetInput.addEventListener('focusout', () => {
-    //   sessionStorage.removeItem('focusedElement');
-    // });
-
     if(facetInputElement == null){
       facetElement.appendChild(facetInput);
     }else {
@@ -165,8 +161,142 @@ function renderFacet(facetElementId, facetController, headerText) {
     facetItemsContainer.appendChild(facetItem);
   });
 
+  if(facetId == 'contenttype'){
+    const productAndServices = facetController.state.values
+    productAndServices.forEach(item => {
+      if (item.state === "selected") {
+          orderFacetBasedOnSelection(item.value, facetElement)
+      }
+    });
+  }
+
+  orderContentTypeFacets(facetId, facetItemsContainer);
   facetAccordion(values, facetElement, facetItemsContainer);
   createToggleButtons(facetItemsContainer, facetController);
+}
+
+function orderFacetChildren(facetElementId, desiredOrder) {
+  const facetElement = document.getElementById(facetElementId);
+  const facetChildren = Array.from(facetElement.children);
+
+  facetChildren.sort((a, b) => {
+    const indexA = desiredOrder.indexOf(a.id);
+    const indexB = desiredOrder.indexOf(b.id);
+    return indexA - indexB;
+  });
+
+  facetChildren.forEach(child => {
+    facetElement.appendChild(child);
+  });
+}
+
+function orderFacetBasedOnSelection(selectedValue) {
+  let desiredOrder = [];
+
+  if (selectedValue === 'Products & Services') {
+    desiredOrder = [
+      'massspectrometerscategories-facet',
+      'capillaryelectrophoresiscategories-facet',
+      'hplcandceproductscategories',
+      'integratedsolutionscategories-facet',
+      'softwarecategories-facet',
+      'standardsandreagentscategories-facet',
+    ];
+    orderFacetChildren('facets', desiredOrder);
+  } else if (selectedValue === 'Regulatory Docs') {
+    desiredOrder = [
+      'technicaldocuments-facet',
+      'instrumentfamily-facet',
+      'languagecountry-facet',
+      'year-facet'
+    ];
+    orderFacetChildren('facets', desiredOrder);
+  } else if (selectedValue === 'Technotes or Resource library') {
+    desiredOrder = [
+      'assettypes',
+      'applications',
+      'massspectrometerscategories',
+      'capillaryelectrophoresiscategories',
+      'hplcandceproductscategories',
+      'integratedsolutionscategories-facet',
+      'softwarecategories-facet',
+      'standardsandreagentscategories-facet',
+      'language-facet'
+    ];
+    orderFacetChildren('facets', desiredOrder);
+  } else if (selectedValue === 'Training') {
+    desiredOrder = [
+      'location-facet',
+      'coursetypecategories-facet',
+      'trainingtopiccategories-facet',
+      'techniquescategories-facet',
+      'trainingtypecategories-facet',
+      'levelcategories-facet',
+      'certificatetypecategories-facet',
+      'language-facet',
+      'massspectrometerscategories-facet',
+      'capillaryelectrophoresiscategories-facet',
+      'hplcandceproductscategories-facet',
+      'integratedsolutionscategories-facet',
+      'softwarecategories-facet',
+      'standardsandreagentscategories-facet',
+    ];
+    orderFacetChildren('facets', desiredOrder);
+  } else if (selectedValue === 'Customer Docs') {
+    desiredOrder = [
+      'assettypes',
+      'year-facet',
+      'language-facet',
+      'massspectrometerscategories-facet',
+      'capillaryelectrophoresiscategories-facet',
+      'hplcandceproductscategories-facet',
+      'integratedsolutionscategories-facet',
+      'softwarecategories-facet',
+      'standardsandreagentscategories-facet',
+    ];
+    orderFacetChildren('facets', desiredOrder);
+  }
+}
+
+function orderContentTypeFacets(facetId,facetItemsContainer){
+  if (facetId == 'contenttype') {
+    const desiredOrder = [
+        "Products & Services",
+        "Applications",
+        "Regulatory Docs",
+        "Customer Docs",
+        "Technotes or Resource library",
+        "Training"
+    ];
+
+    const facetContainer = facetItemsContainer;
+
+    const facetItems = facetContainer.querySelectorAll('.facet-item');
+
+    const facetItemsArray = Array.from(facetItems).map(item => {
+        const label = item.querySelector('label').innerText.replace(/\s\(\d+\)$/, '');
+        return { label, item };
+    });
+
+    facetItemsArray.sort((a, b) => {
+        const aIndex = desiredOrder.indexOf(a.label);
+        const bIndex = desiredOrder.indexOf(b.label);
+        if (aIndex === -1 && bIndex === -1) {
+            return 0;
+        }
+        if (aIndex === -1) {
+            return 1;
+        }
+        if (bIndex === -1) {
+            return -1;
+        }
+        return aIndex - bIndex;
+    });
+
+    facetItemsArray.forEach(facet => {
+        facetContainer.appendChild(facet.item);
+    });
+  }
 }
 
 function createFacetRender(facetController, facetElementId, headerText) {
@@ -203,7 +333,7 @@ function createFacetDiv(id) {
 }
 
 export function callCreateFacet(){
-  createFacetRender(contentTypeFacetController, "contenttype-facet", "Content Type");
+  createFacetRender(contentTypeFacetController, "contenttype", "Content Type");
   const facetController = allFacetController;
   const facetsId = {
     'coursetypecategories':'Course Type',

@@ -320,6 +320,7 @@
 
 .facet-breadcrumb-container {
     display: flex;
+    flex-wrap: wrap;
     margin: 20px 20px 0;
     padding: 15px 0;
     align-items: center;
