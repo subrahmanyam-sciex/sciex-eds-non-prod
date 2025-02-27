@@ -156,7 +156,8 @@ function initDependentFacet(dependentFacet, parentFacets) {
     'location': ['Training'],
     'applications': ['Applications', 'Technotes or Resource library'],
     'technicaldocuments': ['Regulatory Docs'],
-    'certificatetypecategories': ['Training']
+    'certificatetypecategories': ['Training'],
+    'coursetypecategories': ['Training']
   };
 
   const facetId = dependentFacet.state.facetId;
