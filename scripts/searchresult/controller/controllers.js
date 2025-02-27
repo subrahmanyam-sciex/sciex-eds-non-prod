@@ -109,8 +109,7 @@ function createFacetController() {
     'year',
     'location',
     'applications',
-    'technicaldocuments',
-    'instrumentfamily'
+    'technicaldocuments'
   ];
   const controllerMap = new Map();
   facetsId.forEach((item) => {
@@ -130,25 +129,50 @@ function createFacetController() {
 }
 
 function initDependentFacet(dependentFacet, parentFacets) {
+  const conditionForParentValues = (parentValues, allowedValues) =>
+    parentValues.some(
+      (value) =>
+        'value' in value &&
+        allowedValues.includes(value.value) &&
+        value.state === 'selected'
+    );
+
+  const facetConditionsMap = {
+    'massspectrometerscategories': ['Products & Services', 'Resource Library', 'Customer Docs', 'Training', 'Technotes or Resource library'],
+    'capillaryelectrophoresiscategories': ['Products & Services', 'Resource Library', 'Customer Docs', 'Training', 'Technotes or Resource library'],
+    'hplcandceproductscategories': ['Products & Services', 'Resource Library', 'Customer Docs', 'Training', 'Technotes or Resource library'],
+    'integratedsolutionscategories': ['Products & Services', 'Resource Library', 'Customer Docs', 'Training', 'Technotes or Resource library'],
+    'softwarecategories': ['Products & Services', 'Resource Library', 'Customer Docs', 'Training', 'Technotes or Resource library'],
+    'standardsandreagentscategories': ['Products & Services', 'Resource Library', 'Customer Docs', 'Training', 'Technotes or Resource library'],
+    'levelcategories': ['Training'],
+    'techniquescategories': ['Training'],
+    'trainingtopiccategories': ['Training'],
+    'trainingtypecategories': ['Training'],
+    'assettypes': ['Technotes or Resource library', 'Customer Docs'],
+    'instrumentfamily': ['Regulatory Docs'],
+    'languagecountry': ['Regulatory Docs'],
+    'language': ['Resource Library', 'Customer Docs', 'Training', 'Technotes or Resource library'],
+    'year': ['Resource Library', 'Customer Docs', 'Regulatory Docs'],
+    'location': ['Training'],
+    'applications': ['Applications', 'Technotes or Resource library'],
+    'technicaldocuments': ['Regulatory Docs'],
+    'certificatetypecategories': ['Training']
+  };
+
+  const facetId = dependentFacet.state.facetId;
+  const allowedValues = facetConditionsMap[facetId];
+
+  if (!allowedValues) return;
+
   const facetConditionsManager = buildFacetConditionsManager(searchEngine, {
     facetId: dependentFacet.state.facetId,
     conditions: [
       {
         parentFacetId: parentFacets.state.facetId,
-        condition: (parentValues) =>
-          parentValues.some(
-            (value) =>
-              'value' in value &&
-              (value.value === 'Products & Services' || 
-                value.value === 'Training' || 
-                value.value === 'Technotes or Resource library' || 
-                value.value === 'Customer Docs' ||
-                value.value === 'Regulatory Docs' ||
-                value.value === 'Applications') &&
-              value.state === 'selected'
-          ),
+        condition: (parentValues) => conditionForParentValues(parentValues, allowedValues),
       },
     ],
   });
+
   return facetConditionsManager.stopWatching;
 }
