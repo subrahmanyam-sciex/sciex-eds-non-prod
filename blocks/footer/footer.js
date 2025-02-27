@@ -148,10 +148,12 @@ function handleMiddleSections(child, block, iteration) {
     wrapperDiv.appendChild(headerDiv);
   }
 
-  const hr = document.createElement('hr');
-  hr.classList.add('footer-divider');
   headerDiv.appendChild(newContainer);
-  wrapperDiv.appendChild(hr);
+  if (header != null) {
+    const hr = document.createElement('hr');
+    hr.classList.add('footer-divider');
+    wrapperDiv.appendChild(hr);
+  }
   block.appendChild(wrapperDiv);
   decorateIcons(wrapperDiv);
 }
