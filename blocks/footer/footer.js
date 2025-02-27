@@ -13,11 +13,20 @@ import { span } from '../../scripts/dom-builder.js';
      *  */
 function canMobileActions() {
   const screenWidth = window.innerWidth;
-  if (screenWidth > 1024) {
+  if (screenWidth > 767) {
     return false;
   }
   return true;
 }
+
+function canTabletActions() {
+  const screenWidth = window.innerWidth;
+  if (screenWidth > 1024 || screenWidth < 768) {
+    return false;
+  }
+  return true;
+}
+
 function handleFirstSection(child, firstSectionContent) {
   firstSectionContent.append(child);
 }
@@ -148,12 +157,10 @@ function handleMiddleSections(child, block, iteration) {
     wrapperDiv.appendChild(headerDiv);
   }
 
+  const hr = document.createElement("hr");
+  hr.classList.add("footer-divider");
   headerDiv.appendChild(newContainer);
-  if (header != null) {
-    const hr = document.createElement('hr');
-    hr.classList.add('footer-divider');
-    wrapperDiv.appendChild(hr);
-  }
+  wrapperDiv.appendChild(hr);
   block.appendChild(wrapperDiv);
   decorateIcons(wrapperDiv);
 }
