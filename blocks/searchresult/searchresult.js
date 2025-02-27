@@ -10,7 +10,6 @@ import renderPagination from '../../scripts/searchresult/components/pagination.j
 import renderQuerySummary from '../../scripts/searchresult/components/querySummary.js';
 import renderSorting from '../../scripts/searchresult/components/sorting.js';
 import renderFacetBreadcurm from '../../scripts/searchresult/components/facetBreadcrumb.js';
-import renderFacetSearchResults from '../../scripts/searchresult/components/renderFacetSearchBox.js';
 
 export default async function decorate(block) {
   // Create main container div
@@ -130,24 +129,6 @@ export default async function decorate(block) {
     'tw-bg-white',
   );
   tagSuggestionBox.style.position = 'absolute';
-
-  // Create tags input box
-  const tagsInput = document.createElement('input');
-  tagsInput.type = 'text';
-  tagsInput.id = 'tags-input';
-  tagsInput.classList.add(
-    'tw-border',
-    'tw-p-2',
-    'tw-rounded-lg',
-    'tw-mt-2',
-    'facet-search-box',
-  );
-  tagsInput.placeholder = 'Enter tags...';
-
-  // Append facet divs and input boxes
-  facetsDiv.appendChild(sourceInput);
-  facetsDiv.appendChild(sourceSuggestionBox);
-  facetsDiv.appendChild(tagsInput); // Add input under tags facet
 
   // Create search result section div
   const searchResultSectionDiv = document.createElement('div');
@@ -329,7 +310,6 @@ export default async function decorate(block) {
   try {
     renderSearchBox();
     renderSorting();
-    renderFacetSearchResults();
     searchEngine.executeFirstSearch();
     searchEngine.subscribe(() => {
       renderSearchResults();

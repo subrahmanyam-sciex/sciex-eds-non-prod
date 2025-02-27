@@ -83,12 +83,62 @@ function createToggleButtons(facetItemsContainer, facetController) {
 
 function renderFacet(facetElementId, facetController, headerText) {
 
+  const facetId = facetController.state.facetId;
+
   const facetElement = document.getElementById(facetElementId);
+
+  let facetInputElement = null;
+  if(facetId == 'massspectrometerscategories' || facetId == 'softwarecategories' ||  facetId =='language' || facetId =='instrumentfamily'){
+    let element= document.getElementById(facetId+'-input');
+    facetInputElement = element;
+  }
+
   facetElement.innerHTML = `<h3 class="facet-header tw-text-gray-800 tw-text-lg tw-mb-2 tw-pb-1">${headerText}
   <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
   <path d="M2 11L8 5L14 11" stroke="#0068FA"/>
 </svg></span>
   </h3>`;
+
+  if(facetId == 'massspectrometerscategories' || facetId == 'softwarecategories' ||  facetId =='language' || facetId =='instrumentfamily'){
+    const facetInput = document.createElement('input');
+    facetInput.type = 'text';
+    facetInput.id = facetId+'-input';
+    facetInput.classList.add(
+      'tw-border',
+      'tw-p-2',
+      'tw-rounded-lg',
+      'tw-mt-2',
+      'facet-search-box',
+    );
+    facetInput.placeholder = 'Search....';
+
+    facetInput.addEventListener('input', (event) => {
+      const query = event.target.value.toLowerCase();
+      if (query.length > 0) {
+        facetController.facetSearch.updateText(query);
+        facetController.facetSearch.search();
+      }
+    });
+
+    facetInput.addEventListener('focus', () => {
+      sessionStorage.setItem('focusedElement', facetId+'-input');
+    });
+
+    facetInput.addEventListener('focusout', () => {
+      sessionStorage.removeItem('focusedElement');
+    });
+
+    if(facetInputElement == null){
+      facetElement.appendChild(facetInput);
+    }else {
+      facetElement.appendChild(facetInputElement);
+      const focusedElementId = sessionStorage.getItem('focusedElement');
+      const focusElement = document.getElementById(focusedElementId);
+      if(focusElement){
+        focusElement.focus();
+      }
+    }
+  }
 
   const { values } = facetController.state;
   const facetItemsContainer = document.createElement("div");
@@ -138,7 +188,7 @@ function createFacetRender(facetController, facetElementId, headerText) {
   if(ele !== null && !isValues) {
     ele.remove();
   }
-  createFacetDiv(facetElementId, isValues);
+  createFacetDiv(facetElementId);
   renderFacet(id, facetController, headerText); 
 }
 
@@ -161,7 +211,7 @@ export function callCreateFacet(){
     'capillaryelectrophoresiscategories':'Capillary Electrophoresis',
     'hplcandceproductscategories':'Liquid Chromatography',
     'integratedsolutionscategories':'Integrated Solutions',
-    'levelcategories':'Level',
+    'levelcategories':'Course level',
     'massspectrometerscategories':'Mass Spectrometers',
     'softwarecategories':'Software',
     'standardsandreagentscategories':'Standards and Reagents',
