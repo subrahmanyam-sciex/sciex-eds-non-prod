@@ -19,13 +19,13 @@ function canMobileActions() {
   return true;
 }
 
-function canTabletActions() {
+/* function canTabletActions() {
   const screenWidth = window.innerWidth;
   if (screenWidth > 1024 || screenWidth < 768) {
     return false;
   }
   return true;
-}
+} */
 
 function handleFirstSection(child, firstSectionContent) {
   firstSectionContent.append(child);
@@ -157,8 +157,8 @@ function handleMiddleSections(child, block, iteration) {
     wrapperDiv.appendChild(headerDiv);
   }
 
-  const hr = document.createElement("hr");
-  hr.classList.add("footer-divider");
+  const hr = document.createElement('hr');
+  hr.classList.add('footer-divider');
   headerDiv.appendChild(newContainer);
   wrapperDiv.appendChild(hr);
   block.appendChild(wrapperDiv);
