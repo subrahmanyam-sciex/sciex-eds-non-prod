@@ -4,6 +4,9 @@ const renderSearchBox = () => {
   const queryInput = document.getElementById('coveo-query');
   const suggestionPopup = document.getElementById('suggestion-popup');
   const coveoResults = document.getElementById('coveo-results');
+  const searchTermValue = document.getElementById('searchTermValue');
+  const searchTermContainer = document.getElementById('searchTermContainer');
+  searchTermContainer.style.display = 'none';
 
   const showSuggestions = () => {
     const searchBox = document.getElementById('coveo-query');
@@ -43,9 +46,13 @@ const renderSearchBox = () => {
   });
 
   queryInput.addEventListener('keydown', (event) => {
+    searchTermValue.innerHTML = ''
+    searchTermContainer.style.display = 'none';
     if (event.key === 'Enter') {
+      searchTermContainer.style.display = 'block';
       searchBoxController.submit();
       showResults();
+      searchTermValue.innerHTML = event.target.value;
     }
   });
 

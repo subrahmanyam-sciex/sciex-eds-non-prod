@@ -147,7 +147,7 @@ function renderFacet(facetElementId, facetController, headerText) {
       const focusedElementId = sessionStorage.getItem('focusedElement');
       const focusElement = document.getElementById(focusedElementId);
       if(focusElement){
-        focusElement.focus();
+        // focusElement.focus();
       }
       let  searchresult =facetController.state.facetSearch.values;
         if (facetInputElement.value.trim() === "") {
@@ -185,12 +185,37 @@ if(!isSearch){
         }
       });
     }
-
+    clearFacetFilter(facetElement,facetController);
     orderContentTypeFacets(facetId, facetItemsContainer);
     facetAccordion(values, facetElement, facetItemsContainer);
     createToggleButtons(facetItemsContainer, facetController);
   }
 }
+
+function clearFacetFilter(facetElement,facetController){
+  const clearButtonContainer = document.createElement('div');
+  clearButtonContainer.className = "clear-filter-btn";
+  const clearButton = document.createElement('button');
+  clearButton.style.marginLeft = '0';
+  clearButton.style.marginRight = '10px';
+  clearButton.textContent = 'Clear Filter';
+
+  const clearIcon = document.createElement('span');
+  clearIcon.innerHTML = '&#10005;';
+  clearIcon.style.cursor = 'pointer';
+
+  clearButtonContainer.appendChild(clearButton);
+  clearButtonContainer.appendChild(clearIcon);
+
+  const isSelected = facetController.state.values.some(value => value.state === 'selected');
+  if(isSelected){
+    facetElement.appendChild(clearButtonContainer)
+    clearButtonContainer.addEventListener('click', () => {
+      facetController.deselectAll();
+    });
+  }
+}
+
 function renderSearchFacets(facetController, facetItemsContainer,facetElement,searchresult){
   let isSearch=false;
     if (Array.isArray(searchresult) && searchresult.length > 0) {
