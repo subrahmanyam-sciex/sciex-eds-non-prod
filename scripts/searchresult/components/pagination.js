@@ -8,7 +8,7 @@ const renderPagination = () => {
 
   if (hasPreviousPage) {
     const prevButton = document.createElement('button');
-    prevButton.innerText = 'Previous';
+    prevButton.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none"><path d="M16.5 20L8.5 12L16.5 4" stroke="#141414"/></svg>';
     prevButton.onclick = () => {
       paginationController.previousPage();
     };
@@ -28,7 +28,7 @@ const renderPagination = () => {
 
   if (hasNextPage) {
     const nextButton = document.createElement('button');
-    nextButton.innerText = 'Next';
+    nextButton.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none"><path d="M8.5 20L16.5 12L8.5 4" stroke="#141414"/></svg>';
     nextButton.onclick = () => {
       paginationController.nextPage();
     };

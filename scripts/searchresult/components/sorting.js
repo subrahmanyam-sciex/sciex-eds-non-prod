@@ -1,5 +1,5 @@
 import { sortController, headlessResultsList } from '../controller/controllers.js';
-import renderSearchResults from './searchResult.js';
+import renderSearchResults from './renderSearchResult.js';
 
 export function sortByTitle(data) {
   return [...data].sort((a, b) => a.title.localeCompare(b.title));

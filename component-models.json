@@ -113,7 +113,7 @@
           {
             "component": "text",
             "valueType": "string",
-            "name": "metaRobots",
+            "name": "Robots",
             "label": "Meta Tag: Robots",
             "value": "default Robots"
           },
@@ -471,6 +471,39 @@
         "name": "linkurl",
         "value": "",
         "label": "Link Url",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "searchresult",
+    "fields": [
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "unified-search-text",
+        "value": "",
+        "label": "Sciex Unified Search text"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "No results Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "name": "text1",
+        "value": "",
+        "label": "No results text1",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "text2",
+        "value": "",
+        "label": "No results text2",
         "valueType": "string"
       }
     ]
