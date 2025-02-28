@@ -46,7 +46,7 @@ const renderSearchBox = () => {
   });
 
   queryInput.addEventListener('keydown', (event) => {
-    searchTermValue.innerHTML = ''
+    searchTermValue.innerHTML = '';
     searchTermContainer.style.display = 'none';
     if (event.key === 'Enter') {
       searchTermContainer.style.display = 'block';
