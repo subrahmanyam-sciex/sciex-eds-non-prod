@@ -61,7 +61,7 @@ function createMainHeader(section) {
         'mobileMenuCloseIcon',
       );
       const megaMenuWrapper = document.querySelector('.megamenu-wrapper');
-      const subMenu = document.querySelector('.submenu-container');
+      // const subMenu = document.querySelector('.submenu-container');
       const backToMenuButton = document.querySelector('.back-to-menu-button');
       const subMenus = document.querySelectorAll('.submenu-container');
 
@@ -76,25 +76,48 @@ function createMainHeader(section) {
 
       // Toggle mobile header
       if (headerWrapper) {
-        headerWrapper.classList.toggle('mobile-header');
+        if (headerWrapper.classList.contains('mobile-header')) {
+          headerWrapper.classList.remove('mobile-header');
+        } else {
+          headerWrapper.classList.add('mobile-header');
+        }
       }
 
       // Toggle menu icons
       if (mobileMenuOpenIcon && mobileMenuCloseIcon) {
-        mobileMenuOpenIcon.classList.toggle('tw-hidden');
-        mobileMenuCloseIcon.classList.toggle('tw-hidden');
+        if (mobileMenuOpenIcon.classList.contains('tw-hidden')) {
+          mobileMenuOpenIcon.classList.remove('tw-hidden');
+        } else {
+          mobileMenuOpenIcon.classList.add('tw-hidden');
+        }
+        if (mobileMenuCloseIcon.classList.contains('tw-hidden')) {
+          mobileMenuCloseIcon.classList.remove('tw-hidden');
+        } else {
+          mobileMenuCloseIcon.classList.add('tw-hidden');
+        }
+        /* if (subMenusDivs) {
+          subMenusDivs.forEach((subMenuDivItem) => {
+            if (subMenuDivItem.classList.contains('tw-hidden')) {
+              subMenuDivItem.classList.remove('tw-hidden');
+            }
+          });
+        } */
       }
 
       // Toggle megamenu wrapper
       if (megaMenuWrapper) {
-        megaMenuWrapper.classList.toggle('tw-hidden');
+        if (megaMenuWrapper.classList.contains('tw-hidden')) {
+          megaMenuWrapper.classList.remove('tw-hidden');
+        } else {
+          megaMenuWrapper.classList.add('tw-hidden');
+        }
       }
 
-      // Hide submenu
-      if (subMenu) {
-        subMenu.classList.add('tw-hidden');
-        subMenu.classList.remove('secondnav-active');
-        subMenu.removeAttribute('style');
+      // Hide submenus
+      if (subMenus) {
+        subMenus.forEach((subMenuItem) => {
+          subMenuItem.removeAttribute('style');
+        });
       }
 
       /** ********
@@ -112,7 +135,9 @@ function createMainHeader(section) {
         // const megaMenuWrapper = document.querySelector('.megamenu-wrapper');
         if (topBarNav) {
           if (topBarNav.classList.contains('tw-hidden')) {
-            topBarNav.classList.toggle('tw-hidden');
+            topBarNav.classList.remove('tw-hidden');
+          } else {
+            topBarNav.classList.add('tw-hidden');
           }
           if (megaMenuWrapper) {
             megaMenuWrapper.insertAdjacentElement('beforeEnd', topBarNav);
@@ -232,7 +257,11 @@ function handleBackToMenu() {
         });
       }
 
-      this.classList.toggle('tw-hidden');
+      if (this.classList.contains('tw-hidden')) {
+        this.classList.remove('tw-hidden');
+      } else {
+        this.classList.add('tw-hidden');
+      }
 
       if (dataSubMenuContainerDiv) {
         dataSubMenuContainerDiv.removeAttribute('style');
@@ -465,7 +494,11 @@ function createMegaMenuTopNav(section) {
             const toggleMobileMenu = document.getElementById('toggleMobileMenu');
 
             if (myDiv) {
-              myDiv.classList.toggle('tw-hidden');
+              if (myDiv.classList.contains('tw-hidden')) {
+                myDiv.classList.remove('tw-hidden');
+              } else {
+                myDiv.classList.add('tw-hidden');
+              }
               myDiv.removeAttribute('style');
 
               const subMenuElementsContent = myDiv.querySelector('.submenu-content');
@@ -689,7 +722,11 @@ function createSubMenuItems(section, containerDiv, firstpartdiv) {
           // mobile actions
           if (canMobileActions() === true) {
             if (myDiv) {
-              myDiv.classList.toggle('tw-hidden');
+              if (myDiv.classList.contains('tw-hidden')) {
+                myDiv.classList.remove('tw-hidden');
+              } else {
+                myDiv.classList.add('tw-hidden');
+              }
               myDiv.style.display = 'flex';
 
               const subMenu = document.querySelectorAll('.submenu-container');

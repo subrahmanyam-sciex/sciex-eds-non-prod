@@ -380,6 +380,7 @@ export function callCreateFacet(){
 export const handleMobileFilters = () => {
   const facets = document.querySelector("#facets");
   const mobileFilterHeader = document.querySelector("#mobile-filter-header");
+  const body = document.querySelector(".generic-page-template");
   if (facets) {
     facets.style.display =
       facets.style.display === "" || facets.style.display === "none"
@@ -388,8 +389,14 @@ export const handleMobileFilters = () => {
   }
   if (mobileFilterHeader) {
     if (mobileFilterHeader.classList.contains("tw-hidden")) {
+      if (body) {
+        body.classList.add("body-no-scroll");
+      }
       mobileFilterHeader.classList.remove("tw-hidden");
     } else {
+      if (body && body.classList.contains("body-no-scroll")) {
+        body.classList.remove("body-no-scroll");
+      }
       mobileFilterHeader.classList.add("tw-hidden");
     }
   }

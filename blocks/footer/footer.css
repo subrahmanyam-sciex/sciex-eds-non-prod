@@ -936,7 +936,6 @@ a.active {
         padding-top: 2pc;
     }
     .footer-section {
-        border-bottom: 0px;
         border-color: var(--footer-section-border-color);
     }
 
@@ -1041,8 +1040,22 @@ a.active {
     }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 480px) {
     .modal-content {
         padding-left: 24px;
+    }
+}
+
+@media (max-width: 767px) {
+    .footer-section {
+        border-bottom: 0;
+    }
+    .wrapper-3.black-section .default-content-wrapper {
+        flex-direction: column;
+    }
+}
+@media (max-width: 767px) and (min-width: 481px) {
+    .modal-content {
+        padding-left: 4pc;
     }
 }
