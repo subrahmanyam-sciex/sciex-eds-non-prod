@@ -143,6 +143,19 @@ export default async function decorate(block) {
     'tw-rounded-lg',
   );
 
+  // Create search term
+  const searchTermDiv = document.createElement('div');
+  searchTermDiv.className = 'search-term-container';
+  searchTermDiv.id = 'searchTermContainer';
+  const searchTermLabel = document.createElement('div');
+  searchTermLabel.className = 'search-term-label';
+  searchTermLabel.innerHTML = 'Search term';
+  const searchTermValue = document.createElement('div');
+  searchTermValue.className = 'search-term-value';
+  searchTermValue.id = 'searchTermValue';
+  searchTermDiv.appendChild(searchTermLabel);
+  searchTermDiv.appendChild(searchTermValue);
+
   // Create search input
   const searchInput = document.createElement('input');
   searchInput.type = 'text';
@@ -270,6 +283,7 @@ export default async function decorate(block) {
 
   // Append all sections to the search result section div
   searchResultSectionDiv.appendChild(searchContainerDiv);
+  searchResultSectionDiv.appendChild(searchTermDiv);
   searchResultSectionDiv.appendChild(querySortSectionDiv);
   searchResultSectionDiv.appendChild(facetBreadcrumbDiv);
   searchResultSectionDiv.appendChild(coveoResultsLoading);
