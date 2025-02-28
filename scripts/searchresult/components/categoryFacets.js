@@ -98,7 +98,17 @@ function renderFacet(facetElementId, facetController, headerText) {
   <path d="M2 11L8 5L14 11" stroke="#0068FA"/>
 </svg></span>
   </h3>`;
-
+  let { values } = facetController.state;
+  let facetItemsContainer =facetElement.querySelector('.facet-items-container');
+  if(facetItemsContainer  != null) {
+    facetItemsContainer.remove();
+  }
+  facetItemsContainer = document.createElement("div");
+  facetItemsContainer.className = "facet-items-container";
+  if(values.length){
+    facetElement.style.borderBottom = '1px solid #ececec'
+  }
+  let isSearch = false;
   if(facetId == 'massspectrometerscategories' || facetId == 'softwarecategories' ||  facetId =='language' || facetId =='instrumentfamily'){
     const facetInput = document.createElement('input');
     facetInput.type = 'text';
@@ -117,6 +127,12 @@ function renderFacet(facetElementId, facetController, headerText) {
       if (query.length > 0) {
         facetController.facetSearch.updateText(query);
         facetController.facetSearch.search();
+      }else{
+        isSearch=false;
+        let  searchresult =facetController.state.values;
+        let itemContainer =facetElement.querySelector('.facet-items-container');
+        itemContainer.innerHTML='';
+        isSearch =renderSearchFacets(facetController, itemContainer,facetElement,searchresult);
       }
     });
 
@@ -133,48 +149,78 @@ function renderFacet(facetElementId, facetController, headerText) {
       if(focusElement){
         focusElement.focus();
       }
+      let  searchresult =facetController.state.facetSearch.values;
+        if (facetInputElement.value.trim() === "") {
+            searchresult  = facetController.state.values
+        }
+        facetItemsContainer.innerHTML='';
+        isSearch =renderSearchFacets(facetController, facetItemsContainer,facetElement,searchresult);
     }
   }
+if(!isSearch){
+    values.forEach((value) => {
+      const facetItem = document.createElement("div");
+      facetItem.className = "facet-item tw-flex tw-items-center tw-gap-2 tw-py-1";
+      facetItem.innerHTML = `
+        <input type="checkbox" id="${value.value}" ${
+        value.state === "selected" ? "checked" : ""
+      } class="tw-accent-blue-500 tw-w-4 tw-h-4">
+        <label for="${value.value}">${value.value} (${
+        value.numberOfResults
+      })</label>
+      `;
 
-  const { values } = facetController.state;
-  const facetItemsContainer = document.createElement("div");
-  facetItemsContainer.className = "facet-items-container";
-  if(values.length){
-    facetElement.style.borderBottom = '1px solid #ececec'
-  }
-  values.forEach((value) => {
-    const facetItem = document.createElement("div");
-    facetItem.className = "facet-item tw-flex tw-items-center tw-gap-2 tw-py-1";
-    facetItem.innerHTML = `
-      <input type="checkbox" id="${value.value}" ${
-      value.state === "selected" ? "checked" : ""
-    } class="tw-accent-blue-500 tw-w-4 tw-h-4">
-      <label for="${value.value}">${value.value} (${
-      value.numberOfResults
-    })</label>
-    `;
+      facetItem.querySelector("input").addEventListener("change", () => {
+        facetController.toggleSelect(value);
+      });
 
-    facetItem.querySelector("input").addEventListener("change", () => {
-      facetController.toggleSelect(value);
+      facetItemsContainer.appendChild(facetItem);
     });
 
-    facetItemsContainer.appendChild(facetItem);
-  });
+    if(facetId == 'contenttype'){
+      const productAndServices = facetController.state.values
+      productAndServices.forEach(item => {
+        if (item.state === "selected") {
+            orderFacetBasedOnSelection(item.value, facetElement)
+        }
+      });
+    }
 
-  if(facetId == 'contenttype'){
-    const productAndServices = facetController.state.values
-    productAndServices.forEach(item => {
-      if (item.state === "selected") {
-          orderFacetBasedOnSelection(item.value, facetElement)
-      }
-    });
+    orderContentTypeFacets(facetId, facetItemsContainer);
+    facetAccordion(values, facetElement, facetItemsContainer);
+    createToggleButtons(facetItemsContainer, facetController);
   }
-
-  orderContentTypeFacets(facetId, facetItemsContainer);
-  facetAccordion(values, facetElement, facetItemsContainer);
-  createToggleButtons(facetItemsContainer, facetController);
 }
-
+function renderSearchFacets(facetController, facetItemsContainer,facetElement,searchresult){
+  let isSearch=false;
+    if (Array.isArray(searchresult) && searchresult.length > 0) {
+      searchresult.forEach((value) => {
+        const displayText = value.displayValue || value.value;
+        const displaycount = value.count || value.numberOfResults;
+        const item = document.createElement("div");
+        item.className = "facet-item tw-flex tw-items-center tw-gap-2 tw-py-1";
+        item.innerHTML = `
+          <input type="checkbox" id="${displayText}" ${
+          value.state === "selected" ? "checked" : ""
+        } class="tw-accent-blue-500 tw-w-4 tw-h-4">
+          <label for="${displayText}">${displayText} (${
+            displaycount
+        })</label>
+        `;
+        item.querySelector("input").addEventListener("change", () => {
+          facetController.toggleSelect(value);
+        });
+        facetItemsContainer.appendChild(item);
+      });
+      isSearch=true;
+      facetAccordion(searchresult, facetElement, facetItemsContainer);
+     createToggleButtons(facetItemsContainer, facetController);
+    } else {
+      isSearch=false;
+    }
+    return isSearch
+  }
+  
 function orderFacetChildren(facetElementId, desiredOrder) {
   const facetElement = document.getElementById(facetElementId);
   const facetChildren = Array.from(facetElement.children);

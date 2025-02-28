@@ -34,24 +34,10 @@ export const headlessResultsList = buildResultList(searchEngine, {
   },
 });
 
-// category facets controller
-export const tagsFacetController = buildFacet(searchEngine, {
-  options: { 
-    numberOfValues: 5,
-    field: 'coursecatalog'
-  },
-});
-
-export const sourceFacetController = buildFacet(searchEngine, {
-  options: { 
-    numberOfValues: 5,
-    field: 'contenttype' 
-  },
-});
-
+// Content Type facets controller
 export const contentTypeFacetController = buildFacet(searchEngine, {
   options: { 
-    numberOfValues: 5,
+    numberOfValues: 10,
     field: 'contenttype',
     facetId: 'contenttype'
   },
