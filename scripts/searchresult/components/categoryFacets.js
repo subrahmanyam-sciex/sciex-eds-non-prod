@@ -146,9 +146,9 @@ function renderFacet(facetElementId, facetController, headerText) {
     }else {
       facetElement.appendChild(facetInputElement);
       const focusedElementId = sessionStorage.getItem('focusedElement');
-      const focusElementFocus = document.getElementById(focusedElementId);
-      if(focusElementFocus){
-        focusElementFocus.focus();
+      const focusElement = document.getElementById(focusedElementId);
+      if(focusElement){
+        focusElement.focus();
       }
       let  searchresult =facetController.state.facetSearch.values;
         if (facetInputElement.value.trim() === "") {
