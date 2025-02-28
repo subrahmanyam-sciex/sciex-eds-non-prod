@@ -110,6 +110,7 @@ function renderFacet(facetElementId, facetController, headerText) {
   }
   let isSearch = false;
   if(facetId == 'massspectrometerscategories' || facetId == 'softwarecategories' ||  facetId =='language' || facetId =='instrumentfamily'){
+    clearFacetFilter(facetElement,facetController)
     const facetInput = document.createElement('input');
     facetInput.type = 'text';
     facetInput.id = facetId+'-input';
@@ -147,7 +148,7 @@ function renderFacet(facetElementId, facetController, headerText) {
       const focusedElementId = sessionStorage.getItem('focusedElement');
       const focusElement = document.getElementById(focusedElementId);
       if(focusElement){
-        // focusElement.focus();
+        focusElement.focus();
       }
       let  searchresult =facetController.state.facetSearch.values;
         if (facetInputElement.value.trim() === "") {
