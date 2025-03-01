@@ -181,6 +181,7 @@ function createMainHeader(section) {
       const liId = anchorTag.text;
       liTag.id = liId
         .replace(/ /g, '-')
+        .replace('&', '')
         .toLowerCase()
         .replace(/\//g, '')
         .replace('--', '-');
@@ -441,6 +442,7 @@ function createMegaMenuTopNav(section) {
     element.id = element.firstChild.text
       .replace(/ /g, '-')
       .replace(/\//g, '')
+      .replace('&', '')
       .replace('--', '-');
     element.firstChild.className = 'tw-flex tw-items-center tw-group hover:tw-text-blue-700 tw-transition-colors';
     const svg = canMobileActions()
@@ -480,6 +482,7 @@ function createMegaMenuTopNav(section) {
           const className = firstLi
             .trim()
             .replace(/ /g, '-')
+            .replace('&', '')
             .toLowerCase()
             .replace(/\//g, '')
             .replace('--', '-');
@@ -620,6 +623,7 @@ function createMegaMenuSubNav(child) {
     const sectionTitle = section.textContent
       .trim()
       .replace(/ /g, '-')
+      .replace('&', '')
       .replace(/\//g, '')
       .replace('--', '-');
     const list = section.nextElementSibling;
@@ -638,11 +642,13 @@ function createSubMenuItems(section, containerDiv, firstpartdiv) {
     const productTitle = nameArray[0]
       .trim()
       .replace(/ /g, '-')
+      .replace('&', '')
       .replace(/\//g, '')
       .replace('--', '-');
     const subNavClass = nameArray[1]
       .trim()
       .replace(/ /g, '-')
+      .replace('&', '')
       .toLowerCase()
       .replace(/\//g, '')
       .replace('--', '-');
@@ -682,6 +688,7 @@ function createSubMenuItems(section, containerDiv, firstpartdiv) {
             const liClass = litext
               .trim()
               .replace(/ /g, '-')
+              .replace('&', '')
               .toLowerCase()
               .replace(/\//g, '')
               .replace('--', '-');

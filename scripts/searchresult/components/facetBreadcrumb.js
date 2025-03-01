@@ -62,6 +62,7 @@ const renderFacetBreadcurm = () => {
   const button = document.createElement('button');
   button.style.marginRight = '0';
   button.style.marginLeft = 'auto';
+  button.style.color = 'var(--Blue-700, #0068fa)';
   button.textContent = 'Clear All';
 
   button.addEventListener('click', () => {
