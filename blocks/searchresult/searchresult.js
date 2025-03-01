@@ -333,6 +333,6 @@ export default async function decorate(block) {
       renderFacetBreadcurm();
     });
   } catch (error) {
-    console.error('Error initializing search engine:', error);
+    searchEngine.executeFirstSearch();
   }
 }
