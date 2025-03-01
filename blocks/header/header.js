@@ -1146,13 +1146,8 @@ export default async function decorate(block) {
   document.getElementById('logout').addEventListener('click', () => {
     const redirectUrl = encodeURIComponent(window.location.href);
     fetch('/bin/sciex/logout')
-      .then((response) => {
-        console.log('Logout successful');
-        return response;
-      })
-      .catch((error) => {
-        console.error('Logout failed:', error);
-      })
+      .then((response) => response)
+      .catch(() => {})
       .finally(() => {
         document.location = `https://sso.sciex.cloud/auth/realms/sciex/protocol/openid-connect/logout?redirect_uri=${redirectUrl}`;
       });

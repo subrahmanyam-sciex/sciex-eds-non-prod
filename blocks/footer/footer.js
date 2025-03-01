@@ -97,7 +97,7 @@ function handleMiddleSections(child, block, iteration) {
       sectionDiv.removeEventListener('click', () => {});
     } else {
       // Add the event listener for mobile view
-      sectionDiv.addEventListener('click', function () {
+      sectionDiv.addEventListener('click', function toggleFooterSection() {
         const footerSectionElement = document.querySelectorAll('.footer-section');
         footerSectionElement.forEach((openElement) => {
           if (openElement !== this) {
@@ -156,11 +156,12 @@ function handleMiddleSections(child, block, iteration) {
     headerDiv.appendChild(headerH2);
     wrapperDiv.appendChild(headerDiv);
   }
-
-  const hr = document.createElement('hr');
-  hr.classList.add('footer-divider');
   headerDiv.appendChild(newContainer);
-  wrapperDiv.appendChild(hr);
+  if (header != null) {
+    const hr = document.createElement('hr');
+    hr.classList.add('footer-divider');
+    wrapperDiv.appendChild(hr);
+  }
   block.appendChild(wrapperDiv);
   decorateIcons(wrapperDiv);
 }
@@ -392,7 +393,7 @@ function processFragment(block, fragment) {
     modal.style.display = 'none';
   });
 
-  window.onclick = function (event) {
+  window.onclick = function closeModal(event) {
     if (event.target === modal) {
       modal.style.display = 'none';
     }
@@ -409,7 +410,7 @@ function processFragment(block, fragment) {
     modal.style.display = 'flex';
   });
 
-  const clickFn = function (e) {
+  const clickFn = function handleLanguageSelection(e) {
     e.preventDefault();
 
     selectedLanguage.innerHTML = this.text;
