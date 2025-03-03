@@ -452,27 +452,57 @@ export function callCreateFacet(){
      *
      *
      *  */
-export const handleMobileFilters = () => {
-  const facets = document.querySelector("#facets");
-  const mobileFilterHeader = document.querySelector("#mobile-filter-header");
-  const body = document.querySelector(".generic-page-template");
-  if (facets) {
-    facets.style.display =
-      facets.style.display === "" || facets.style.display === "none"
-        ? "block"
-        : "none";
-  }
-  if (mobileFilterHeader) {
-    if (mobileFilterHeader.classList.contains("tw-hidden")) {
-      if (body) {
-        body.classList.add("body-no-scroll");
+      export const handleMobileFilters = () => {
+        const facets = document.querySelector("#facets");
+        const mobileFilterHeader = document.querySelector("#mobile-filter-header");
+        const mobileFilterFooter = document.querySelector("#mobile-filter-footer");
+        const body = document.querySelector(".generic-page-template");
+        if (facets) {
+          facets.style.display =
+            facets.style.display === "" || facets.style.display === "none"
+              ? "block"
+              : "none";
+        }
+        if (mobileFilterHeader) {
+          if (mobileFilterHeader.classList.contains("tw-hidden")) {
+            if (body) {
+              body.classList.add("body-no-scroll");
+            }
+            mobileFilterHeader.classList.remove("tw-hidden");
+          } else {
+            if (body && body.classList.contains("body-no-scroll")) {
+              body.classList.remove("body-no-scroll");
+            }
+            mobileFilterHeader.classList.add("tw-hidden");
+          }
+        }
+        if (mobileFilterFooter) {
+          if (mobileFilterFooter.classList.contains("tw-hidden")) {
+            mobileFilterFooter.style.display='flex'
+            mobileFilterFooter.classList.remove("tw-hidden");
+          } else {
+            mobileFilterFooter.style.display='none'
+            mobileFilterFooter.classList.add("tw-hidden");
+          }
+        }
+      };
+      export const  handleClearMobileFilters = () =>
+      {
+        const clearAllFiltersButton=document.querySelector('#facet-readcrumb button');
+        if(clearAllFiltersButton)
+        {
+          clearAllFiltersButton.click();  
+          setTimeout(function()
+        {
+          const resultsCount = document.querySelectorAll('#query-summary span');
+          if (resultsCount.length > 0) {
+            const mobileFilterFooterResultsButton=document.querySelector('#mobile-filter-footer-results');
+            if(mobileFilterFooterResultsButton)
+            {
+              mobileFilterFooterResultsButton.innerHTML=`Result [${resultsCount[resultsCount.length - 1].textContent}]`;
+            }
+          }
+        },1000);
+        }
       }
-      mobileFilterHeader.classList.remove("tw-hidden");
-    } else {
-      if (body && body.classList.contains("body-no-scroll")) {
-        body.classList.remove("body-no-scroll");
-      }
-      mobileFilterHeader.classList.add("tw-hidden");
-    }
-  }
-};
+      
