@@ -182,7 +182,7 @@ if(!isSearch){
       const productAndServices = facetController.state.values
       productAndServices.forEach(item => {
         if (item.state === "selected") {
-            orderFacetBasedOnSelection(item.value, facetElement)
+            orderFacetBasedOnSelection(item.value)
         }
       });
     }
@@ -194,26 +194,29 @@ if(!isSearch){
 }
 
 function clearFacetFilter(facetElement,facetController){
-  const clearButtonContainer = document.createElement('div');
-  clearButtonContainer.className = "clear-filter-btn";
-  const clearButton = document.createElement('button');
-  clearButton.style.marginLeft = '0';
-  clearButton.style.marginRight = '10px';
-  clearButton.textContent = 'Clear Filter';
-
-  const clearIcon = document.createElement('span');
-  clearIcon.innerHTML = '&#10005;';
-  clearIcon.style.cursor = 'pointer';
-
-  clearButtonContainer.appendChild(clearButton);
-  clearButtonContainer.appendChild(clearIcon);
-
-  const isSelected = facetController.state.values.some(value => value.state === 'selected');
-  if(isSelected){
-    facetElement.appendChild(clearButtonContainer)
-    clearButtonContainer.addEventListener('click', () => {
-      facetController.deselectAll();
-    });
+  const hasClearBtn = facetElement.querySelector('.clear-filter-btn');
+  if(!hasClearBtn){
+    const clearButtonContainer = document.createElement('div');
+    clearButtonContainer.className = "clear-filter-btn";
+    const clearButton = document.createElement('button');
+    clearButton.style.marginLeft = '0';
+    clearButton.style.marginRight = '10px';
+    clearButton.textContent = 'Clear Filter';
+  
+    const clearIcon = document.createElement('span');
+    clearIcon.innerHTML = '&#10005;';
+    clearIcon.style.cursor = 'pointer';
+  
+    clearButtonContainer.appendChild(clearButton);
+    clearButtonContainer.appendChild(clearIcon);
+  
+    const isSelected = facetController.state.values.some(value => value.state === 'selected');
+    if(isSelected){
+      facetElement.appendChild(clearButtonContainer)
+      clearButtonContainer.addEventListener('click', () => {
+        facetController.deselectAll();
+      });
+    }
   }
 }
 
@@ -269,7 +272,7 @@ function orderFacetBasedOnSelection(selectedValue) {
     desiredOrder = [
       'massspectrometerscategories-facet',
       'capillaryelectrophoresiscategories-facet',
-      'hplcandceproductscategories',
+      'scategories-facet',
       'integratedsolutionscategories-facet',
       'softwarecategories-facet',
       'standardsandreagentscategories-facet',
@@ -283,13 +286,13 @@ function orderFacetBasedOnSelection(selectedValue) {
       'year-facet'
     ];
     orderFacetChildren('facets', desiredOrder);
-  } else if (selectedValue === 'Technotes or Resource library') {
+  } else if (selectedValue === 'Resource library') {
     desiredOrder = [
-      'assettypes',
-      'applications',
-      'massspectrometerscategories',
-      'capillaryelectrophoresiscategories',
-      'hplcandceproductscategories',
+      'assettypes-facet',
+      'applications-facet',
+      'massspectrometerscategories-facet',
+      'capillaryelectrophoresiscategories-facet',
+      'scategories-facet',
       'integratedsolutionscategories-facet',
       'softwarecategories-facet',
       'standardsandreagentscategories-facet',
@@ -308,7 +311,7 @@ function orderFacetBasedOnSelection(selectedValue) {
       'language-facet',
       'massspectrometerscategories-facet',
       'capillaryelectrophoresiscategories-facet',
-      'hplcandceproductscategories-facet',
+      'scategories-facet',
       'integratedsolutionscategories-facet',
       'softwarecategories-facet',
       'standardsandreagentscategories-facet',
@@ -316,12 +319,12 @@ function orderFacetBasedOnSelection(selectedValue) {
     orderFacetChildren('facets', desiredOrder);
   } else if (selectedValue === 'Customer Docs') {
     desiredOrder = [
-      'assettypes',
+      'assettypes-facet',
       'year-facet',
       'language-facet',
       'massspectrometerscategories-facet',
       'capillaryelectrophoresiscategories-facet',
-      'hplcandceproductscategories-facet',
+      'scategories-facet',
       'integratedsolutionscategories-facet',
       'softwarecategories-facet',
       'standardsandreagentscategories-facet',
@@ -337,7 +340,7 @@ function orderContentTypeFacets(facetId,facetItemsContainer){
         "Applications",
         "Regulatory Docs",
         "Customer Docs",
-        "Technotes or Resource library",
+        "Resource library",
         "Training"
     ];
 
