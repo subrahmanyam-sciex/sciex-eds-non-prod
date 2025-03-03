@@ -41,14 +41,22 @@ const renderSearchBox = () => {
       searchBoxController.showSuggestions();
       showSuggestions();
     } else {
+      searchBoxController.updateText('');
       suggestionPopup.style.display = 'none';
+    }
+  });
+
+  queryInput.addEventListener('input', () => {
+    if(searchBoxController.state.value === ''){
+      searchBoxController.clear();
+      searchBoxController.submit();
     }
   });
 
   queryInput.addEventListener('keydown', (event) => {
     searchTermValue.innerHTML = '';
     searchTermContainer.style.display = 'none';
-    if (event.key === 'Enter') {
+    if (event.key === 'Enter' && event.target.value.trim() !== '') {
       searchTermContainer.style.display = 'block';
       searchBoxController.submit();
       showResults();
