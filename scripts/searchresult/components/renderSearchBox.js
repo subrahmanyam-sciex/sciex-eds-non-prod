@@ -47,7 +47,7 @@ const renderSearchBox = () => {
   });
 
   queryInput.addEventListener('input', () => {
-    if(searchBoxController.state.value === ''){
+    if (searchBoxController.state.value === '') {
       searchBoxController.clear();
       searchBoxController.submit();
     }
