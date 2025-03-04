@@ -275,7 +275,7 @@ export default async function decorate(block) {
   // Create results section div
   const coveoNoResultsDiv = document.createElement('div');
   const noResultsText = document.createElement('div');
-  noResultsText.className = "no-result-text"
+  noResultsText.className = 'no-result-text';
   coveoNoResultsDiv.id = 'coveo-no-results';
   coveoNoResultsDiv.style.display = 'none';
 

@@ -60,8 +60,8 @@ const renderSearchBox = () => {
       searchTermContainer.style.display = 'block';
       searchBoxController.submit();
       showResults();
-    } 
-    if(event.key === 'Backspace') {
+    }
+    if (event.key === 'Backspace') {
       searchTermContainer.style.display = 'none';
     }
   });
