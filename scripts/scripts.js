@@ -13,6 +13,18 @@ import {
   getMetadata,
 } from './aem.js';
 
+export function getCookie(name) {
+  let cookieVal = null;
+  const cookieArr = document.cookie.split(';');
+  cookieArr.forEach((elem) => {
+    const cookie = elem.trim();
+    if (cookie.startsWith(`${name}=`)) {
+      cookieVal = decodeURIComponent(cookie.substring(name.length + 1));
+    }
+  });
+  return cookieVal;
+}
+
 /**
  * Moves all the attributes from a given elmenet to another given element.
  * @param {Element} from the element to copy attributes from
@@ -156,7 +168,9 @@ function loadGTM() {
  * Loads the page and initializes scripts.
  */
 async function loadPage() {
-  loadGTM();
+  if (getCookie('cq-authoring-mode') !== 'TOUCH') {
+    loadGTM();
+  }
   await loadEager(document);
   await loadLazy(document);
   loadDelayed();

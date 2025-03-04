@@ -5,6 +5,7 @@ import renderSearchResults from '../../scripts/searchresult/components/renderSea
 import {
   callCreateFacet,
   handleMobileFilters,
+  handleClearMobileFilters,
 } from '../../scripts/searchresult/components/categoryFacets.js';
 import renderPagination from '../../scripts/searchresult/components/pagination.js';
 import renderQuerySummary from '../../scripts/searchresult/components/querySummary.js';
@@ -61,6 +62,44 @@ export default async function decorate(block) {
   mobileFilterHeader.append(mobileFilterHeaderIcon);
   // add  [ handle mobile filter ]  function on click
   mobileFilterHeaderIcon.addEventListener('click', handleMobileFilters);
+
+  // Create mobile filter footer
+  const mobileFilterFooter = document.createElement('div');
+  mobileFilterFooter.id = 'mobile-filter-footer';
+  mobileFilterFooter.classList.add(
+    'tw-hidden',
+    'tw-flex',
+    'tw-py-20',
+    'tw-px-24',
+    'tw-justify-between',
+    'tw-border-b-2',
+    'tw-border-gray-500',
+    'tw-bg-white',
+  );
+  // mobile filter clear Button
+  const mobileFilterFooterClearButton = document.createElement('button');
+  mobileFilterFooterClearButton.textContent = 'Clear All';
+  mobileFilterFooterClearButton.id = 'mobile-filter-footer-clear-all';
+  mobileFilterFooterClearButton.addEventListener('click', handleClearMobileFilters);
+
+  // mobile filter results Button
+  const mobileFilterFooterResultsButton = document.createElement('button');
+  mobileFilterFooterResultsButton.innerHTML = 'Results';
+  /* setTimeout(function() {
+    const resultsCount = document.querySelectorAll('#query-summary span');
+    if (resultsCount.length > 0) {
+      mobileFilterFooterResultsButton.innerHTML
+      =`Result [${resultsCount[resultsCount.length - 1].textContent}]`;
+    } else  {
+      mobileFilterFooterResultsButton.innerHTML=`Result [0]`;
+    }
+  },2000); */
+  mobileFilterFooterResultsButton.id = 'mobile-filter-footer-results';
+  mobileFilterFooterResultsButton.addEventListener('click', handleMobileFilters);
+
+  mobileFilterFooter.append(mobileFilterFooterClearButton);
+  mobileFilterFooter.append(mobileFilterFooterResultsButton);
+
   // Create source facet div
   const sourceFacetDiv = document.createElement('div');
   sourceFacetDiv.id = 'source-facet';
@@ -294,6 +333,7 @@ export default async function decorate(block) {
   // Append facets and search result sections to search
   searchWrapperDiv.appendChild(mobileFilterHeader);
   searchWrapperDiv.appendChild(facetsDiv);
+  searchWrapperDiv.appendChild(mobileFilterFooter);
   searchWrapperDiv.appendChild(searchResultSectionDiv);
 
   // Append search wrapper to main container
@@ -333,6 +373,6 @@ export default async function decorate(block) {
       renderFacetBreadcurm();
     });
   } catch (error) {
-    console.error('Error initializing search engine:', error);
+    searchEngine.executeFirstSearch();
   }
 }
