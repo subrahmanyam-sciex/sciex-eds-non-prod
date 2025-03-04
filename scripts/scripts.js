@@ -14,14 +14,15 @@ import {
 } from './aem.js';
 
 export function getCookie(name) {
+  let cookieVal = null;
   const cookieArr = document.cookie.split(';');
-  for (let i = 0; i < cookieArr.length; i++) {
-    const cookie = cookieArr[i].trim();
+  cookieArr.forEach((elem) => {
+    const cookie = elem.trim();
     if (cookie.startsWith(`${name}=`)) {
-      return decodeURIComponent(cookie.substring(name.length + 1));
+      cookieVal = decodeURIComponent(cookie.substring(name.length + 1));
     }
-  }
-  return null;
+  });
+  return cookieVal;
 }
 
 /**
@@ -167,7 +168,6 @@ function loadGTM() {
  * Loads the page and initializes scripts.
  */
 async function loadPage() {
-  const hostname = window.location.hostname;
   if (getCookie('cq-authoring-mode') !== 'TOUCH') {
     loadGTM();
   }
