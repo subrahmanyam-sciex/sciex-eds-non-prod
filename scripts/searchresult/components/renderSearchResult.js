@@ -112,6 +112,13 @@ const renderSearchResults = () => {
       querySortSection.style.setProperty('display', 'none', 'important');
     }
   }
+
+  const searchWrapper = document.querySelectorAll('.search-wrapper')[0];
+  if (noResultsElement && noResultsElement.style.display === 'none') {
+    searchWrapper.style.width = 'auto';
+  } else {
+    searchWrapper.style.width = 'fit-content';
+  }
 };
 
 export default renderSearchResults;

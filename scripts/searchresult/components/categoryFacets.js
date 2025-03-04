@@ -126,19 +126,17 @@ function renderFacet(facetElementId, facetController, headerText) {
     facetInput.addEventListener('input', (event) => {
       const query = event.target.value.toLowerCase();
       if (query.length > 0) {
+        sessionStorage.setItem('focusedElement', facetId+'-input');
         facetController.facetSearch.updateText(query);
         facetController.facetSearch.search();
       }else{
         isSearch=false;
+        sessionStorage.removeItem('focusedElement');
         let  searchresult =facetController.state.values;
         let itemContainer =facetElement.querySelector('.facet-items-container');
         itemContainer.innerHTML='';
         isSearch =renderSearchFacets(facetController, itemContainer,facetElement,searchresult);
       }
-    });
-
-    facetInput.addEventListener('focus', () => {
-      sessionStorage.setItem('focusedElement', facetId+'-input');
     });
 
     if(facetInputElement == null){
@@ -147,8 +145,12 @@ function renderFacet(facetElementId, facetController, headerText) {
       facetElement.appendChild(facetInputElement);
       const focusedElementId = sessionStorage.getItem('focusedElement');
       const focusElement = document.getElementById(focusedElementId);
-      if(focusElement){
+      if (focusedElementId) {
+        setTimeout(() => {
+          const currentScrollPosition = window.scrollY;
         focusElement.focus();
+          window.scrollTo(0, currentScrollPosition);
+        }, 0);
       }
       let  searchresult =facetController.state.facetSearch.values;
         if (facetInputElement.value.trim() === "") {
@@ -172,6 +174,12 @@ if(!isSearch){
       `;
 
       facetItem.querySelector("input").addEventListener("change", () => {
+        const focusedElementId = sessionStorage.getItem('focusedElement');
+        if(focusedElementId){
+          const focusElement = document.getElementById(focusedElementId);
+          focusElement.value = '';
+          sessionStorage.removeItem('focusedElement');
+        }
         facetController.toggleSelect(value);
       });
 
@@ -214,6 +222,12 @@ function clearFacetFilter(facetElement,facetController){
     if(isSelected){
       facetElement.appendChild(clearButtonContainer)
       clearButtonContainer.addEventListener('click', () => {
+        const focusedElementId = sessionStorage.getItem('focusedElement');
+        if(focusedElementId){
+          const focusElement = document.getElementById(focusedElementId);
+          focusElement.value = '';
+          sessionStorage.removeItem('focusedElement');
+        }
         facetController.deselectAll();
       });
     }

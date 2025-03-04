@@ -460,6 +460,23 @@
     border-radius: 1px;
 }
 
+.no-result-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+}
+
+#coveo-no-results {
+    display: flex;
+    padding-top: 24px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 46px;
+}
+
 /* Media Queries for Responsiveness */
 @media (max-width: 1024px) {
     .result-item:first-child {
@@ -628,6 +645,33 @@
 
     #pagination {
         gap: 10px;
+    }
+
+    #coveo-no-results {
+        padding: 51px 0px;
+        gap: 20px;
+    }
+
+    #coveo-no-results #noresults-text1 {
+        color: #000;
+        text-align: center;
+        font-family: "Geogrotesque Sharp VF";
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 530;
+        line-height: 24px; /* 150% */
+        letter-spacing: 0.08px;
+    }
+
+    #coveo-no-results .noresults-text2 {
+        color: var(--Grey-700, #434343);
+        text-align: center;
+        font-family: "Geogrotesque Sharp VF";
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 330;
+        line-height: 23px; /* 153.333% */
+        letter-spacing: 0.075px;
     }
 }
 
