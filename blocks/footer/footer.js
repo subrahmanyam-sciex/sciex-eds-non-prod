@@ -74,7 +74,7 @@ function handleMiddleSections(child, block, iteration) {
         a.classList.add('footer-link');
         a.href = link.href;
         a.textContent = link.textContent;
-
+      
         li.appendChild(a);
         ul.appendChild(li);
       });
@@ -170,10 +170,25 @@ function handleBlockSection(child, block, iteration) {
   wrapperDiv.classList.add(`wrapper-${iteration}`, 'black-section');
   const uniqueId = getMetadata('pageorder');
 
+  const listItems = child.querySelectorAll('ul li');
+
+  listItems.forEach((li) => {
+    const anchor = li.querySelector('a');
+    if (anchor) {
+      const match = anchor.textContent.trim().match(/#([\w-]+)/);
+      if (match) {
+        const className = match[1];
+        anchor.classList.add(className);
+        anchor.textContent = anchor.textContent.replace(match[0], '').trim();
+      }
+    }
+  });
+
   wrapperDiv.append(child);
   wrapperDiv.append(uniqueId);
   block.append(wrapperDiv);
 }
+
 
 function handleLogoSection(child, block, iteration) {
   const pictures = child.querySelectorAll('picture');
