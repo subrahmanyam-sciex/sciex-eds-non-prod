@@ -274,6 +274,8 @@ export default async function decorate(block) {
 
   // Create results section div
   const coveoNoResultsDiv = document.createElement('div');
+  const noResultsText = document.createElement('div');
+  noResultsText.className = 'no-result-text';
   coveoNoResultsDiv.id = 'coveo-no-results';
   coveoNoResultsDiv.style.display = 'none';
 
@@ -300,11 +302,13 @@ export default async function decorate(block) {
         const noResultsText1 = section.querySelector('div');
         noResultsText1.id = 'noresults-text1';
         noResultsText1.setAttribute('data-text1', noResultsText1.textContent);
-        coveoNoResultsDiv.appendChild(noResultsText1);
+        noResultsText.appendChild(noResultsText1);
+        coveoNoResultsDiv.appendChild(noResultsText);
       } else if (iteration === 4) {
         const noResultsText2 = section.querySelector('div');
         noResultsText2.classList = 'noresults-text2';
-        coveoNoResultsDiv.appendChild(noResultsText2);
+        noResultsText.appendChild(noResultsText2);
+        coveoNoResultsDiv.appendChild(noResultsText);
       }
     });
   }

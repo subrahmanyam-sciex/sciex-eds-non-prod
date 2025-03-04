@@ -55,12 +55,14 @@ const renderSearchBox = () => {
 
   queryInput.addEventListener('keydown', (event) => {
     searchTermValue.innerHTML = '';
-    searchTermContainer.style.display = 'none';
+    searchTermValue.innerHTML = event.target.value;
     if (event.key === 'Enter' && event.target.value.trim() !== '') {
       searchTermContainer.style.display = 'block';
       searchBoxController.submit();
       showResults();
-      searchTermValue.innerHTML = event.target.value;
+    }
+    if (event.key === 'Backspace') {
+      searchTermContainer.style.display = 'none';
     }
   });
 

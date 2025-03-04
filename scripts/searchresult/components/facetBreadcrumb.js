@@ -31,6 +31,7 @@ const renderFacetBreadcurm = () => {
   };
 
   facetBreadcrumb.state.facetBreadcrumbs.forEach((value) => {
+    facetBreadcrumbElement.parentElement.scrollIntoView({ behavior: 'smooth' });
     value.values.forEach((item) => {
       let fieldName;
       if (value.field === 'contenttype') {
