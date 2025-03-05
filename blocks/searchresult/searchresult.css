@@ -31,7 +31,7 @@
 
 .search-box {
     width: 100%;
-    padding: 12px 16px !important;
+    padding: 12px 35px !important;
     border-radius: 4px;
     border: 1px solid #c6c6c6;
 }
@@ -476,6 +476,53 @@
     justify-content: center;
     align-items: center;
     gap: 46px;
+}
+
+.coveo-search-component {
+    position: relative;
+}
+
+.clear-search {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.search-icon {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    font-size: 18px;
+    pointer-events: none;  /* Prevents the search icon from interfering with clicks */
+}
+
+.suggestion-item {
+    padding: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#suggestion-popup {
+    position: absolute;
+    top: 296px;
+    left: 488px;
+    width: 63%;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 10;
+    display: block;
+    padding: 5px;
+    box-sizing: border-box;
+    margin-top: 5px;
+    border-radius: 4px;
+    background: #FFF;
+    box-shadow: 0px 8px 16px 0px rgba(19, 19, 19, 0.05);
 }
 
 /* Media Queries for Responsiveness */

@@ -210,6 +210,21 @@ export default async function decorate(block) {
     'tw-rounded-md',
   );
 
+  const clearSearchInput = document.createElement('span');
+  clearSearchInput.id = 'clear-search';
+  clearSearchInput.className = 'clear-search';
+  clearSearchInput.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+  <path d="M13 13L3.0001 3.0001" stroke="#141414"/>
+    <path d="M13 3L3.0001 12.9999" stroke="#141414"/>
+  </svg>`;
+
+  const searchIcon = document.createElement('span');
+  searchIcon.id = 'search-icon';
+  searchIcon.className = 'search-icon';
+  searchIcon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" viewBox="0 0 17 16" fill="none">
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M12.0065 7.33324C12.0065 9.7264 10.0664 11.6665 7.67318 11.6665C5.27993 11.6665 3.33984 9.7264 3.33984 7.33324C3.33984 4.94007 5.27993 3 7.67318 3C10.0664 3 12.0065 4.94007 12.0065 7.33324ZM11.0743 11.4414C10.1512 12.2066 8.96589 12.6665 7.67318 12.6665C4.72766 12.6665 2.33984 10.2787 2.33984 7.33324C2.33984 4.38777 4.72766 2 7.67318 2C10.6187 2 13.0065 4.38777 13.0065 7.33324C13.0065 8.62593 12.5466 9.81119 11.7815 10.7343L14.0267 12.9796L14.3803 13.3331L13.6732 14.0402L13.3196 13.6867L11.0743 11.4414Z" fill="#707070"/>
+  </svg>`;
+
   // Append search input to search container
   const coveoSearchComponentDiv = document.createElement('div');
   coveoSearchComponentDiv.classList.add(
@@ -217,7 +232,9 @@ export default async function decorate(block) {
     'tw-flex',
     'tw-gap-2',
   );
+  coveoSearchComponentDiv.appendChild(searchIcon);
   coveoSearchComponentDiv.appendChild(searchInput);
+  coveoSearchComponentDiv.appendChild(clearSearchInput);
   searchContainerDiv.appendChild(coveoSearchComponentDiv);
 
   // Create query sort section div
@@ -349,19 +366,6 @@ export default async function decorate(block) {
   // Create suggestion popup div
   const suggestionPopupDiv = document.createElement('div');
   suggestionPopupDiv.id = 'suggestion-popup';
-  suggestionPopupDiv.style.position = 'absolute';
-  suggestionPopupDiv.style.top = '100%';
-  suggestionPopupDiv.style.left = '0';
-  suggestionPopupDiv.style.width = '738px';
-  suggestionPopupDiv.style.background = '#fff';
-  suggestionPopupDiv.style.border = '1px solid #ddd';
-  suggestionPopupDiv.style.maxHeight = '200px';
-  suggestionPopupDiv.style.overflowY = 'auto';
-  suggestionPopupDiv.style.zIndex = '10';
-  suggestionPopupDiv.style.display = 'none';
-  suggestionPopupDiv.style.padding = '5px';
-  suggestionPopupDiv.style.boxSizing = 'border-box';
-  suggestionPopupDiv.style.marginTop = '5px';
 
   document.body.appendChild(suggestionPopupDiv);
 
