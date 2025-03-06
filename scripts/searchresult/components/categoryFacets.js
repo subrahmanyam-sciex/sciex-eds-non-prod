@@ -162,6 +162,9 @@ function renderFacet(facetElementId, facetController, headerText) {
   }
 if(!isSearch){
     values.forEach((value) => {
+      if(facetId === 'applications' && value.value === 'Application'){
+        return;
+      }
       const facetItem = document.createElement("div");
       facetItem.className = "facet-item tw-flex tw-items-center tw-gap-2 tw-py-1";
       facetItem.innerHTML = `

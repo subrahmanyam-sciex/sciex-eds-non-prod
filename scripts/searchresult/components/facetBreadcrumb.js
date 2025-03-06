@@ -52,6 +52,7 @@ const renderFacetBreadcurm = () => {
       gridItem2.classList.add('grid-item');
       const clearIcon = document.createElement('span');
       clearIcon.innerHTML = '&#10005;';
+      clearIcon.style.cursor = 'pointer';
 
       gridItem2.appendChild(clearIcon);
       gridContainer.appendChild(gridItem1);
@@ -62,8 +63,14 @@ const renderFacetBreadcurm = () => {
   const button = document.createElement('button');
   button.style.marginRight = '0';
   button.style.marginLeft = 'auto';
-  button.style.color = 'var(--Blue-700, #0068fa)';
   button.textContent = 'Clear All';
+  button.style.color = 'var(--Blue-700, #0068FA)';
+  button.style.fontFamily = '"Geogrotesque Sharp VF"';
+  button.style.fontSize = '16px';
+  button.style.fontStyle = 'normal';
+  button.style.fontWeight = '530';
+  button.style.lineHeight = '24px';
+  button.style.letterSpacing = '0.08px';
 
   button.addEventListener('click', () => {
     facetBreadcrumb.deselectAll();
