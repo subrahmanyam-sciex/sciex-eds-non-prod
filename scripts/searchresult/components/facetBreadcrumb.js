@@ -1,6 +1,6 @@
 import { facetBreadcrumb } from '../controller/controllers.js';
 
-const renderFacetBreadcurm = () => {
+export const renderFacetBreadcurm = () => {
   const facetBreadcrumbElement = document.getElementById('facet-readcrumb');
   facetBreadcrumbElement.innerHTML = '';
 
@@ -86,4 +86,6 @@ const renderFacetBreadcurm = () => {
   facetBreadcrumbElement.appendChild(breadcrumbContainer);
 };
 
-export default renderFacetBreadcurm;
+export const handleClearMobileFilters = () => {
+  facetBreadcrumb.deselectAll();
+};
