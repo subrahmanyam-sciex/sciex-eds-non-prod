@@ -74,7 +74,7 @@ function handleMiddleSections(child, block, iteration) {
         a.classList.add('footer-link');
         a.href = link.href;
         a.textContent = link.textContent;
-      
+
         li.appendChild(a);
         ul.appendChild(li);
       });
@@ -189,7 +189,6 @@ function handleBlockSection(child, block, iteration) {
   wrapperDiv.append(uniqueId);
   block.append(wrapperDiv);
 }
-
 
 function handleLogoSection(child, block, iteration) {
   const pictures = child.querySelectorAll('picture');

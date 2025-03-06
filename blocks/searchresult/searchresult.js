@@ -178,7 +178,6 @@ export default async function decorate(block) {
   searchContainerDiv.classList.add(
     'search-container',
     'tw-p-5',
-    'tw-bg-white',
     'tw-rounded-lg',
   );
 
@@ -244,8 +243,6 @@ export default async function decorate(block) {
     'tw-flex',
     'tw-justify-between',
     'tw-items-center',
-    'tw-py-3',
-    'tw-px-5',
   );
 
   // Create query summary div
