@@ -76,7 +76,7 @@ const renderSearchResults = () => {
     : ''
 }
           </div>
-          <a class="view-details-btn" href="${result.printableUri}">View</a>
+          <a class="view-details-btn" target="_blank" href="${result.printableUri}">View</a>
         `;
 
       const viewDetailsBtn = resultItem.querySelector('.view-details-btn');
