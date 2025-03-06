@@ -5,12 +5,11 @@ import renderSearchResults from '../../scripts/searchresult/components/renderSea
 import {
   callCreateFacet,
   handleMobileFilters,
-  handleClearMobileFilters,
 } from '../../scripts/searchresult/components/categoryFacets.js';
 import renderPagination from '../../scripts/searchresult/components/pagination.js';
 import renderQuerySummary from '../../scripts/searchresult/components/querySummary.js';
 import renderSorting from '../../scripts/searchresult/components/sorting.js';
-import renderFacetBreadcurm from '../../scripts/searchresult/components/facetBreadcrumb.js';
+import { renderFacetBreadcurm, handleClearMobileFilters } from '../../scripts/searchresult/components/facetBreadcrumb.js';
 
 export default async function decorate(block) {
   // Create main container div
@@ -84,16 +83,6 @@ export default async function decorate(block) {
 
   // mobile filter results Button
   const mobileFilterFooterResultsButton = document.createElement('button');
-  mobileFilterFooterResultsButton.innerHTML = 'Results';
-  /* setTimeout(function() {
-    const resultsCount = document.querySelectorAll('#query-summary span');
-    if (resultsCount.length > 0) {
-      mobileFilterFooterResultsButton.innerHTML
-      =`Result [${resultsCount[resultsCount.length - 1].textContent}]`;
-    } else  {
-      mobileFilterFooterResultsButton.innerHTML=`Result [0]`;
-    }
-  },2000); */
   mobileFilterFooterResultsButton.id = 'mobile-filter-footer-results';
   mobileFilterFooterResultsButton.addEventListener('click', handleMobileFilters);
 
