@@ -9,6 +9,7 @@ import {
   buildInteractiveResult,
   buildBreadcrumbManager,
   buildFacetConditionsManager,
+  buildContext
 } from 'https://static.cloud.coveo.com/headless/v3/headless.esm.js';
 import { searchEngine, analyticsEngine }  from '../engine.js';
 
@@ -63,6 +64,9 @@ export const updateSorting = (criterion) => {
   };
 };
 
+// Context variable controller
+const context = buildContext(searchEngine)
+context.add('host', window.location.origin);
 
 export const facetBreadcrumb = buildBreadcrumbManager(searchEngine)
 
