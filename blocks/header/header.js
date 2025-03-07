@@ -918,7 +918,7 @@ function createMegaMenuThirdLevel(child) {
         createSubMenuItems(section, containerDiv, firstpartdiv);
       } else {
         const list = section.querySelectorAll('a');
-        const picture = section.previousElementSibling.querySelector('picture')
+        const picture = section.previousElementSibling.querySelector('picture');
         const listDiv = div({ class: 'lg:tw-w-full xl:tw-w-1/2 tw-pr-48 ' });
         if (canMobileActions() === true) {
           if (index > 1) {
@@ -927,21 +927,21 @@ function createMegaMenuThirdLevel(child) {
         } else if (index > 2) {
           listDiv.classList.add('tw-mt-24');
         }
-        if (list.length === 1 && !list[0].innerText.includes('#view-all#') && null === picture) {
+        if (list.length === 1 && !list[0].innerText.includes('#view-all#') && picture === null) {
           wrapdiv.append(createAnchorWithDesc(list, listDiv, section));
         } else if (list.length > 0 && section.querySelector('strong')) {
           wrapdiv.append(createAnchorWithTitle(list, listDiv));
         } else {
           const img = section.querySelector('img');
-          const listDiv = div({ class: '' });
+          const listdiv = div({ class: '' });
           if (img != null) {
             const picDiv = div({
               class: 'tw-relative tw-overflow-hidden tw-pt-[56.25%]',
             });
             img.className = 'tw-transition-all tw-duration-500 tw-absolute tw-inset-0 tw-top-0 tw-left-0 tw-w-full tw-h-full tw-object-cover hover:tw-scale-[1.05]';
             picDiv.append(img);
-            listDiv.append(picDiv);
-            thirdPartdiv.append(listDiv);
+            listdiv.append(picDiv);
+            thirdPartdiv.append(listdiv);
           }
           if (section.previousElementSibling.querySelector('picture')) {
             const anchTag = section.querySelector('a');
@@ -963,8 +963,8 @@ function createMegaMenuThirdLevel(child) {
               const pTag = section.nextElementSibling;
               pTag.className = 'tw-mt-2 tw-text-grey-500 tw-text-sm tw-mb-0';
               anchTag.append(pTag);
-              listDiv.append(anchTag);
-              thirdPartdiv.append(listDiv);
+              listdiv.append(anchTag);
+              thirdPartdiv.append(listdiv);
               thirdPartdiv.append(document.createElement('br'));
             }
           } else {
@@ -982,13 +982,13 @@ function createMegaMenuThirdLevel(child) {
       } else {
         const list = section.querySelectorAll('a');
         const listDiv = div({ class: 'tw-w-1/2 xl:tw-w-1/3 tw-pr-48 ' });
-          if (canMobileActions() === true) {
-            if (index > 1) {
-              listDiv.classList.add('tw-mt-24');
-            }
-          } else if (index > 3) {
+        if (canMobileActions() === true) {
+          if (index > 1) {
             listDiv.classList.add('tw-mt-24');
           }
+        } else if (index > 3) {
+          listDiv.classList.add('tw-mt-24');
+        }
         if (list.length === 1 && !list[0].innerText.includes('#view-all#')) {
           wrapdiv.append(createAnchorWithDesc(list, listDiv, section));
         } else if (list.length > 0 && section.querySelector('strong')) {
