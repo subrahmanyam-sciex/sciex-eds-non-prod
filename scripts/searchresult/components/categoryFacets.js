@@ -441,7 +441,6 @@ export function callCreateFacet(){
     'trainingtopiccategories':'Training Topic',
     'trainingtypecategories':'Training Type',
     'assettypes': 'Asset Type',
-    'instrumentfamily': 'Instrument family',
     'languagecountry': 'Language-country',
     'language' : 'Language',
     'year': 'Year',
