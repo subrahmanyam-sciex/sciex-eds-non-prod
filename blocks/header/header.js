@@ -829,6 +829,63 @@ function createViewallTag(list, viewAllTag) {
   });
 }
 
+function createAnchorWithDesc(list, listDiv, section) {
+  const anchorTag = list[0];
+  anchorTag.className = 'tw-group';
+  const spanTag = span(
+    {
+      class:
+        'tw-font-bold tw-text-mobBase md:tw-text-base tw-text-grey-900 tw-flex tw-items-center group-hover:tw-text-blue-700 tw-transition-all tw-duration-200 ',
+    },
+    anchorTag.text,
+  );
+  anchorTag.text = '';
+  anchorTag.append(spanTag);
+  const chevronRight = span({
+    class:
+      'icon icon-chevron-right tw-ml-8 tw-duration-500 group-hover:tw-pl-2',
+  });
+  spanTag.append(chevronRight);
+  const { childNodes } = section;
+  let decription = '';
+  childNodes.forEach((element) => {
+    if (element.nodeName === '#text') decription = element.nodeValue;
+  });
+  const ptag = p(
+    { class: 'tw-text-grey-500 tw-text-sm tw-mt-2 tw-mb-0' },
+    decription,
+  );
+  anchorTag.appendChild(ptag);
+  listDiv.append(anchorTag);
+  return listDiv;
+}
+
+function createAnchorWithTitle(list, listDiv) {
+  Array.from(list).forEach((element, ind) => {
+    element.className = 'tw-group';
+    const spanTag = span(
+      {
+        class:
+          'tw-text-mobBase md:tw-text-base tw-text-grey-500 tw-flex tw-items-center group-hover:tw-text-blue-700 tw-transition-all tw-duration-200 ',
+      },
+      element.text,
+    );
+    if (ind === 0) {
+      spanTag.classList.add('tw-font-bold');
+      spanTag.classList.replace('tw-text-grey-500', 'tw-text-grey-900');
+    }
+    element.text = '';
+    element.append(spanTag);
+    const chevronRight = span({
+      class:
+        'icon icon-chevron-right tw-ml-8 tw-duration-500 group-hover:tw-pl-2',
+    });
+    spanTag.append(chevronRight);
+    listDiv.append(element);
+  });
+  return listDiv;
+}
+
 function createMegaMenuThirdLevel(child) {
   const parentDiv = div({
     class: 'tw-w-full tw-bg-white tw-relative tw-z-[100]',
@@ -861,49 +918,30 @@ function createMegaMenuThirdLevel(child) {
         createSubMenuItems(section, containerDiv, firstpartdiv);
       } else {
         const list = section.querySelectorAll('a');
-        if (list.length > 0 && section.querySelector('strong')) {
-          const listDiv = div({ class: 'lg:tw-w-full xl:tw-w-1/2 tw-pr-48 ' });
-          if (canMobileActions() === true) {
-            if (index > 1) {
-              listDiv.classList.add('tw-mt-24');
-            }
-          } else if (index > 2) {
+        const picture = section.previousElementSibling.querySelector('picture');
+        const listDiv = div({ class: 'lg:tw-w-full xl:tw-w-1/2 tw-pr-48 ' });
+        if (canMobileActions() === true) {
+          if (index > 1) {
             listDiv.classList.add('tw-mt-24');
           }
-          Array.from(list).forEach((element, ind) => {
-            element.className = 'tw-group';
-            const spanTag = span(
-              {
-                class:
-                  'tw-text-mobBase md:tw-text-base tw-text-grey-500 tw-flex tw-items-center group-hover:tw-text-blue-700 tw-transition-all tw-duration-200 ',
-              },
-              element.text,
-            );
-            if (ind === 0) {
-              spanTag.classList.add('tw-font-bold');
-              spanTag.classList.replace('tw-text-grey-500', 'tw-text-grey-900');
-            }
-            element.text = '';
-            element.append(spanTag);
-            const chevronRight = span({
-              class:
-                'icon icon-chevron-right tw-ml-8 tw-duration-500 group-hover:tw-pl-2',
-            });
-            spanTag.append(chevronRight);
-            listDiv.append(element);
-          });
-          wrapdiv.append(listDiv);
+        } else if (index > 2) {
+          listDiv.classList.add('tw-mt-24');
+        }
+        if (list.length === 1 && !list[0].innerText.includes('#view-all#') && picture === null) {
+          wrapdiv.append(createAnchorWithDesc(list, listDiv, section));
+        } else if (list.length > 0 && section.querySelector('strong')) {
+          wrapdiv.append(createAnchorWithTitle(list, listDiv));
         } else {
           const img = section.querySelector('img');
-          const listDiv = div({ class: '' });
+          const listdiv = div({ class: '' });
           if (img != null) {
             const picDiv = div({
               class: 'tw-relative tw-overflow-hidden tw-pt-[56.25%]',
             });
             img.className = 'tw-transition-all tw-duration-500 tw-absolute tw-inset-0 tw-top-0 tw-left-0 tw-w-full tw-h-full tw-object-cover hover:tw-scale-[1.05]';
             picDiv.append(img);
-            listDiv.append(picDiv);
-            thirdPartdiv.append(listDiv);
+            listdiv.append(picDiv);
+            thirdPartdiv.append(listdiv);
           }
           if (section.previousElementSibling.querySelector('picture')) {
             const anchTag = section.querySelector('a');
@@ -925,8 +963,8 @@ function createMegaMenuThirdLevel(child) {
               const pTag = section.nextElementSibling;
               pTag.className = 'tw-mt-2 tw-text-grey-500 tw-text-sm tw-mb-0';
               anchTag.append(pTag);
-              listDiv.append(anchTag);
-              thirdPartdiv.append(listDiv);
+              listdiv.append(anchTag);
+              thirdPartdiv.append(listdiv);
               thirdPartdiv.append(document.createElement('br'));
             }
           } else {
@@ -943,38 +981,18 @@ function createMegaMenuThirdLevel(child) {
         createSubMenuItems(section, containerDiv, firstpartdiv);
       } else {
         const list = section.querySelectorAll('a');
-        if (list.length > 0 && section.querySelector('strong')) {
-          const listDiv = div({ class: 'tw-w-1/2 xl:tw-w-1/3 tw-pr-48 ' });
-          if (canMobileActions() === true) {
-            if (index > 1) {
-              listDiv.classList.add('tw-mt-24');
-            }
-          } else if (index > 3) {
+        const listDiv = div({ class: 'tw-w-1/2 xl:tw-w-1/3 tw-pr-48 ' });
+        if (canMobileActions() === true) {
+          if (index > 1) {
             listDiv.classList.add('tw-mt-24');
           }
-          Array.from(list).forEach((element, ind) => {
-            element.className = 'tw-group';
-            const spanTag = span(
-              {
-                class:
-                  'tw-text-mobBase md:tw-text-base tw-text-grey-500 tw-flex tw-items-center group-hover:tw-text-blue-700 tw-transition-all tw-duration-200 ',
-              },
-              element.text,
-            );
-            if (ind === 0) {
-              spanTag.classList.add('tw-font-bold');
-              spanTag.classList.replace('tw-text-grey-500', 'tw-text-grey-900');
-            }
-            element.text = '';
-            element.append(spanTag);
-            const chevronRight = span({
-              class:
-                'icon icon-chevron-right tw-ml-8 tw-duration-500 group-hover:tw-pl-2',
-            });
-            spanTag.append(chevronRight);
-            listDiv.append(element);
-          });
-          wrapdiv.append(listDiv);
+        } else if (index > 3) {
+          listDiv.classList.add('tw-mt-24');
+        }
+        if (list.length === 1 && !list[0].innerText.includes('#view-all#')) {
+          wrapdiv.append(createAnchorWithDesc(list, listDiv, section));
+        } else if (list.length > 0 && section.querySelector('strong')) {
+          wrapdiv.append(createAnchorWithTitle(list, listDiv));
         } else {
           createViewallTag(list, viewAllTag);
         }
@@ -1002,58 +1020,9 @@ function createMegaMenuThirdLevel(child) {
           listDiv.classList.add('tw-mt-24');
         }
         if (list.length === 1 && !list[0].innerText.includes('#view-all#')) {
-          const anchorTag = list[0];
-          anchorTag.className = 'tw-group';
-          const spanTag = span(
-            {
-              class:
-                'tw-font-bold tw-text-mobBase md:tw-text-base tw-text-grey-900 tw-flex tw-items-center group-hover:tw-text-blue-700 tw-transition-all tw-duration-200 ',
-            },
-            anchorTag.text,
-          );
-          anchorTag.text = '';
-          anchorTag.append(spanTag);
-          const chevronRight = span({
-            class:
-              'icon icon-chevron-right tw-ml-8 tw-duration-500 group-hover:tw-pl-2',
-          });
-          spanTag.append(chevronRight);
-          const { childNodes } = section;
-          let decription = '';
-          childNodes.forEach((element) => {
-            if (element.nodeName === '#text') decription = element.nodeValue;
-          });
-          const ptag = p(
-            { class: 'tw-text-grey-500 tw-text-sm tw-mt-2 tw-mb-0' },
-            decription,
-          );
-          anchorTag.appendChild(ptag);
-          listDiv.append(anchorTag);
-          wrapdiv.append(listDiv);
+          wrapdiv.append(createAnchorWithDesc(list, listDiv, section));
         } else if (list.length > 0 && section.querySelector('strong')) {
-          Array.from(list).forEach((element, ind) => {
-            element.className = 'tw-group';
-            const spanTag = span(
-              {
-                class:
-                  'tw-text-mobBase md:tw-text-base tw-text-grey-500 tw-flex tw-items-center group-hover:tw-text-blue-700 tw-transition-all tw-duration-200 ',
-              },
-              element.text,
-            );
-            if (ind === 0) {
-              spanTag.classList.add('tw-font-bold');
-              spanTag.classList.replace('tw-text-grey-500', 'tw-text-grey-900');
-            }
-            element.text = '';
-            element.append(spanTag);
-            const chevronRight = span({
-              class:
-                'icon icon-chevron-right tw-ml-8 tw-duration-500 group-hover:tw-pl-2',
-            });
-            spanTag.append(chevronRight);
-            listDiv.append(element);
-          });
-          wrapdiv.append(listDiv);
+          wrapdiv.append(createAnchorWithTitle(list, listDiv));
         } else {
           createViewallTag(list, viewAllTag);
         }
