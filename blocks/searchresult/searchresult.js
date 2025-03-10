@@ -285,7 +285,8 @@ export default async function decorate(block) {
   // Create life sciences div
   const lifeSciencesDiv = document.createElement('div');
   lifeSciencesDiv.id = 'coveo-life-sciences';
-  const resp = await fetch('/search-results-eds.plain.html');
+  const path = window.location.pathname;
+  const resp = await fetch(`${path}.plain.html`);
   if (resp.ok) {
     const html = await resp.text();
     const main = document.createElement('main');
