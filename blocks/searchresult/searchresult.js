@@ -282,7 +282,7 @@ export default async function decorate(block) {
   coveoNoResultsDiv.id = 'coveo-no-results';
   coveoNoResultsDiv.style.display = 'none';
 
-  // Create life sciences div
+  // Create life sciences div element
   const lifeSciencesDiv = document.createElement('div');
   lifeSciencesDiv.id = 'coveo-life-sciences';
   const path = window.location.pathname;
