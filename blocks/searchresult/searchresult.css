@@ -461,7 +461,7 @@
 
 .clear-filter-btn {
     color: var(--Blue-700, #0068FA);
-    font-family: "Geogrotesque Sharp VF";
+    font-family: "Geogrotesque Sharp VF" !important;
     font-size: 16px;
     font-style: normal;
     font-weight: 530;
@@ -471,6 +471,7 @@
 
 .clear-filter-btn button {
     border-bottom: 1px solid;
+    font-family: "Geogrotesque Sharp VF" !important;
     border-radius: 1px;
 }
 
@@ -568,8 +569,8 @@
         padding-right: 24px !important;
     }
     #coveo-life-sciences div {
-        padding-left: 0px !important;
-        padding-right: 0px !important;
+        padding-left: 2pc !important;
+        padding-right: 2pc !important;
     }
     .searchresult-wrapper {
         margin-top: 0 !important;
@@ -664,6 +665,13 @@
     }
 }
 
+@media (max-width: 768px) {
+    
+    #coveo-life-sciences div {
+        padding-left: 0pc !important;
+        padding-right: 0pc !important;
+    }
+}
 @media (max-width: 600px) {
     .search-wrapper {
         flex-direction: column;
@@ -788,13 +796,13 @@
     .searchresult-wrapper #facets,
     #mobile-filter-header,#mobile-filter-footer {
         max-width: 64pc !important;
-        padding-left: 40px !important;
-        padding-right: 40px !important;
+        padding-left: 1pc !important;
+        padding-right: 1pc !important;
     }
     #coveo-life-sciences div {
-        max-width: 64pc !important;
-        padding-left: 58px !important;
-        padding-right: 40px !important;
+        max-width: 62pc !important;
+        padding-left: 1pc !important;
+        padding-right: 1pc !important;
     }
 }
 
@@ -810,16 +818,16 @@
 
     #coveo-life-sciences div {
         max-width: 80pc !important;
-        padding-left: 22px !important;
-        padding-right: 24px !important;
+        padding-left: 16px !important;
+        padding-right: 16px !important;
     }
 }
 
 @media (min-width: 1281px) and (max-width: 1399px) {
     #coveo-life-sciences div {
-        max-width: 72pc !important;
-        padding-left: 22px !important;
-        padding-right: 24px !important;
+        max-width: 80pc !important;
+        padding-left: 16px !important;
+        padding-right: 16px !important;
     }
 }
 @media (min-width: 1440px) {

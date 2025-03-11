@@ -70,14 +70,21 @@ main > .section > div {
 @media (min-width: 1024px) {
   .breadcrumb-wrapper {
       max-width: 63pc !important;
-      padding-left: 40px !important;
-      padding-right: 40px !important;
+      padding-left: 1pc !important;
+      padding-right: 1pc !important;
   }
 }
 
 @media (min-width: 1280px) {
   .breadcrumb-wrapper {
       max-width: 79pc !important;
+      padding-left: 4pc !important;
+      padding-right: 4pc !important;
+  }
+}
+@media (min-width: 1366px) {
+  .breadcrumb-wrapper {
+      max-width: 84pc !important;
       padding-left: 4pc !important;
       padding-right: 4pc !important;
   }

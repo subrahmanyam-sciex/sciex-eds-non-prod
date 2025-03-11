@@ -16,6 +16,10 @@ header nav ul li picture:hover {
 }
 /***   Mobile Css  */
 @media (max-width: 1023.9px) {
+    .wrapper-4.black-section-logo
+    {
+        padding-top: 0;
+    }
     .submenu-container div {
         border-right: none;
         width: 100% !important;
@@ -23,13 +27,13 @@ header nav ul li picture:hover {
         padding-right: 0 !important;
     }
     .submenu-container .submenu-content {
-        border-bottom: 1px solid #e5e7eb;
         padding-bottom: 44px !important;
     }
     .submenu-container .submenu-content a:nth-last-child() {
         padding-bottom: 24px;
     }
     .submenu-container .submenu-images {
+        border-top: 1px solid #e5e7eb;
         padding-top: 24px;
     }
     .megamenu-wrapper {
