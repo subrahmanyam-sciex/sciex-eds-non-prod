@@ -2171,14 +2171,14 @@ button.active {
 @media (min-width:1024px) {
     .tw-container {
         max-width: 64pc;
-        padding-left: 40px;
-        padding-right: 40px
+        padding-left: 1pc;
+        padding-right: 1pc
     }
 }
 
 @media (min-width:1280px) {
     .tw-container {
-        max-width: 80pc;
+        max-width: 86pc;
         padding-left: 4pc;
         padding-right: 4pc
     }

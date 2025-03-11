@@ -52,7 +52,7 @@ export const renderFacetBreadcurm = () => {
         breadcrumbCont.style.marginTop = '0px';
       }
       if (clearAllFiltersButton) {
-        clearAllFiltersButton.style.marginTop = '-50px';
+        clearAllFiltersButton.style.bottom = '-20px';
       }
       this.style.display = 'none';
     }
@@ -81,6 +81,7 @@ export const renderFacetBreadcurm = () => {
     }
     if (clearAllFiltersButton) {
       clearAllFiltersButton.style.marginTop = '-100px';
+      clearAllFiltersButton.style.bottom = 'auto';
     }
   });
 
@@ -173,7 +174,7 @@ export const renderFacetBreadcurm = () => {
   button.style.marginLeft = 'auto';
   button.textContent = 'Clear All';
   button.style.color = 'var(--Blue-700, #0068FA)';
-  button.style.fontFamily = '"Geogrotesque"';
+  //button.style.fontFamily = '"Geogrotesque"';
   button.style.fontSize = '16px';
   button.style.fontStyle = 'normal';
   button.style.fontWeight = '530';
