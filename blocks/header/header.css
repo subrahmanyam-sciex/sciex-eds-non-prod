@@ -159,6 +159,16 @@ header nav ul li picture:hover {
 }
 
 @media (min-width: 1024px) {
+    .submenu-content a:first-child span {
+        line-height: 24px;
+    }
+    .submenu-content a:not(:first-child) span {
+        font-size: 14px !important;
+        line-height: 20px;
+    }
+    .submenu-container .tw-flex.tw-flex-wrap.tw-h-fit {
+        width: 100%;
+    }
     .desktop-links {
         max-width: 861px;
     }
