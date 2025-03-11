@@ -47,6 +47,20 @@
           "value": "",
           "label": "No results text2",
           "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "coveoSearchEngineOrganizationId",
+          "value": "",
+          "label": "Coveo Search Engine OrganizationId",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "coveoSearchEngineAccessToken",
+          "value": "",
+          "label": "Coveo Search Engine Access Token",
+          "valueType": "string"
         }
       ]
     }
