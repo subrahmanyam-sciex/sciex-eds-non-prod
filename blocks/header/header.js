@@ -866,7 +866,7 @@ function createAnchorWithTitle(list, listDiv) {
     const spanTag = span(
       {
         class:
-          'tw-text-mobBase md:tw-text-base tw-text-grey-500 tw-flex tw-items-center group-hover:tw-text-blue-700 tw-transition-all tw-duration-200 ',
+          'tw-text-mobBase md:tw-text-base tw-text-grey-500 tw-inline-block tw-items-center group-hover:tw-text-blue-700 tw-transition-all tw-duration-200 ',
       },
       element.text,
     );
@@ -878,7 +878,7 @@ function createAnchorWithTitle(list, listDiv) {
     element.append(spanTag);
     const chevronRight = span({
       class:
-        'icon icon-chevron-right tw-ml-8 tw-duration-500 group-hover:tw-pl-2',
+        'icon icon-chevron-right tw-ml-8 tw-duration-500 group-hover:tw-pl-2 tw-inline-flex',
     });
     spanTag.append(chevronRight);
     listDiv.append(element);
