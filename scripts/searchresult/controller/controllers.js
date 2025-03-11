@@ -128,12 +128,12 @@ function initDependentFacet(dependentFacet, parentFacets) {
     );
 
   const facetConditionsMap = {
-    'massspectrometerscategories': ['Products & Services', 'Resource Library', 'Customer Docs', 'Training', 'Resource library'],
-    'capillaryelectrophoresiscategories': ['Products & Services', 'Resource Library', 'Customer Docs', 'Training', 'Resource library'],
-    'hplcandceproductscategories': ['Products & Services', 'Resource Library', 'Customer Docs', 'Training', 'Resource library'],
-    'integratedsolutionscategories': ['Products & Services', 'Resource Library', 'Customer Docs', 'Training', 'Resource library'],
-    'softwarecategories': ['Products & Services', 'Resource Library', 'Customer Docs', 'Training', 'Resource library'],
-    'standardsandreagentscategories': ['Products & Services', 'Resource Library', 'Customer Docs', 'Training', 'Resource library'],
+    'massspectrometerscategories': ['Products and services', 'Resource Library', 'Customer Docs', 'Training', 'Resource library'],
+    'capillaryelectrophoresiscategories': ['Products and services', 'Resource Library', 'Customer Docs', 'Training', 'Resource library'],
+    'hplcandceproductscategories': ['Products and services', 'Resource Library', 'Customer Docs', 'Training', 'Resource library'],
+    'integratedsolutionscategories': ['Products and services', 'Resource Library', 'Customer Docs', 'Training', 'Resource library'],
+    'softwarecategories': ['Products and services', 'Resource Library', 'Customer Docs', 'Training', 'Resource library'],
+    'standardsandreagentscategories': ['Products and services', 'Resource Library', 'Customer Docs', 'Training', 'Resource library'],
     'levelcategories': ['Training'],
     'techniquescategories': ['Training'],
     'trainingtopiccategories': ['Training'],

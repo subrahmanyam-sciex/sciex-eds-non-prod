@@ -285,7 +285,7 @@ function orderFacetChildren(facetElementId, desiredOrder) {
 function orderFacetBasedOnSelection(selectedValue) {
   let desiredOrder = [];
 
-  if (selectedValue === 'Products & Services') {
+  if (selectedValue === 'Products and services') {
     desiredOrder = [
       'massspectrometerscategories-facet',
       'capillaryelectrophoresiscategories-facet',
@@ -353,7 +353,7 @@ function orderFacetBasedOnSelection(selectedValue) {
 function orderContentTypeFacets(facetId,facetItemsContainer){
   if (facetId == 'contenttype') {
     const desiredOrder = [
-        "Products & Services",
+        "Products and services",
         "Applications",
         "Regulatory Docs",
         "Customer Docs",
@@ -428,26 +428,26 @@ export function callCreateFacet(){
   createFacetRender(contentTypeFacetController, "contenttype", "Content Type");
   const facetController = allFacetController;
   const facetsId = {
-    'coursetypecategories':'Course Type',
-    'certificatetypecategories':'Certificate Type',
-    'capillaryelectrophoresiscategories':'Capillary Electrophoresis',
-    'hplcandceproductscategories':'Liquid Chromatography',
-    'integratedsolutionscategories':'Integrated Solutions',
-    'levelcategories':'Course level',
-    'massspectrometerscategories':'Mass Spectrometers',
+    'coursetypecategories':'Course type',
+    'certificatetypecategories':'Certificate type',
+    'capillaryelectrophoresiscategories':'Capillary electrophoresis',
+    'hplcandceproductscategories':'Liquid chromoatography',
+    'integratedsolutionscategories':'Integrated solutions',
+    'levelcategories':'Level',
+    'massspectrometerscategories':'Mass spectrometry',
     'softwarecategories':'Software',
-    'standardsandreagentscategories':'Standards and Reagents',
+    'standardsandreagentscategories':'Standards and reagent kits',
     'techniquescategories':'Techniques',
-    'trainingtopiccategories':'Training Topic',
-    'trainingtypecategories':'Training Type',
-    'assettypes': 'Asset Type',
-    'languagecountry': 'Language-country',
+    'trainingtopiccategories':'Training topic',
+    'trainingtypecategories':'Training type',
+    'assettypes': 'Asset type',
+    'languagecountry': 'Language country',
     'language' : 'Language',
     'year': 'Year',
-    'location': 'Training Location',
+    'location': 'Training location',
     'applications': 'Applications',
-    'technicaldocuments': 'Technical Documents',
-    'instrumentfamily': 'Instrument Family'
+    'technicaldocuments': 'Technical documents',
+    'instrumentfamily': 'Instrument family'
   };
 
   for (let item in facetsId) {
