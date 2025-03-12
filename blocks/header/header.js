@@ -863,7 +863,7 @@ function createAnchorWithDesc(list, listDiv, section) {
 
 function createAnchorWithTitle(list, listDiv) {
   Array.from(list).forEach((element, ind) => {
-    element.className = 'tw-group';
+    element.className = 'tw-group title';
     const spanTag = span(
       {
         class:
@@ -884,11 +884,16 @@ function createAnchorWithTitle(list, listDiv) {
         class:
         'icon icon-chevron-right tw-ml-8 tw-duration-500 group-hover:tw-pl-2',
       });
-      spanTag.append(chevronRight);
+      element.append(chevronRight);
       listDiv.append(element);
     }
   });
   return listDiv;
+}
+
+function isValidURL(url) {
+  const regex = /^\/[^\s]*$/i;
+  return regex.test(url);
 }
 
 function createMegaMenuThirdLevel(child) {
@@ -945,7 +950,17 @@ function createMegaMenuThirdLevel(child) {
             });
             img.className = 'tw-transition-all tw-duration-500 tw-absolute tw-inset-0 tw-top-0 tw-left-0 tw-w-full tw-h-full tw-object-cover hover:tw-scale-[1.05]';
             picDiv.append(img);
-            listdiv.append(picDiv);
+            // Checking if image have href link
+            const url = img.alt;
+            img.alt = '';
+            if (url && isValidURL(url)) {
+              const anchTag = a({ class: 'tw-group' });
+              anchTag.href = url;
+              anchTag.append(picDiv);
+              listdiv.append(anchTag);
+            } else {
+              listdiv.append(picDiv);
+            }
             thirdPartdiv.append(listdiv);
           }
           if (section.previousElementSibling.querySelector('picture')) {
@@ -966,8 +981,10 @@ function createMegaMenuThirdLevel(child) {
               anchTag.text = '';
               anchTag.append(spanTag);
               const pTag = section.nextElementSibling;
-              pTag.className = 'tw-mt-2 tw-text-grey-500 tw-text-sm tw-mb-0';
-              anchTag.append(pTag);
+              if (pTag.tagName === 'P') {
+                pTag.className = 'tw-mt-2 tw-text-grey-500 tw-text-sm tw-mb-0';
+                anchTag.append(pTag);
+              }
               listdiv.append(anchTag);
               thirdPartdiv.append(listdiv);
               thirdPartdiv.append(document.createElement('br'));
@@ -1019,7 +1036,17 @@ function createMegaMenuThirdLevel(child) {
             });
             img.className = 'tw-transition-all tw-duration-500 tw-absolute tw-inset-0 tw-top-0 tw-left-0 tw-w-full tw-h-full tw-object-cover hover:tw-scale-[1.05]';
             picDiv.append(img);
-            listdiv.append(picDiv);
+            // Checking if image have href link
+            const url = img.alt;
+            if (url && isValidURL(url)) {
+              img.alt = '';
+              const anchTag = a({ class: 'tw-group' });
+              anchTag.href = url;
+              anchTag.append(picDiv);
+              listdiv.append(anchTag);
+            } else {
+              listdiv.append(picDiv);
+            }
             thirdPartdiv.append(listdiv);
           }
           if (section.previousElementSibling.querySelector('picture')) {
@@ -1040,8 +1067,10 @@ function createMegaMenuThirdLevel(child) {
               anchTag.text = '';
               anchTag.append(spanTag);
               const pTag = section.nextElementSibling;
-              pTag.className = 'tw-mt-2 tw-text-grey-500 tw-text-sm tw-mb-0';
-              anchTag.append(pTag);
+              if (pTag.tagName === 'P') {
+                pTag.className = 'tw-mt-2 tw-text-grey-500 tw-text-sm tw-mb-0';
+                anchTag.append(pTag);
+              }
               listdiv.append(anchTag);
               thirdPartdiv.append(listdiv);
               thirdPartdiv.append(document.createElement('br'));
