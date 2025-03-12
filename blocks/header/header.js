@@ -981,7 +981,7 @@ function createMegaMenuThirdLevel(child) {
               anchTag.text = '';
               anchTag.append(spanTag);
               const pTag = section.nextElementSibling;
-              if (pTag.tagName === 'P') {
+              if (!pTag.querySelector('picture')) {
                 pTag.className = 'tw-mt-2 tw-text-grey-500 tw-text-sm tw-mb-0';
                 anchTag.append(pTag);
               }
@@ -1067,7 +1067,7 @@ function createMegaMenuThirdLevel(child) {
               anchTag.text = '';
               anchTag.append(spanTag);
               const pTag = section.nextElementSibling;
-              if (pTag.tagName === 'P') {
+              if (!pTag.querySelector('picture')) {
                 pTag.className = 'tw-mt-2 tw-text-grey-500 tw-text-sm tw-mb-0';
                 anchTag.append(pTag);
               }
