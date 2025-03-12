@@ -14,6 +14,29 @@ header nav ul li picture:hover {
     width: 16px;
     padding: 0;
 }
+
+.submenu-content a.title {
+    display: flex;
+    align-items: center;
+}
+.submenu-content a.title span:first-child {
+    max-width: 85%;
+}
+.submenu-content a:first-child span {
+    line-height: 24px;
+}
+.submenu-content a:not(:first-child) span {
+    font-size: 14px !important;
+    line-height: 20px;
+    font-weight: 330;
+}
+.submenu-content a span.icon img {
+    width: 12px;
+}
+.submenu-content a:not(:first-child) span img {
+    opacity: 0.6;
+}
+
 /***   Mobile Css  */
 @media (max-width: 1023.9px) {
     .wrapper-4.black-section-logo
@@ -159,12 +182,8 @@ header nav ul li picture:hover {
 }
 
 @media (min-width: 1024px) {
-    .submenu-content a:first-child span {
-        line-height: 24px;
-    }
-    .submenu-content a:not(:first-child) span {
-        font-size: 14px !important;
-        line-height: 20px;
+    .submenu-content div.tw-pr-48 {
+        padding-right: 1pc !important;
     }
     .submenu-container .tw-flex.tw-flex-wrap.tw-h-fit {
         width: 100%;
