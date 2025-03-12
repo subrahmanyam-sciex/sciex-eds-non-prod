@@ -69,7 +69,11 @@ const renderSearchResults = () => {
       resultItem.innerHTML = `
           <div class="item-details"> 
             <h3>${result.title || 'No Title Available'}</h3>
-            <p>${result.Excerpt || 'No description available.'}</p>
+            ${
+  result.raw.description
+    ? `<p>${result.raw.description}</p> `
+    : `<p>${result.Excerpt}</p>`
+}
             ${
   result.raw.ogimage
     ? `<img src="${result.raw.ogimage}" alt="ogimage" width="200" height="200">`

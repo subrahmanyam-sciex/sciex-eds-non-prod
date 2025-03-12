@@ -115,7 +115,7 @@ export const renderFacetBreadcurm = () => {
     value.values.forEach((item) => {
       let fieldName;
       if (value.field === 'contenttype') {
-        fieldName = 'Content Type';
+        fieldName = 'Content type';
       } else {
         fieldName = facetsId[value.field];
       }
@@ -174,7 +174,7 @@ export const renderFacetBreadcurm = () => {
   button.style.marginLeft = 'auto';
   button.textContent = 'Clear All';
   button.style.color = 'var(--Blue-700, #0068FA)';
-  //button.style.fontFamily = '"Geogrotesque"';
+  // button.style.fontFamily = '"Geogrotesque"';
   button.style.fontSize = '16px';
   button.style.fontStyle = 'normal';
   button.style.fontWeight = '530';
