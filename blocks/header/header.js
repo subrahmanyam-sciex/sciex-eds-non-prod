@@ -833,6 +833,7 @@ function createViewallTag(list, viewAllTag) {
 function createAnchorWithDesc(list, listDiv, section) {
   const anchorTag = list[0];
   anchorTag.className = 'tw-group';
+  anchorTag.title = '';
   const spanTag = span(
     {
       class:
@@ -864,6 +865,7 @@ function createAnchorWithDesc(list, listDiv, section) {
 function createAnchorWithTitle(list, listDiv) {
   Array.from(list).forEach((element, ind) => {
     element.className = 'tw-group title';
+    element.title = '';
     const spanTag = span(
       {
         class:
