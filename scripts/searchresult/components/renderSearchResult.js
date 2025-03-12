@@ -71,8 +71,8 @@ const renderSearchResults = () => {
             <h3>${result.title || 'No Title Available'}</h3>
             ${
   result.raw.description
-    ? `<p>${result.raw.description}</p> `
-    : `<p>${result.Excerpt}</p>`
+    ? `<p class="description">${result.raw.description}</p> `
+    : `<p class="description">${result.Excerpt}</p>`
 }
             ${
   result.raw.ogimage
