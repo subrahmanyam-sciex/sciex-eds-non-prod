@@ -295,7 +295,7 @@ function orderFacetBasedOnSelection(selectedValue) {
       'standardsandreagentscategories-facet',
     ];
     orderFacetChildren('facets', desiredOrder);
-  } else if (selectedValue === 'Regulatory Docs') {
+  } else if (selectedValue === 'Regulatory documents') {
     desiredOrder = [
       'technicaldocuments-facet',
       'instrumentfamily-facet',
@@ -334,7 +334,7 @@ function orderFacetBasedOnSelection(selectedValue) {
       'standardsandreagentscategories-facet',
     ];
     orderFacetChildren('facets', desiredOrder);
-  } else if (selectedValue === 'Customer Docs') {
+  } else if (selectedValue === 'Customer documents') {
     desiredOrder = [
       'assettypes-facet',
       'year-facet',
@@ -355,8 +355,8 @@ function orderContentTypeFacets(facetId,facetItemsContainer){
     const desiredOrder = [
         "Products and services",
         "Applications",
-        "Regulatory Docs",
-        "Customer Docs",
+        "Regulatory documents",
+        "Customer documents",
         "Resource library",
         "Training"
     ];
