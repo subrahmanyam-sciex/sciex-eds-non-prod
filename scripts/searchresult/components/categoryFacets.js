@@ -425,7 +425,7 @@ function createFacetDiv(id) {
 }
 
 export function callCreateFacet(){
-  createFacetRender(contentTypeFacetController, "contenttype", "Content Type");
+  createFacetRender(contentTypeFacetController, "contenttype", "Content type");
   const facetController = allFacetController;
   const facetsId = {
     'coursetypecategories':'Course type',

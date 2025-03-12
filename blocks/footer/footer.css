@@ -1033,8 +1033,7 @@ flex-direction: column;
     }
     .footer-wrapper .footer.block {
         max-width: 64pc !important;
-        padding-left: 1pc !important;
-        padding-right: 1pc !important;
+        padding: 0px 50px;
     }
     .wrapper-3.black-section .default-content-wrapper {
         display: flex;
@@ -1046,23 +1045,20 @@ flex-direction: column;
 @media (min-width: 1140px) {
     .footer-wrapper .footer.block {
         max-width: 64pc !important;
-        padding-left: 2pc !important;
-        padding-right: 2pc !important;
+        padding: 0px 50px;
     }
 }
 
 @media (min-width: 1280px) {
     .footer-wrapper .footer.block {
         max-width: 78pc !important;
-        padding-left: 4pc !important;
-        padding-right: 4pc !important;
+        padding: 0px 50px;
     }
 }
 @media (min-width: 1366px) {
     .footer-wrapper .footer.block {
         max-width: 84pc !important;
-        padding-left: 4pc !important;
-        padding-right: 4pc !important;
+        padding: 0px 50px;
     }
 }
 

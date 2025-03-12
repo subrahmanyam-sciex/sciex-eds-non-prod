@@ -8,6 +8,10 @@ main > .section > div {
   padding: 15px 32px;
 }
 
+.breadcrumb-wrapper {
+  margin: 0 !important;
+}
+
 @media (min-width: 900px) {
   main .breadcrumb-container {
       grid-row: 1;
@@ -16,7 +20,6 @@ main > .section > div {
 }
 
 .breadcrumb-wrapper nav {
-  margin-left: 10px;
   display: flex;
   align-items: center;
 }
@@ -50,7 +53,7 @@ main > .section > div {
 
 @media (min-width: 375px) {
   .breadcrumb-wrapper {
-      padding: 15px 10px !important;
+      padding: 16px 24px !important;
       max-width: 40pc !important;
   }
 }

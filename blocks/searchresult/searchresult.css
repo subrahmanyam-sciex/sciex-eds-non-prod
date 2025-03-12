@@ -215,9 +215,9 @@
     padding-right: 4pc;
     background-color: #f5f5f5;
     box-sizing: border-box;
+    padding: 28px 64px;
 }
 #coveo-life-sciences div {
-    padding: 28px 4pc;
     max-width: 80pc;
     margin: 0 auto;
     color: var(--Grey-900, #141414);
@@ -227,6 +227,7 @@
     font-weight: 530;
     line-height: 24px; /* 120% */
     letter-spacing: 0.1px;
+    padding: 0 !important;
 }
 #coveo-life-sciences div a {
     color: var(--Blue-700, #0068fa);
@@ -432,6 +433,7 @@
 .searchresult-wrapper {
     margin: 0 auto !important;
     max-width: 90pc !important;
+    padding: 0 64px !important;
 }
 
 .searchresult-wrapper {
@@ -569,11 +571,12 @@
         padding-right: 24px !important;
     }
     #coveo-life-sciences div {
-        padding-left: 2pc !important;
-        padding-right: 2pc !important;
+        padding-left: 2pc;
+        padding-right: 2pc;
     }
     .searchresult-wrapper {
         margin-top: 0 !important;
+        padding: 0 24px !important;
     }
     .searchresult-wrapper #facets {
         display: none;
@@ -668,8 +671,8 @@
 @media (max-width: 768px) {
     
     #coveo-life-sciences div {
-        padding-left: 0pc !important;
-        padding-right: 0pc !important;
+        padding-left: 0pc;
+        padding-right: 0pc;
     }
 }
 @media (max-width: 600px) {
@@ -796,13 +799,13 @@
     .searchresult-wrapper #facets,
     #mobile-filter-header,#mobile-filter-footer {
         max-width: 64pc !important;
-        padding-left: 1pc !important;
-        padding-right: 1pc !important;
+        padding-left: 1pc;
+        padding-right: 1pc;
     }
     #coveo-life-sciences div {
         max-width: 62pc !important;
-        padding-left: 1pc !important;
-        padding-right: 1pc !important;
+        padding-left: 1pc;
+        padding-right: 1pc;
     }
 }
 
@@ -818,16 +821,16 @@
 
     #coveo-life-sciences div {
         max-width: 80pc !important;
-        padding-left: 16px !important;
-        padding-right: 16px !important;
+        padding-left: 16px;
+        padding-right: 16px;
     }
 }
 
 @media (min-width: 1281px) and (max-width: 1399px) {
     #coveo-life-sciences div {
         max-width: 80pc !important;
-        padding-left: 16px !important;
-        padding-right: 16px !important;
+        padding-left: 16px;
+        padding-right: 16px;
     }
 }
 @media (min-width: 1440px) {
