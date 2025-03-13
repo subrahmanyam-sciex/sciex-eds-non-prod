@@ -12,6 +12,15 @@ function facetAccordion(values, facetElement, facetItemsContainer) {
       const isVisible = facetItemsContainer.style.display === "none";
       const icon = facetHeader.querySelector("span");
       facetItemsContainer.style.display = isVisible ? "flex" : "none";
+      const parentElement = facetItemsContainer.parentElement;
+      const inputElement = Array.from(parentElement.children).find(child => child.tagName.toLowerCase() === 'input');
+      if (inputElement) {
+        if (inputElement.style.display === 'none') {
+          inputElement.style.display = 'block';
+        } else {
+          inputElement.style.display = 'none';
+        }
+      }
       icon.innerHTML = isVisible
         ? '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 11L8 5L14 11" stroke="#0068FA"/></svg>'
         : '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M14 5L8 11L2 5" stroke="#0068FA"/></svg>';

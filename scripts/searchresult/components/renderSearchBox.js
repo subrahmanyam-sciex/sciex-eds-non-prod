@@ -9,6 +9,7 @@ const renderSearchBox = () => {
   const clearSearch = document.getElementById('clear-search');
   searchTermContainer.style.display = 'none';
   clearSearch.style.display = 'none';
+  suggestionPopup.style.display = 'none';
 
   const showSuggestions = () => {
     const searchBox = document.getElementById('coveo-query');
